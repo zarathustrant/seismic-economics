@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seismic Project Economics</title>
+<link rel="icon" href="data:,">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!--
+  ╔══════════════════════════════════════════════════════════╗
+  ║  SELF-SAVING HTML - All your data is stored below!      ║
+  ║  Click 💾 Save button to download updated file          ║
+  ╚══════════════════════════════════════════════════════════╝
+-->
+<script type="application/json" id="embedded-projects-data">
+{
+  "projects": {},
+  "currentProjectId": null
+}
+</script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f6f3;--surface:#fff;--surface-2:#f0f2ee;--border:#dfe3da;--border-s:#bfc7ba;
+  --text:#171a1f;--muted:#687167;--light:#98a096;--hdr:#11151a;
+  --accent:#155e75;--accent-2:#0f766e;--green:#0f7a4f;--red:#b42318;--amber:#b45309;
+  --input:#fffdf2;--input-line:#b8a83c;--sans:'IBM Plex Sans',Arial,sans-serif;--mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-size:13px;line-height:1.4;min-height:100vh}
+.hdr{height:56px;background:var(--hdr);color:#f6f7f4;display:flex;align-items:center;justify-content:space-between;padding:0 24px;position:sticky;top:0;z-index:200}
+.hdr-left{display:flex;align-items:baseline;gap:12px;min-width:0}
+.hdr h1{font-size:14px;font-weight:500;letter-spacing:.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-sub{font-size:11px;color:#a8aea8;white-space:nowrap}
+.hdr-kpis{display:flex;align-items:center}
+.hdr-kpi{padding:4px 14px;border-left:1px solid #30363d;text-align:right;min-width:104px}
+.hdr-kpi:first-child{border-left:none}
+.hdr-kpi .l{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:#8f9892;font-weight:600}
+.hdr-kpi .v{font-family:var(--mono);font-size:14px;font-weight:500;margin-top:1px}
+.tabs{height:39px;background:var(--surface);display:flex;align-items:flex-end;padding:0 24px;border-bottom:1px solid var(--border);position:sticky;top:56px;z-index:150}
+.tab{height:39px;display:flex;align-items:center;padding:0 15px;font-size:12px;color:var(--muted);font-weight:500;border-bottom:2px solid transparent;cursor:pointer;white-space:nowrap;user-select:none}
+.tab:hover{color:var(--text)}.tab.on{color:var(--accent);border-bottom-color:var(--accent)}
+.pane{display:none;padding:24px 24px 56px}.pane.on{display:block}
+.sec{margin-bottom:26px}.sec-ttl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:600;color:var(--muted);padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid var(--border)}
+.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden;margin-bottom:24px}
+.card{background:var(--surface);padding:16px 14px;min-width:0}
+.card .l{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:5px}
+.card .v{font-family:var(--mono);font-size:22px;font-weight:500;white-space:nowrap}
+.card .s{font-size:11px;color:var(--light);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g{color:var(--green)}.r{color:var(--red)}.a{color:var(--amber)}.b{color:var(--accent)}
+.grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:20px}.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.panel{background:var(--surface);padding:16px}.panel-ttl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;color:var(--muted);margin-bottom:12px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)}
+.row:last-child{border-bottom:none}.row label{font-size:12px;color:var(--muted);flex:1;min-width:0}
+.inp,.sel{font-family:var(--mono);font-size:12px;text-align:right;border:none;border-bottom:1px solid var(--input-line);background:var(--input);padding:3px 5px;outline:none;color:var(--text);border-radius:2px 2px 0 0;width:128px}
+.sel{font-family:var(--sans);text-align:left}.inp:focus,.sel:focus{border-bottom-color:var(--accent);color:var(--accent)}
+.unit{font-size:10px;color:var(--light);width:34px}.wide{width:235px}.small{width:76px}.med{width:110px}
+.tbl-wrap{overflow:auto;border:1px solid var(--border);border-radius:4px;background:var(--surface)}
+table{border-collapse:collapse;width:100%}
+th{background:var(--hdr);color:#f6f7f4;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.05em;text-align:right;padding:7px 9px;white-space:nowrap}
+th:first-child{text-align:left;font-family:var(--sans);text-transform:uppercase;min-width:250px}
+td{font-family:var(--mono);font-size:12px;text-align:right;padding:6px 9px;border-bottom:1px solid var(--border);white-space:nowrap}
+td.lbl{font-family:var(--sans);text-align:left;background:var(--surface);position:sticky;left:0;z-index:5;border-right:1px solid var(--border)}
+td.lbl.i1{padding-left:22px;color:var(--muted);font-size:11.5px}
+td.tc,th.tc{background:#eef1eb;border-left:1px solid var(--border-s);font-weight:500}
+tr.sec-row td{background:var(--surface-2);font-family:var(--sans);font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:600;color:var(--muted)}
+tr.sub-row td{background:#eef1eb;font-weight:600;border-top:1px solid var(--border-s)}
+tr.tot-row td{background:var(--hdr);color:#f6f7f4;font-weight:500;border-top:2px solid #30363d}
+tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos{color:var(--green)}
+.badge{font-family:var(--mono);font-size:10px;padding:1px 7px;border-radius:2px;background:#eef1eb;color:var(--muted);display:inline-block}
+.badge.var{background:#e7f5ef;color:var(--green)}.badge.sub{background:#fff1e6;color:var(--amber)}.badge.lease{background:#e8f3f6;color:var(--accent)}.badge.labor{background:#f1edf8;color:#6d4caf}.badge.owned{background:#edf7ee;color:var(--green)}
+.btn{border:1px solid var(--border-s);background:transparent;color:var(--muted);font-size:10px;border-radius:2px;padding:3px 7px;cursor:pointer}
+.btn:hover{border-color:var(--accent);background:var(--accent);color:#fff}
+.chart{height:190px;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:18px 16px 34px;position:relative;display:flex;align-items:flex-end;gap:3px;overflow:hidden}
+.bar-col{flex:1;height:100%;min-width:12px;display:flex;align-items:center;justify-content:flex-end;flex-direction:column;position:relative}
+.bar{width:100%;border-radius:2px 2px 0 0;min-height:2px}.bar.rev{background:var(--accent);opacity:.75}.bar.cost{background:var(--amber);opacity:.7}.bar.pos{background:var(--green);opacity:.78}.bar.neg{background:var(--red);opacity:.72}
+.bar-lbl{position:absolute;bottom:-22px;font-family:var(--mono);font-size:9px;color:var(--light)}.zero{position:absolute;left:16px;right:16px;height:1px;background:var(--border-s)}
+.driver-grid{display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.driver{background:var(--surface);padding:10px 12px}.driver-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}.driver-name{font-size:11px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.driver-val{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.driver-track{height:4px;background:#e8ece5;border-radius:2px;overflow:hidden}.driver-fill{height:100%;background:var(--accent)}
+/* ── Project Switcher ── */
+.proj-btn{display:flex;align-items:center;gap:7px;border:1px solid #30363d;background:transparent;color:#e2e8e2;font-size:11px;border-radius:3px;padding:5px 10px;cursor:pointer;font-family:var(--sans);white-space:nowrap;max-width:220px}
+.proj-btn:hover{border-color:#6b7c6b;background:#1e2a1e}
+.proj-btn .proj-name{overflow:hidden;text-overflow:ellipsis;flex:1;text-align:left}
+.proj-btn .proj-chevron{opacity:.5;font-size:10px;flex-shrink:0}
+.proj-panel{position:fixed;top:56px;left:0;z-index:500;background:var(--hdr);border:1px solid #2d3a2d;border-top:none;border-radius:0 0 6px 6px;min-width:280px;box-shadow:0 8px 24px rgba(0,0,0,.35);display:none}
+.proj-panel.open{display:block}
+.proj-list{max-height:260px;overflow-y:auto}
+.proj-item{display:flex;align-items:center;gap:8px;padding:8px 14px;cursor:pointer;border-bottom:1px solid #1e2a1e;transition:background .1s}
+.proj-item:hover{background:#1e2a1e}
+.proj-item.active{background:#0f2a1e}
+.proj-item .pi-name{flex:1;font-size:12px;color:#e2e8e2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.proj-item .pi-date{font-size:10px;color:#6b7c6b;flex-shrink:0}
+.proj-item .pi-actions{display:flex;gap:4px;flex-shrink:0;opacity:0;transition:opacity .15s}
+.proj-item:hover .pi-actions{opacity:1}
+.proj-item .pi-act{border:1px solid #30363d;background:transparent;color:#8f9892;font-size:9px;border-radius:2px;padding:2px 5px;cursor:pointer}
+.proj-item .pi-act:hover{border-color:#e2e8e2;color:#e2e8e2}
+.proj-item .pi-act.del:hover{border-color:var(--red);color:var(--red)}
+.proj-footer{padding:10px 14px;border-top:1px solid #2d3a2d;display:flex;gap:8px;align-items:center}
+.proj-new-inp{flex:1;background:#0d1a0d;border:1px solid #2d3a2d;color:#e2e8e2;font-size:11px;border-radius:3px;padding:5px 8px;font-family:var(--sans);outline:none}
+.proj-new-inp:focus{border-color:var(--accent-2)}
+.proj-new-inp::placeholder{color:#3d4d3d}
+.proj-create-btn{background:var(--accent-2);color:#fff;border:none;border-radius:3px;padding:5px 10px;font-size:11px;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+.proj-create-btn:hover{background:var(--accent)}
+.info-box{background:#fef9ee;border:1px solid #f5e5b8;color:#7a4a05;font-size:12px;line-height:1.55;padding:10px 12px;border-radius:4px;margin-bottom:14px;display:none}
+.cost-detail{background:#f9faf7;border-top:2px solid var(--border);box-shadow:inset 0 2px 8px rgba(0,0,0,.03)}.cost-detail td{padding:18px 16px}
+.month-summary{display:flex;gap:14px;margin-bottom:14px;padding:12px;background:#f8f9f6;border:1px solid var(--border);border-radius:3px}
+.month-summary .stat{flex:1;min-width:0}.month-summary .stat-label{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600;margin-bottom:3px}
+.month-summary .stat-value{font-family:var(--mono);font-size:13px;font-weight:500;display:block}.month-summary .stat-value small{font-size:10px;color:var(--light);margin-left:4px}
+.month-edit{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px;padding:16px;background:#fff;border-radius:3px}
+.month-cell{display:flex;flex-direction:column;gap:4px}.month-label{font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.month-input{font-family:var(--mono);font-size:12px;text-align:right;border:1px solid var(--border);background:var(--input);border-radius:3px;padding:6px 8px;outline:none;transition:all .15s ease;width:100%}
+.month-input:hover{border-color:var(--accent-2);box-shadow:0 0 0 2px rgba(15,118,110,.1)}.month-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(21,94,117,.15);transform:scale(1.02)}
+.month-input.heat-low{background:#fffef5}.month-input.heat-med{background:#fff8e8}.month-input.heat-high{background:#ffedd5}.month-input.warn{border:2px solid #f59e0b}
+.month-display{font-family:var(--mono);font-size:10px;color:var(--light);text-align:right}.month-bar{height:3px;background:#e8ece5;border-radius:2px;overflow:hidden;margin-top:2px}
+.month-bar-fill{height:100%;background:linear-gradient(to right,var(--accent-2),var(--accent));border-radius:2px;transition:width .3s ease}
+.month-actions{display:flex;gap:6px;flex-wrap:wrap;padding:12px;background:#f8f9f6;border-top:1px solid var(--border);border-radius:0 0 3px 3px}
+.act-btn{border:1px solid var(--border-s);background:#fff;color:var(--muted);font-size:10px;border-radius:2px;padding:4px 9px;cursor:pointer;transition:all .15s;font-family:var(--sans);font-weight:500}
+.act-btn:hover{border-color:var(--accent);background:var(--accent);color:#fff}.act-btn:active{transform:scale(.97)}
+.sparkline{display:inline-block;width:68px;height:18px;margin-left:6px;vertical-align:middle}
+@keyframes flash-success{0%{background:rgba(15,122,79,.3)}100%{background:transparent}}
+.flash{animation:flash-success .5s ease}
+.add-cat-btn{background:var(--accent);color:#fff;border:1px solid var(--accent);border-radius:3px;padding:6px 14px;font-size:11px;cursor:pointer;font-weight:500;transition:all .15s;font-family:var(--sans)}
+.add-cat-btn:hover{background:#0f766e}
+.cat-name-input{font-family:var(--sans);font-size:12px;border:1px solid var(--border);background:var(--input);padding:6px 10px;border-radius:3px;width:280px;text-transform:uppercase;margin-right:8px;outline:none}
+.cat-name-input:focus{border-color:var(--accent)}
+.new-item-row{background:#f8f9f6}
+.new-item-row td{padding:12px}
+.add-item-form{display:flex;gap:10px;align-items:center}
+@media(max-width:980px){.hdr{align-items:flex-start;height:auto;gap:10px;padding:12px 16px;flex-direction:column}.hdr-kpis{width:100%;overflow:auto}.tabs{top:91px;overflow:auto;padding:0 12px}.pane{padding:20px 14px 48px}.cards{grid-template-columns:repeat(2,1fr)}.grid-2,.grid-3{grid-template-columns:1fr}.driver-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="hdr-left">
+    <button id="save-btn" onclick="saveToFile()" style="border:1px solid #30363d;background:#0f766e;color:#fff;font-size:11px;border-radius:3px;padding:5px 10px;cursor:pointer;font-family:var(--sans);display:flex;align-items:center;gap:5px;white-space:nowrap" title="Save your work - downloads updated HTML file">
+      <span style="font-size:14px">💾</span>
+      <span>Save</span>
+    </button>
+    <button class="proj-btn" id="proj-btn" onclick="toggleProjPanel()">
+      <span style="font-size:14px;opacity:.6">⬡</span>
+      <span class="proj-name" id="proj-btn-name">Loading…</span>
+      <span class="proj-chevron">▾</span>
+    </button>
+    <span class="hdr-sub" id="h-sub">Project Economics Model</span>
+  </div>
+  <div class="hdr-kpis">
+    <div class="hdr-kpi"><div class="l">Revenue</div><div class="v" id="h-rev">-</div></div>
+    <div class="hdr-kpi"><div class="l">Funding</div><div class="v" id="h-cost">-</div></div>
+    <div class="hdr-kpi"><div class="l">Net CF</div><div class="v" id="h-net">-</div></div>
+    <div class="hdr-kpi"><div class="l">CRR</div><div class="v" id="h-crr">-</div></div>
+    <div class="hdr-kpi"><div class="l">ROIC</div><div class="v" id="h-roic">-</div></div>
+    <div class="hdr-kpi" style="min-width:auto">
+      <button onclick="if(confirm('Reset this project to defaults?')){Projects.resetCurrent();}" style="border:1px solid #30363d;background:transparent;color:#8f9892;font-size:10px;border-radius:2px;padding:4px 9px;cursor:pointer;font-family:var(--sans)">Reset</button>
+    </div>
+  </div>
+</header>
+
+<div class="proj-panel" id="proj-panel">
+  <div class="proj-list" id="proj-list"></div>
+  <div class="proj-footer">
+    <input class="proj-new-inp" id="proj-new-inp" placeholder="New project name…" onkeydown="if(event.key==='Enter')Projects.create()">
+    <button class="proj-create-btn" onclick="Projects.create()">+ Create</button>
+  </div>
+</div>
+
+<nav class="tabs">
+  <div class="tab on" data-tab="summary">Executive Summary</div>
+  <div class="tab" data-tab="inputs">Inputs</div>
+  <div class="tab" data-tab="rates">Crew & Rates</div>
+  <div class="tab" data-tab="production">Production Schedule</div>
+  <div class="tab" data-tab="costs">Cost Model</div>
+  <div class="tab" data-tab="funding">Revenue & Funding</div>
+  <div class="tab" data-tab="cashflow">Cash Flow</div>
+</nav>
+
+<main>
+  <section class="pane on" id="pane-summary">
+    <div class="cards" id="summary-cards"></div>
+    <div class="grid-2">
+      <div class="sec">
+        <div class="sec-ttl">Monthly Cash Flow — NGN</div>
+        <div class="chart" id="cash-chart"></div>
+      </div>
+      <div class="sec">
+        <div class="sec-ttl">Top Funding Drivers</div>
+        <div class="driver-grid" id="driver-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pane" id="pane-inputs">
+    <div class="grid-3" id="input-grid"></div>
+  </section>
+
+  <section class="pane" id="pane-rates">
+    <div class="sec">
+      <div class="sec-ttl">Crew & Rates Dictionary — reference values for manual cost calculations</div>
+      <div class="tbl-wrap"><table id="rates-table"></table></div>
+    </div>
+  </section>
+
+  <section class="pane" id="pane-production">
+    <div class="warn" id="prod-warn"></div>
+    <div class="sec">
+      <div class="sec-ttl">Production Phasing</div>
+      <div class="tbl-wrap"><table id="production-table"></table></div>
+    </div>
+  </section>
+
+  <section class="pane" id="pane-costs">
+    <div class="sec">
+      <div class="sec-ttl">Cost Structure — line items by category</div>
+      <div class="tbl-wrap"><table id="cost-lines-table"></table></div>
+    </div>
+  </section>
+
+  <section class="pane" id="pane-funding">
+    <div class="sec">
+      <div class="sec-ttl">Revenue Bridge — USD to NGN</div>
+      <div class="tbl-wrap"><table id="revenue-table"></table></div>
+    </div>
+    <div class="sec">
+      <div class="sec-ttl">Monthly Funding Requirement — NGN</div>
+      <div class="tbl-wrap"><table id="funding-table"></table></div>
+    </div>
+  </section>
+
+  <section class="pane" id="pane-cashflow">
+    <div class="sec">
+      <div class="sec-ttl">Cash Flow Statement — NGN</div>
+      <div class="tbl-wrap"><table id="cashflow-table"></table></div>
+    </div>
+    <div class="sec">
+      <div class="sec-ttl">Revenue, Funding, and Net Cash Flow</div>
+      <div class="chart" id="bridge-chart"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+const PROJECT_DATA = {
+  projectInputs:{
+    projectName:'NUPRC/FES ANAMBRA 2D SEISMIC ACQUISITION',
+    omlNumber:'NUPRC/FES ANAMBRA BASIN',
+    client:'NUPRC/FES',
+    contractor:'EnServ',
+    projectArea:541.593,
+    shotFactor:0.0276794095,
+    redrillFactor:1.1,
+    duration:8,
+    revenueShare:1,
+    costShare:1,
+    fx:1360
+  },
+  contractTerms:{
+    turnkeyRate:20000,
+    mobilisation:2000000,
+    demobilisation:500000,
+    upholeRate:3500
+  },
+  productionPrograms:{
+    survey:{label:'Survey',unit:'km',total:541.593,startMonth:2,activeMonths:5,rampMonths:2,profile:'S-Curve'},
+    drilling:{label:'Drilling',unit:'SDH',total:18054,startMonth:4,activeMonths:4,rampMonths:2,profile:'S-Curve'},
+    recording:{label:'Recording',unit:'km',total:499.713,startMonth:5,activeMonths:4,rampMonths:2,profile:'Uniform'},
+    upholes:{label:'Upholes',unit:'holes',total:16,startMonth:2,activeMonths:3,rampMonths:1,profile:'Manual',manualMonthly:[0,4,4,4,0,0,0,0,0]}
+  },
+  upholes:[0,4,4,4,0,0,0,0,0],
+  rateCards:{
+    survey:[
+      {name:'Survey rate per km',value:0,unit:'₦/km'},
+      {name:'Offset rate',value:0,unit:'₦'},
+      {name:'Number of survey crew',value:0,unit:'crews'},
+      {name:'Total personnel in survey crew',value:0,unit:'people'},
+      {name:'Survey supervisor salary',value:0,unit:'₦/mo'},
+      {name:'Numbers of survey supervisor',value:0,unit:'#'},
+      {name:'Payoff rate',value:0,unit:'₦/SDH'}
+    ],
+    drilling:[
+      {name:'Drilling rate per SDH',value:0,unit:'₦/SDH'},
+      {name:'Uphole drilling rate',value:0,unit:'₦/hole'},
+      {name:'Standby rate',value:0,unit:'₦/day'},
+      {name:'Maximum standby rate in a month',value:0,unit:'₦'},
+      {name:'Number of drilling crews',value:0,unit:'crews'},
+      {name:'Personnel per drilling crew',value:0,unit:'people'}
+    ],
+    preloading:[
+      {name:'Preloaders monthly salary',value:0,unit:'₦/mo'},
+      {name:'Numbers of Preloading crew',value:0,unit:'crews'},
+      {name:'Preloaders per crew',value:0,unit:'people'},
+      {name:'Depth checkers salary',value:0,unit:'₦/mo'},
+      {name:'Numbers of depth checkers',value:0,unit:'#'}
+    ],
+    recording:[
+      {name:'Recorders salary',value:0,unit:'₦/mo'},
+      {name:'Max number of recorders personnel',value:0,unit:'people'}
+    ],
+    baseCamp:[
+      {name:'Base camp salary',value:0,unit:'₦/mo'},
+      {name:'Max number of base camp workers',value:0,unit:'people'},
+      {name:'Field nurses wages',value:0,unit:'₦/mo'},
+      {name:'Number of field nurses',value:0,unit:'#'},
+      {name:'Numbers of Base Doctors',value:0,unit:'#'},
+      {name:'Number of base Nurses',value:0,unit:'#'}
+    ]
+  },
+  costLines:[
+    {id:'c1',category:'SURVEYING SUB.CONT. JOB',item:'GPS Monumentation & Observation',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c2',category:'SURVEYING SUB.CONT. JOB',item:'Fresh Cut',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c3',category:'SURVEYING SUB.CONT. JOB',item:'Incentives / Standby',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c4',category:'DRILLING SUB. CONTRACTORS JOB',item:'Payoff',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c5',category:'DRILLING SUB. CONTRACTORS JOB',item:'Equipment Repairs & Software Upgrade',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c6',category:'DRILLING SUB. CONTRACTORS JOB',item:'Fresh Cut',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c7',category:'FIRING LINES/CONTRACT',item:'Depth Checkers Fixed Wages',badge:'labor',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c8',category:'FIRING LINES/CONTRACT',item:'Explosive Handling Expenses',badge:'labor',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c9',category:'FIRING LINES/CONTRACT',item:'Fresh Cut',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c10',category:'RECORDING SUB. CONTRACTORS JOB',item:'Recording Contract',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c11',category:'RECORDING SUB. CONTRACTORS JOB',item:'Depth Checkers Fixed Wages',badge:'labor',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c12',category:'RECORDING SUB. CONTRACTORS JOB',item:'Equipment Protection on Line',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c13',category:'RECORDING SUB. CONTRACTORS JOB',item:'Fresh Cut',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c14',category:'FIELD CONTRACT LABOUR',item:'Boat Drivers, Deckhands & Beach Masters',badge:'labor',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c15',category:'FIELD CONTRACT LABOUR',item:'Field Nurses Salary',badge:'labor',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c16',category:'FIELD CONTRACT LABOUR',item:'Out of Pocket Allowance',badge:'labor',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c17',category:'FIELD CONTRACT LABOUR',item:'Professionals Salary & Allowance',badge:'labor',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c18',category:'TRAVELLING EXPENSES WITHIN NIGERIA',item:'Flights & Ground Transport',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c19',category:'TRAVELLING EXPENSES WITHIN NIGERIA',item:'Accommodation & Upkeep',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c20',category:'LEASE FEES FOR 428SN COMPLIMENTS',item:'428SN Full System Lease',badge:'lease',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c21',category:'LEASE FEES FOR 428SN COMPLIMENTS',item:'Accessories & Ancillaries',badge:'lease',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c22',category:'FUEL & LUBRICANTS',item:'Diesel (AGO)',badge:'var',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c23',category:'FUEL & LUBRICANTS',item:'Lubricants & Coolants',badge:'var',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c24',category:'MESSING EXPENSES',item:'Food Bill & Catering',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c25',category:'MESSING EXPENSES',item:'Laundry & Sundries',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c26',category:'FIELD MAINTENANCE SERVICES',item:'Equipment Maintenance & Repairs',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c27',category:'FIELD MAINTENANCE SERVICES',item:'Spare Parts & Consumables',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c28',category:'LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)',item:'Light Vehicle Maintenance',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c29',category:'LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)',item:'Vehicle Repairs',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c30',category:'FIELD MEDICAL EXPENSES',item:'Medical Consumables & Drugs',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c31',category:'FIELD MEDICAL EXPENSES',item:'Crew Contingency Medical & Referral',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c32',category:'PROTECTIVE CLOTHING & HSE COST',item:'PPE Supply',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c33',category:'PROTECTIVE CLOTHING & HSE COST',item:'HSE Training & Compliance',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c34',category:'MAGNETIC TAPES',item:'Magnetic Recording Media',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c35',category:'EXPLOSIVES & DETONATORS',item:'Explosives Supply',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c36',category:'EXPLOSIVES & DETONATORS',item:'Detonators & Accessories',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c37',category:'EXPLOSIVES & DETONATORS',item:'Explosives Logistics',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c38',category:'VEHICLE TRANSP. HIRE (including lease fees)',item:'Hilux Hire (VAT incl.)',badge:'lease',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c39',category:'VEHICLE TRANSP. HIRE (including lease fees)',item:'Hiace Bus Hire (VAT incl.)',badge:'lease',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c40',category:'VEHICLE TRANSP. HIRE (including lease fees)',item:'Personnel Carrier Hire (VAT incl.)',badge:'lease',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c41',category:'CONSULTANCY/TECHNICAL SUPPORT',item:'Technical Consultants',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c42',category:'CONSULTANCY/TECHNICAL SUPPORT',item:'Geophysical QC Support',badge:'sub',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c43',category:'TECHNICAL CAPACITY BUILDING',item:'Training & Certification',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c44',category:'TECHNICAL CAPACITY BUILDING',item:'Technology Transfer',badge:'fixed',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c45',category:'PURCHASE/LEASE OF EQUIPMENT',item:'Equipment Purchase (one-time)',badge:'owned',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]},
+    {id:'c46',category:'PURCHASE/LEASE OF EQUIPMENT',item:'Equipment Lease (monthly)',badge:'lease',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]}
+  ]
+};
+
+// ═══ EMBEDDED-DATA PROJECT MANAGER ═══
+const Projects = (() => {
+  let projectsData = {projects: {}, currentProjectId: null};
+  let hasUnsavedChanges = false;
+
+  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+
+  // Load from embedded script tag
+  function loadEmbeddedData(){
+    try{
+      const script = document.getElementById('embedded-projects-data');
+      if(script && script.textContent.trim()){
+        const data = JSON.parse(script.textContent);
+        if(data.projects && typeof data.projects === 'object'){
+          projectsData = data;
+          return true;
+        }
+      }
+    }catch(e){
+      console.warn('Failed to load embedded data:', e);
+    }
+    return false;
+  }
+
+  // Initialize
+  function init(){
+    // Try to load from embedded data
+    if(!loadEmbeddedData() || Object.keys(projectsData.projects).length === 0){
+      // Create default project
+      const id = uid();
+      projectsData.projects[id] = {
+        id,
+        name: 'Default Project',
+        createdAt: Date.now(),
+        data: JSON.parse(JSON.stringify(PROJECT_DATA))
+      };
+      projectsData.currentProjectId = id;
+      hasUnsavedChanges = true;
+    }
+
+    // Ensure current project exists
+    if(!projectsData.projects[projectsData.currentProjectId]){
+      projectsData.currentProjectId = Object.keys(projectsData.projects)[0];
+    }
+
+    return projectsData.currentProjectId;
+  }
+
+  // Create new project
+  function create(){
+    const inp = document.getElementById('proj-new-inp');
+    const name = (inp && inp.value.trim()) || 'New Project';
+    const id = uid();
+
+    projectsData.projects[id] = {
+      id,
+      name,
+      createdAt: Date.now(),
+      data: JSON.parse(JSON.stringify(EMPTY_PROJECT))
+    };
+    projectsData.projects[id].data.projectInputs.projectName = name;
+
+    if(inp) inp.value = '';
+    projectsData.currentProjectId = id;
+    hasUnsavedChanges = true;
+
+    window.model = projectsData.projects[id].data;
+    initModel();
+    renderProjPanel();
+    window.render();
+  }
+
+  // Switch project
+  function switchTo(id){
+    // Save current project
+    if(projectsData.currentProjectId){
+      projectsData.projects[projectsData.currentProjectId].data = JSON.parse(JSON.stringify(window.model));
+    }
+
+    projectsData.currentProjectId = id;
+    window.model = JSON.parse(JSON.stringify(projectsData.projects[id].data));
+    hasUnsavedChanges = true;
+    initModel();
+    closeProjPanel();
+    window.render();
+  }
+
+  // Rename project
+  function rename(id){
+    const p = projectsData.projects[id];
+    if(!p) return;
+    const name = prompt('Rename project:', p.name);
+    if(!name || !name.trim()) return;
+
+    p.name = name.trim();
+    p.data.projectInputs.projectName = name.trim();
+    hasUnsavedChanges = true;
+    renderProjPanel();
+    if(id === projectsData.currentProjectId) window.render();
+  }
+
+  // Duplicate project
+  function duplicate(id){
+    const src = projectsData.projects[id];
+    if(!src) return;
+
+    const newName = prompt('New project name:', src.name + ' (copy)');
+    if(!newName || !newName.trim()) return;
+
+    const newId = uid();
+    projectsData.projects[newId] = {
+      id: newId,
+      name: newName.trim(),
+      createdAt: Date.now(),
+      data: JSON.parse(JSON.stringify(src.data))
+    };
+    projectsData.projects[newId].data.projectInputs.projectName = newName.trim();
+
+    hasUnsavedChanges = true;
+    switchTo(newId);
+  }
+
+  // Remove project
+  function remove(id){
+    const projects = Object.values(projectsData.projects);
+    if(projects.length <= 1){
+      alert('Cannot delete the only project.');
+      return;
+    }
+
+    const p = projectsData.projects[id];
+    if(!confirm(`Delete "${p?.name}"?`)) return;
+
+    delete projectsData.projects[id];
+    hasUnsavedChanges = true;
+
+    if(projectsData.currentProjectId === id){
+      projectsData.currentProjectId = Object.keys(projectsData.projects)[0];
+      window.model = JSON.parse(JSON.stringify(projectsData.projects[projectsData.currentProjectId].data));
+      initModel();
+      window.render();
+    }
+
+    renderProjPanel();
+  }
+
+  // Reset current project
+  function resetCurrent(){
+    if(!confirm('Reset this project to factory defaults?')) return;
+    window.model = JSON.parse(JSON.stringify(PROJECT_DATA));
+    projectsData.projects[projectsData.currentProjectId].data = JSON.parse(JSON.stringify(PROJECT_DATA));
+    hasUnsavedChanges = true;
+    initModel();
+    window.render();
+  }
+
+  function save(){
+    if(projectsData.currentProjectId){
+      projectsData.projects[projectsData.currentProjectId].data = JSON.parse(JSON.stringify(window.model));
+      hasUnsavedChanges = true;
+    }
+  }
+
+  function loadModel(id){
+    return projectsData.projects[id] ? projectsData.projects[id].data : null;
+  }
+
+  function currentName(){
+    const p = projectsData.projects[projectsData.currentProjectId];
+    return p ? p.name : '—';
+  }
+
+  function list(){
+    return Object.values(projectsData.projects).map(p => ({
+      id: p.id,
+      name: p.name,
+      createdAt: p.createdAt
+    }));
+  }
+
+  function currentId(){ return projectsData.currentProjectId; }
+  function hasChanges(){ return hasUnsavedChanges; }
+  function getData(){ return projectsData; }
+  function clearChanges(){ hasUnsavedChanges = false; }
+
+  return {init, save, create, switchTo, rename, duplicate, remove, resetCurrent, loadModel, currentId, currentName, list, hasChanges, getData, clearChanges};
+})();
+
+// Save to file function
+async function saveToFile(){
+  // Save current model to projects data
+  Projects.save();
+
+  // Get current HTML
+  const htmlDoc = document.documentElement.outerHTML;
+
+  // Get projects data
+  const dataJson = JSON.stringify(Projects.getData(), null, 2);
+
+  // Replace the embedded data script
+  const updatedHtml = htmlDoc.replace(
+    /<script type="application\/json" id="embedded-projects-data">[\s\S]*?<\/script>/,
+    '<script type="application/json" id="embedded-projects-data">\n' + dataJson + '\n<\/script>'
+  );
+
+  // Send to server
+  try {
+    const response = await fetch('/api/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ html: updatedHtml })
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      Projects.clearChanges();
+      alert('✅ Saved successfully!\n\n💡 All your projects are saved on the server!');
+    } else {
+      alert('❌ Save failed: ' + result.error);
+    }
+  } catch (error) {
+    alert('❌ Save failed: ' + error.message);
+  }
+}
+
+function renderProjPanel(){
+  const projects = Projects.list();
+  const cid = Projects.currentId();
+  const panel = document.getElementById('proj-list');
+  if(!panel) return;
+  const fmt = ts => new Date(ts).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'2-digit'});
+  panel.innerHTML = projects.map(p => `
+    <div class="proj-item ${p.id===cid?'active':''}" onclick="Projects.switchTo('${p.id}')">
+      <span class="pi-name">${p.name}</span>
+      <span class="pi-date">${fmt(p.createdAt)}</span>
+      <span class="pi-actions" onclick="event.stopPropagation()">
+        <button class="pi-act" onclick="Projects.rename('${p.id}')">Rename</button>
+        <button class="pi-act" onclick="Projects.duplicate('${p.id}')">Dup</button>
+        <button class="pi-act del" onclick="Projects.remove('${p.id}')">Del</button>
+      </span>
+    </div>`).join('');
+  const btn = document.getElementById('proj-btn-name');
+  if(btn) btn.textContent = Projects.currentName();
+}
+
+function toggleProjPanel(){
+  const panel = document.getElementById('proj-panel');
+  if(!panel) return;
+  panel.classList.toggle('open');
+  renderProjPanel();
+}
+function closeProjPanel(){
+  const panel = document.getElementById('proj-panel');
+  if(panel) panel.classList.remove('open');
+}
+document.addEventListener('click', e => {
+  if(!e.target.closest('#proj-panel') && !e.target.closest('#proj-btn')) closeProjPanel();
+});
+
+function saveModel(){ Projects.save(); }
+
+// Boot: init projects, load current model
+const EMPTY_PROJECT = {
+  projectInputs:{projectName:'',omlNumber:'',client:'',contractor:'',projectArea:0,shotFactor:0,redrillFactor:1,duration:8,revenueShare:1,costShare:1,fx:0},
+  contractTerms:{turnkeyRate:0,mobilisation:0,demobilisation:0,upholeRate:0},
+  productionPrograms:{
+    survey:{label:'Survey',unit:'km',total:0,startMonth:1,activeMonths:4,rampMonths:1,profile:'S-Curve'},
+    drilling:{label:'Drilling',unit:'SDH',total:0,startMonth:1,activeMonths:4,rampMonths:1,profile:'S-Curve'},
+    recording:{label:'Recording',unit:'km',total:0,startMonth:1,activeMonths:4,rampMonths:1,profile:'Uniform'},
+    upholes:{label:'Upholes',unit:'holes',total:0,startMonth:1,activeMonths:1,rampMonths:1,profile:'Manual',manualMonthly:[]}
+  },
+  upholes:[],
+  rateCards:{
+    survey:[],drilling:[],preloading:[],recording:[],baseCamp:[]
+  },
+  costLines:[]
+};
+
+// Synchronous initialization
+const currentId = Projects.init();
+let model = Projects.loadModel(currentId) || JSON.parse(JSON.stringify(PROJECT_DATA));
+let expandedCats = new Set(['FUEL & LUBRICANTS','FIELD MAINTENANCE SERVICES']);
+let expandedLines = new Set();
+let latest = null;
+let nextCostLineId = 47;
+let showAddCatForm = false;
+let activeAddItemCategory = null;
+let showAddRateSectionForm = false;
+let activeAddRateSection = null;
+let openMonthFormula = null; // {lineIdx, monthIdx}
+
+function initModel(){
+  // Ensure all cost lines have formula and monthFormulas
+  model.costLines.forEach(line => {
+    if(!line.formula) line.formula = {enabled:false, tokens:[], applyTo:'all'};
+    if(!line.monthFormulas) line.monthFormulas = {};
+  });
+  // Ensure all productionPrograms have manualMonthly
+  Object.values(model.productionPrograms).forEach(pg => {
+    if(!pg.manualMonthly) pg.manualMonthly = [];
+  });
+}
+
+// Initialize formula property for all cost lines
+model.costLines.forEach(line => {
+  if(!line.formula){
+    line.formula = { enabled: false, tokens: [], applyTo: 'all' };
+  }
+  if(!line.monthFormulas) line.monthFormulas = {};
+});
+
+// Ensure all productionPrograms have manualMonthly initialized
+Object.values(model.productionPrograms).forEach(pg => {
+  if(!pg.manualMonthly) pg.manualMonthly = [];
+});
+const $ = id => document.getElementById(id);
+const sum = arr => arr.reduce((a,b)=>a+(+b||0),0);
+const clampInt = (v,min,max) => Math.max(min,Math.min(max,Math.round(+v||0)));
+const fmt = (n,d=0) => n==null||isNaN(n)?'-':(n<0?'(':'')+Math.abs(n).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d})+(n<0?')':'');
+const fmtN = n => '₦'+fmt(n);
+const fmtU = n => '$'+fmt(n);
+const fmtB = n => (n<0?'-':'')+'₦'+(Math.abs(n)/1e9).toFixed(2)+'B';
+const fmtM = n => (n<0?'-':'')+'₦'+(Math.abs(n)/1e6).toFixed(0)+'M';
+const fmtPct = n => isFinite(n)?(n*100).toFixed(1)+'%':'-';
+
+function labels(){
+  const d = clampInt(model.projectInputs.duration,1,14);
+  return [...Array(d).keys()].map(i=>'M'+String(i+1).padStart(2,'0')).concat('Demob');
+}
+
+function profileWeight(profile,pos,active,ramp){
+  const r = Math.max(1,ramp);
+  if(profile === 'Uniform') return 1;
+  if(profile === 'Manual') return 1; // handled separately
+  if(profile === 'Front-Loaded') return (active - pos + 1) / active;
+  if(profile === 'Back-Loaded') return pos / active;
+  if(profile === 'Bell Curve') return Math.max(0.05, 1 - (2 * Math.abs(pos - ((active + 1) / 2)) / active));
+  if(pos <= r) return pos / r;
+  if(pos > active - r) return (active - pos + 1) / r;
+  return 1;
+}
+
+function phasedSeries(program){
+  const months = labels().length;
+  const out = Array(months).fill(0);
+
+  // Manual mode: return stored values directly
+  if(program.profile === 'Manual'){
+    const mm = program.manualMonthly || [];
+    for(let i=0; i<months; i++) out[i] = mm[i] || 0;
+    return out;
+  }
+
+  const start = clampInt(program.startMonth,1,months);
+  const active = clampInt(program.activeMonths,1,months);
+  const ramp = clampInt(program.rampMonths,1,active);
+  const activeSlots = [];
+  const weights = [];
+  for(let m=1;m<=months;m++){
+    if(m >= start && m < start + active && m <= months - 1){
+      const pos = m - start + 1;
+      activeSlots.push(m-1);
+      weights.push(profileWeight(program.profile,pos,active,ramp));
+    }
+  }
+  const totalWeight = sum(weights) || 1;
+  let allocated = 0;
+  activeSlots.forEach((idx,i)=>{
+    const isLast = i === activeSlots.length - 1;
+    const val = isLast ? Math.max(0, program.total - allocated) : Math.round(program.total * weights[i] / totalWeight);
+    out[idx] = val;
+    allocated += val;
+  });
+  return out;
+}
+
+function buildProduction(){
+  const survey = phasedSeries(model.productionPrograms.survey);
+  const drilling = phasedSeries(model.productionPrograms.drilling);
+  const recording = phasedSeries(model.productionPrograms.recording);
+  const shots = recording.map(v => model.projectInputs.shotFactor ? v / model.projectInputs.shotFactor : 0);
+  const upholes = phasedSeries(model.productionPrograms.upholes);
+  return {survey,drilling,recording,shots,upholes};
+}
+
+function normalizedSeries(values){
+  const len = labels().length;
+  const out = Array(len).fill(0);
+  (values || []).forEach((v,i)=>{ if(i<len) out[i] = +v || 0; });
+  return out;
+}
+
+function ownerFactor(owner){
+  if(owner === 'JV') return +model.projectInputs.costShare || 0;
+  if(owner === 'Reimbursable') return 0;
+  return 1;
+}
+
+function driverSeries(line, prod){
+  if(line.driverRef === 'surveyKm') return prod.survey;
+  if(line.driverRef === 'drillSdh') return prod.drilling;
+  if(line.driverRef === 'recordingKm') return prod.recording;
+  if(line.driverRef === 'recordingShots') return prod.shots;
+  if(line.driverRef === 'upholes') return prod.upholes;
+  return Array(labels().length).fill(0);
+}
+
+function lineSeries(line, prod){
+  let base;
+  const len = labels().length;
+  if(line.driverType === 'productionLinked' || line.driverType === 'crewLinked'){
+    base = driverSeries(line, prod).map(v => v * (+line.rate || 0));
+  } else if(line.driverType === 'oneTime' && /^m\d+$/.test(line.driverRef || '')){
+    base = Array(len).fill(0);
+    const idx = parseInt(line.driverRef.slice(1),10)-1;
+    if(idx >= 0 && idx < len) base[idx] = line.rate || normalizedSeries(line.monthly)[idx] || 0;
+  } else if(line.driverType === 'fixedMonthly' && line.rate > 0){
+    const hasManual = (line.monthly || []).some(v => +v !== 0);
+    base = hasManual ? normalizedSeries(line.monthly) : Array(len).fill(line.rate);
+  } else {
+    base = normalizedSeries(line.monthly);
+  }
+  const f = ownerFactor(line.owner);
+  return base.map(v => v * f);
+}
+
+function calculate(){
+  const prod = buildProduction();
+  const len = labels().length;
+  const terms = model.contractTerms;
+  const revenueProdUsd = prod.recording.map(v => v * (+terms.turnkeyRate || 0));
+  const mobUsd = Array(len).fill(0); mobUsd[0] = +terms.mobilisation || 0;
+  const upholeUsd = prod.upholes.map(v => v * (+terms.upholeRate || 0));
+  const demobUsd = Array(len).fill(0); demobUsd[Math.max(0,model.projectInputs.duration-1)] = +terms.demobilisation || 0;
+  const revenue100Usd = revenueProdUsd.map((v,i)=>v+mobUsd[i]+upholeUsd[i]+demobUsd[i]);
+  const revenueEnservUsd = revenue100Usd.map(v => v * (+model.projectInputs.revenueShare || 0));
+  const revenueNgn = revenueEnservUsd.map(v => v * (+model.projectInputs.fx || 0));
+
+  const categories = [...new Set(model.costLines.map(l=>l.category))];
+  const categorySeries = {};
+  const lineSeriesMap = {};
+  model.costLines.forEach(line=>{
+    const vals = lineSeries(line, prod);
+    lineSeriesMap[line.id] = vals;
+    if(!categorySeries[line.category]) categorySeries[line.category] = Array(len).fill(0);
+    vals.forEach((v,i)=>categorySeries[line.category][i]+=v);
+  });
+  const funding = Array(len).fill(0);
+  categories.forEach(cat => categorySeries[cat].forEach((v,i)=>funding[i]+=v));
+  const cash = revenueNgn.map((v,i)=>v-funding[i]);
+  const totalRevenue = sum(revenueNgn);
+  const totalCost = sum(funding);
+  const netCashFlow = sum(cash);
+  const crr = totalRevenue ? totalCost / totalRevenue : 0;
+  const roic = totalCost ? (netCashFlow * 0.7) / (500000000 + totalCost) : 0;
+  return {prod,revenueProdUsd,mobUsd,upholeUsd,demobUsd,revenue100Usd,revenueEnservUsd,revenueNgn,categories,categorySeries,lineSeriesMap,funding,cash,totalRevenue,totalCost,netCashFlow,crr,roic};
+}
+
+function headers(){
+  return '<thead><tr><th>Line Item</th>'+labels().map(m=>`<th>${m}</th>`).join('')+'<th class="tc">Total</th></tr></thead>';
+}
+
+function row(label, vals, cls='', labelCls='', formatter=fmtN){
+  const total = sum(vals);
+  return `<tr class="${cls}"><td class="lbl ${labelCls}">${label}</td>${vals.map(v=>`<td class="${v<0?'neg':v>0?'pos':''}">${formatter(v)}</td>`).join('')}<td class="tc">${formatter(total)}</td></tr>`;
+}
+
+function render(){
+  latest = calculate();
+  saveModel();
+  renderHeader();
+  renderSummary();
+  renderInputs();
+  renderRates();
+  renderProduction();
+  renderCosts();
+  renderFunding();
+  renderCashFlow();
+}
+
+function renderHeader(){
+  const btn = document.getElementById('proj-btn-name');
+  if(btn) btn.textContent = model.projectInputs.projectName || Projects.currentName();
+  $('h-sub').textContent = `${model.projectInputs.omlNumber} · ${model.projectInputs.duration} active months · ${model.projectInputs.contractor}`;
+  $('h-rev').textContent = fmtB(latest.totalRevenue);
+  $('h-cost').textContent = fmtB(latest.totalCost);
+  $('h-net').textContent = fmtB(latest.netCashFlow);
+  $('h-crr').textContent = fmtPct(latest.crr);
+  $('h-roic').textContent = fmtPct(latest.roic);
+  $('h-net').className = 'v ' + (latest.netCashFlow >= 0 ? 'g' : 'r');
+}
+
+function renderSummary(){
+  $('summary-cards').innerHTML = [
+    ['Total Revenue',fmtB(latest.totalRevenue),'NGN converted from USD revenue',''],
+    ['Funding Requirement',fmtB(latest.totalCost),'excluding CA/security reimbursables',''],
+    ['Net Cash Flow',fmtB(latest.netCashFlow),'revenue less funding',latest.netCashFlow>=0?'g':'r'],
+    ['CRR',fmtPct(latest.crr),'funding requirement / revenue',''],
+    ['ROIC',fmtPct(latest.roic),'70% net CF / funding plus capital','']
+  ].map(c=>`<div class="card"><div class="l">${c[0]}</div><div class="v ${c[3]}">${c[1]}</div><div class="s">${c[2]}</div></div>`).join('');
+  renderBarChart('cash-chart', latest.cash, 'cash');
+  renderDriverGrid();
+}
+
+function renderDriverGrid(){
+  const rows = latest.categories.map(cat => [cat, sum(latest.categorySeries[cat])]).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  const max = rows[0]?.[1] || 1;
+  $('driver-grid').innerHTML = rows.map(([cat,val])=>`<div class="driver">
+    <div class="driver-top"><div class="driver-name">${cat}</div><div class="driver-val">${fmtM(val)}</div></div>
+    <div class="driver-track"><div class="driver-fill" style="width:${Math.max(2,val/max*100)}%"></div></div>
+  </div>`).join('');
+}
+
+function renderInputs(){
+  const p = model.projectInputs, t = model.contractTerms;
+  $('input-grid').innerHTML = `
+    <div class="panel"><div class="panel-ttl">Project Identity</div>
+      ${inputRow('Project Name','projectInputs.projectName',p.projectName,'text','wide')}
+      ${inputRow('OML / Basin','projectInputs.omlNumber',p.omlNumber,'text','wide')}
+      ${inputRow('Client / Operator','projectInputs.client',p.client,'text','wide')}
+      ${inputRow('Contractor','projectInputs.contractor',p.contractor,'text','wide')}
+      ${inputRow('Project Area','projectInputs.projectArea',p.projectArea,'number','med','km')}
+      ${inputRow('Duration','projectInputs.duration',p.duration,'number','small','mo')}
+    </div>
+    <div class="panel"><div class="panel-ttl">Commercial Terms</div>
+      ${inputRow('Turnkey Rate','contractTerms.turnkeyRate',t.turnkeyRate,'number','med','$/km')}
+      ${inputRow('Mobilisation','contractTerms.mobilisation',t.mobilisation,'number','med','$')}
+      ${inputRow('Demobilisation','contractTerms.demobilisation',t.demobilisation,'number','med','$')}
+      ${inputRow('Uphole Rate','contractTerms.upholeRate',t.upholeRate,'number','med','$/uphole')}
+      ${inputRow('Revenue Share','projectInputs.revenueShare',p.revenueShare,'number','small','x')}
+      ${inputRow('Cost Share','projectInputs.costShare',p.costShare,'number','small','x')}
+      ${inputRow('NNPC FX Rate','projectInputs.fx',p.fx,'number','med','₦/$')}
+    </div>
+    <div class="panel"><div class="panel-ttl">Production Drivers</div>
+      ${inputRow('Shot Factor','projectInputs.shotFactor',p.shotFactor,'number','med','km/shot')}
+      ${programControls('survey')}
+      ${programControls('drilling')}
+      ${programControls('recording')}
+      ${programControls('upholes')}
+    </div>`;
+}
+
+function inputRow(label,path,value,type='number',cls='med',unit=''){
+  return `<div class="row"><label>${label}</label><input class="inp ${cls}" type="${type}" value="${value}" onchange="setPath('${path}',this.value,'${type}')">${unit?`<span class="unit">${unit}</span>`:''}</div>`;
+}
+
+function programControls(key){
+  const pg = model.productionPrograms[key];
+  const isManual = pg.profile === 'Manual';
+  return `<div style="margin-top:12px;border-top:1px solid var(--border);padding-top:8px">
+    <div class="panel-ttl" style="margin-bottom:6px">${pg.label}</div>
+    ${inputRow('Total '+pg.unit,`productionPrograms.${key}.total`,pg.total,'number','med',pg.unit)}
+    ${!isManual ? inputRow('Start Month',`productionPrograms.${key}.startMonth`,pg.startMonth,'number','small','') : ''}
+    ${!isManual ? inputRow('Active Months',`productionPrograms.${key}.activeMonths`,pg.activeMonths,'number','small','') : ''}
+    ${!isManual ? inputRow('Ramp Months',`productionPrograms.${key}.rampMonths`,pg.rampMonths,'number','small','') : ''}
+    <div class="row"><label>Forecast Type</label><select class="sel med" onchange="setForecastType('${key}',this.value)">
+      ${['S-Curve','Uniform','Front-Loaded','Back-Loaded','Bell Curve','Manual'].map(x=>`<option ${pg.profile===x?'selected':''}>${x}</option>`).join('')}
+    </select></div>
+  </div>`;
+}
+
+function setForecastType(key, profile){
+  const pg = model.productionPrograms[key];
+  const wasManual = pg.profile === 'Manual';
+  pg.profile = profile;
+  if(profile === 'Manual' && !wasManual){
+    // Initialize manualMonthly from the current phased series
+    const prevProfile = pg.profile;
+    pg.profile = 'S-Curve';
+    const computed = phasedSeries(pg);
+    pg.profile = 'Manual';
+    if(!pg.manualMonthly || pg.manualMonthly.every(v=>v===0)) pg.manualMonthly = computed;
+  }
+  render();
+}
+
+function setManualProduction(key, monthIdx, rawValue){
+  const pg = model.productionPrograms[key];
+  const months = labels().length;
+  if(!pg.manualMonthly) pg.manualMonthly = Array(months).fill(0);
+  while(pg.manualMonthly.length < months) pg.manualMonthly.push(0);
+
+  const total = pg.total;
+  pg.manualMonthly[monthIdx] = Math.max(0, +rawValue || 0);
+
+  const currentSum = pg.manualMonthly.reduce((a,b)=>a+b,0);
+  const diff = total - currentSum;
+
+  if(Math.abs(diff) > 0.001){
+    // Find the last filled month that isn't the one just edited
+    let lastFilled = -1;
+    for(let i=months-1; i>=0; i--){
+      if(i !== monthIdx && pg.manualMonthly[i] > 0){ lastFilled = i; break; }
+    }
+    // If none found, use the last month that isn't the edited one
+    if(lastFilled < 0){
+      for(let i=months-1; i>=0; i--){
+        if(i !== monthIdx){ lastFilled = i; break; }
+      }
+    }
+    if(lastFilled >= 0) pg.manualMonthly[lastFilled] = Math.max(0, pg.manualMonthly[lastFilled] + diff);
+  }
+  render();
+  // Keep legacy model.upholes in sync
+  if(key === 'upholes') model.upholes = [...pg.manualMonthly];
+}
+
+function setPath(path,value,type){
+  const parts = path.split('.');
+  let obj = model;
+  while(parts.length > 1) obj = obj[parts.shift()];
+  obj[parts[0]] = type === 'text' ? value : (+value || 0);
+  if(path === 'projectInputs.duration') model.projectInputs.duration = clampInt(value,1,14);
+  render();
+}
+
+function renderProduction(){
+  const warnings = Object.values(model.productionPrograms).filter(p => p.rampMonths > Math.floor(p.activeMonths/2) && p.profile!=='Manual').map(p => `${p.label}: ramp months exceed half of active months.`);
+  $('prod-warn').style.display = warnings.length ? 'block' : 'none';
+  $('prod-warn').textContent = warnings.join(' ');
+  const h = headers();
+
+  function prodRow(label, key, series, decimals){
+    const pg = model.productionPrograms[key];
+    const isManual = pg && pg.profile === 'Manual';
+    const vals = latest.prod[series];
+    const total = sum(vals);
+    const programTotal = pg ? pg.total : total;
+    const diff = Math.abs(total - programTotal);
+    const offTotal = diff > 0.01;
+
+    if(!isManual){
+      return row(label, vals, '', '', v=>fmt(v,decimals));
+    }
+
+    // Manual editable row
+    let r = `<tr><td class="lbl" style="display:flex;align-items:center;gap:6px">${label} <span style="font-size:9px;background:var(--accent);color:#fff;padding:1px 5px;border-radius:2px;font-family:var(--sans)">MANUAL</span></td>`;
+    vals.forEach((v,i) => {
+      r += `<td style="padding:3px 4px">
+        <input type="number" value="${+v.toFixed(decimals)}" step="${decimals>0?Math.pow(10,-decimals):1}"
+          style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid ${offTotal?'var(--amber)':'var(--border)'};border-radius:2px;padding:3px 5px;background:var(--input);outline:none"
+          onchange="setManualProduction('${key}',${i},this.value)"
+          onfocus="this.style.borderColor='var(--accent)'"
+          onblur="this.style.borderColor='${offTotal?'var(--amber)':'var(--border)'}'">
+      </td>`;
+    });
+    const totalStyle = offTotal ? 'color:var(--red);font-weight:600' : 'color:var(--green);font-weight:600';
+    r += `<td class="tc" style="${totalStyle}">${fmt(total,decimals)} <span style="font-size:9px;color:var(--muted);font-weight:400">/ ${fmt(programTotal,decimals)}</span></td></tr>`;
+    return r;
+  }
+
+  $('production-table').innerHTML = h + '<tbody>'
+    + prodRow('Survey production (km)', 'survey', 'survey', 3)
+    + prodRow('Drilling production (SDH)', 'drilling', 'drilling', 0)
+    + prodRow('Upholes', 'upholes', 'upholes', 0)
+    + prodRow('Recording production (km)', 'recording', 'recording', 3)
+    + row('Recording shots', latest.prod.shots, 'sub-row', '', v=>fmt(v,0))
+    + '</tbody>';
+}
+
+function renderRates(){
+  const sectionTitles = {
+    survey:'Survey Rates',
+    drilling:'Drilling Rates',
+    preloading:'Preloading Rates',
+    recording:'Recording Rates',
+    baseCamp:'Base Camp & Medical Rates'
+  };
+
+  let html = `<thead><tr><th>Rate Item</th><th>Unit</th><th style="min-width:130px">Value (₦)</th><th>Notes</th><th>Actions</th></tr></thead><tbody>`;
+
+  Object.keys(model.rateCards).forEach(section => {
+    const rates = model.rateCards[section];
+    const sectionTitle = sectionTitles[section] || section;
+
+    // Section header row
+    html += `<tr class="sec-row">
+      <td class="lbl" colspan="4">${sectionTitle}</td>
+      <td>
+        <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeRateSection('${section}')">−</button>
+        <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddRateForm('${section}')">+</button>
+      </td>
+    </tr>`;
+
+    // Add rate item form
+    if(activeAddRateSection === section){
+      html += `<tr class="new-item-row"><td colspan="5">
+        <div class="add-item-form">
+          <input type="text" placeholder="Rate name" class="inp wide" id="new-rate-name">
+          <input type="text" placeholder="Unit (e.g. ₦/km)" class="inp med" id="new-rate-unit">
+          <button class="act-btn" style="background:var(--accent);color:#fff" onclick="addRateItemSubmit('${section}')">Add</button>
+          <button class="act-btn" onclick="toggleAddRateForm('${section}')">Cancel</button>
+        </div>
+      </td></tr>`;
+    }
+
+    // Rate items
+    rates.forEach((rate, idx) => {
+      html += `<tr>
+        <td class="lbl i1">${rate.name}</td>
+        <td style="text-align:left;font-family:var(--sans);font-size:11px;color:var(--light)">${rate.unit}</td>
+        <td class="inp"><input type="number" value="${rate.value}" onchange="setRateValue('${section}',${idx},this.value)" style="font-family:var(--mono);font-size:12px;background:transparent;border:none;outline:none;text-align:right;width:100%;padding:0;color:var(--text)"></td>
+        <td style="text-align:left;font-size:11px;color:var(--light)">—</td>
+        <td>
+          <button class="btn" style="color:var(--red)" onclick="removeRateItem('${section}',${idx})">Remove</button>
+        </td>
+      </tr>`;
+    });
+  });
+
+  // Add section button
+  html += `<tr><td colspan="5" style="padding:12px;background:var(--surface)">
+    <button class="add-cat-btn" onclick="toggleAddRateSectionForm()">+ Add Section</button>
+    ${showAddRateSectionForm ? `<div style="margin-top:12px">
+      <input type="text" id="new-section-name" placeholder="SECTION NAME" class="cat-name-input">
+      <button class="act-btn" style="background:var(--accent);color:#fff;padding:6px 12px" onclick="addRateSectionSubmit()">Add</button>
+      <button class="act-btn" onclick="toggleAddRateSectionForm()">Cancel</button>
+    </div>` : ''}
+  </td></tr>`;
+
+  html += '</tbody>';
+  $('rates-table').innerHTML = html;
+}
+
+function renderCosts(){
+  let html = '<thead><tr><th>Cost Item</th><th>Badge</th><th>Total & Trend</th><th>Actions</th></tr></thead><tbody>';
+
+  const linesByCategory = {};
+  model.costLines.forEach(l => {
+    if(!linesByCategory[l.category]) linesByCategory[l.category] = [];
+    linesByCategory[l.category].push(l);
+  });
+
+  Object.keys(linesByCategory).forEach(cat => {
+    // Category header row
+    const catVals = latest.categorySeries[cat];
+    const catTotal = sum(catVals);
+    html += `<tr class="sec-row">
+      <td class="lbl" colspan="2">${cat}</td>
+      <td>${fmtN(catTotal)}</td>
+      <td>
+        <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('${escapeAttr(cat)}')">−</button>
+        <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddItemForm('${escapeAttr(cat)}')">+</button>
+      </td>
+    </tr>`;
+
+    // Add item form row
+    if(activeAddItemCategory === cat){
+      html += `<tr class="new-item-row"><td colspan="4">
+        <div class="add-item-form">
+          <input type="text" placeholder="Item name" class="inp wide" id="new-item-name">
+          <select class="sel small" id="new-item-badge">
+            <option value="fixed">fixed</option>
+            <option value="var">var</option>
+            <option value="sub">sub</option>
+            <option value="lease">lease</option>
+            <option value="owned">owned</option>
+            <option value="labor">labor</option>
+          </select>
+          <button class="act-btn" style="background:var(--accent);color:#fff" onclick="addItemSubmit('${escapeAttr(cat)}')">Add</button>
+          <button class="act-btn" onclick="toggleAddItemForm('${escapeAttr(cat)}')">Cancel</button>
+        </div>
+      </td></tr>`;
+    }
+
+    // Line items
+    linesByCategory[cat].forEach(l => {
+      const idx = model.costLines.indexOf(l);
+      const vals = latest.lineSeriesMap[l.id];
+      const total = sum(vals);
+      const sparkline = renderSparkline(vals);
+      const badgeMap = {fixed:'',var:'var',sub:'sub',lease:'lease',owned:'owned',labor:'labor'};
+      const badgeClass = badgeMap[l.badge] || '';
+
+      html += `<tr>
+        <td class="lbl i1">${l.item}</td>
+        <td style="text-align:left"><span class="badge${badgeClass?' '+badgeClass:''}">${l.badge}</span></td>
+        <td>${fmtN(total)}${sparkline}</td>
+        <td>
+          <button class="btn" onclick="toggleLine('${l.id}')">${expandedLines.has(l.id)?'Collapse':'Monthly'}</button>
+          <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(${idx})">Remove</button>
+        </td>
+      </tr>`;
+
+      if(expandedLines.has(l.id)){
+        html += `<tr class="cost-detail"><td colspan="4">${renderMonthlyEdit(idx,l)}</td></tr>`;
+      }
+    });
+
+    // Category subtotal
+    html += `<tr class="sub-row"><td class="lbl">${cat} Total</td><td></td><td>${fmtN(catTotal)}</td><td></td></tr>`;
+  });
+
+  // Grand total
+  const grandTotal = sum(latest.funding);
+  html += `<tr class="tot-row"><td class="lbl">Total Funding Requirement</td><td></td><td>${fmtN(grandTotal)}</td><td></td></tr>`;
+
+  // Add category button
+  html += `<tr><td colspan="4" style="padding:12px;background:var(--surface)">
+    <button class="add-cat-btn" onclick="toggleAddCategoryForm()">+ Add Category</button>
+    ${showAddCatForm ? `<div style="margin-top:12px">
+      <input type="text" id="new-cat-name" placeholder="CATEGORY NAME" class="cat-name-input">
+      <button class="act-btn" style="background:var(--accent);color:#fff;padding:6px 12px" onclick="addCategorySubmit()">Add</button>
+      <button class="act-btn" onclick="toggleAddCategoryForm()">Cancel</button>
+    </div>` : ''}
+  </td></tr>`;
+
+  html += '</tbody>';
+  $('cost-lines-table').innerHTML = html;
+}
+
+function setLine(idx,key,value,type){
+  model.costLines[idx][key] = type === 'number' ? (+value || 0) : value;
+  render();
+}
+
+function setLineMonth(idx,month,value){
+  const len = labels().length;
+  if(!Array.isArray(model.costLines[idx].monthly)) model.costLines[idx].monthly = Array(len).fill(0);
+  while(model.costLines[idx].monthly.length < len) model.costLines[idx].monthly.push(0);
+  model.costLines[idx].monthly[month] = +value || 0;
+  render();
+}
+
+function toggleCat(cat){ expandedCats.has(cat) ? expandedCats.delete(cat) : expandedCats.add(cat); render(); }
+function toggleLine(id){ expandedLines.has(id) ? expandedLines.delete(id) : expandedLines.add(id); render(); }
+function escapeAttr(s){ return String(s).replace(/'/g,'&#39;'); }
+
+function renderSparkline(vals){
+  if(!vals || vals.length===0) return '';
+  const max = Math.max(...vals,1);
+  const min = Math.min(...vals,0);
+  const range = max - min || 1;
+  const w = 68, h = 18;
+  const step = w / (vals.length - 1 || 1);
+  const points = vals.map((v,i)=>`${i*step},${h-(v-min)/range*h}`).join(' ');
+  return `<svg class="sparkline" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><polyline points="${points}" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/></svg>`;
+}
+
+function toggleMonthFormula(lineIdx, monthIdx){
+  if(openMonthFormula && openMonthFormula.lineIdx === lineIdx && openMonthFormula.monthIdx === monthIdx){
+    openMonthFormula = null;
+  } else {
+    openMonthFormula = {lineIdx, monthIdx};
+    const line = model.costLines[lineIdx];
+    if(!line.monthFormulas) line.monthFormulas = {};
+    if(!line.monthFormulas[monthIdx]) line.monthFormulas[monthIdx] = {tokens:[]};
+  }
+  render();
+}
+
+function addMonthFormulaToken(lineIdx, monthIdx, token){
+  const line = model.costLines[lineIdx];
+  if(!line.monthFormulas) line.monthFormulas = {};
+  if(!line.monthFormulas[monthIdx]) line.monthFormulas[monthIdx] = {tokens:[]};
+  line.monthFormulas[monthIdx].tokens.push(token);
+  applyMonthFormulaResult(lineIdx, monthIdx);
+}
+
+function removeMonthFormulaToken(lineIdx, monthIdx, tokenIdx){
+  model.costLines[lineIdx].monthFormulas[monthIdx].tokens.splice(tokenIdx, 1);
+  applyMonthFormulaResult(lineIdx, monthIdx);
+}
+
+function clearMonthFormula(lineIdx, monthIdx){
+  if(model.costLines[lineIdx].monthFormulas) delete model.costLines[lineIdx].monthFormulas[monthIdx];
+  render();
+}
+
+function applyMonthFormulaResult(lineIdx, monthIdx){
+  const line = model.costLines[lineIdx];
+  const mf = line.monthFormulas && line.monthFormulas[monthIdx];
+  if(!mf || !mf.tokens || mf.tokens.length === 0){ render(); return; }
+  const result = evaluateFormula(mf, monthIdx);
+  if(!Array.isArray(line.monthly)) line.monthly = Array(labels().length).fill(0);
+  line.monthly[monthIdx] = Math.round(result);
+  render();
+}
+
+function renderMonthFormulaPanel(lineIdx, monthIdx, line){
+  const mf = (line.monthFormulas && line.monthFormulas[monthIdx]) || {tokens:[]};
+  const monthLabel = labels()[monthIdx] || ('M'+(monthIdx+1));
+  const sectionTitles = {survey:'Survey',drilling:'Drilling',preloading:'Preloading',recording:'Recording',baseCamp:'Base Camp'};
+  const result = evaluateFormula(mf);
+
+  let html = `<div style="margin:0 0 14px 0;background:#f0fdf4;border:1px solid #a7f3d0;border-radius:4px;padding:14px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+      <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;color:var(--green)">Per-Month Formula — ${monthLabel}</div>
+      <button onclick="openMonthFormula=null;render()" style="border:none;background:transparent;cursor:pointer;color:var(--muted);font-size:16px;line-height:1;padding:0 2px">×</button>
+    </div>`;
+
+  // Result preview
+  if(mf.tokens.length > 0){
+    const result = evaluateFormula(mf, monthIdx);
+    html += `<div style="padding:8px 12px;background:#fff;border:1px solid #a7f3d0;border-radius:3px;margin-bottom:10px;font-family:var(--mono);font-size:12px;color:var(--text)">
+      ${getFormulaDisplay(mf)} <span style="color:var(--green);font-weight:600">→ ${fmtN(Math.round(result))}</span>
+    </div>`;
+    // Token chips
+    html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">`;
+    mf.tokens.forEach((token, ti) => {
+      let label = token.type==='rate' ? (model.rateCards[token.section]?.[token.idx]?.name||'[Missing]') : token.type==='prod' ? PROD_LABELS[token.series]||token.series : token.value;
+      const chipStyle = token.type==='op' ? 'background:var(--green);color:#fff' : 'background:#fff;border:1px solid #a7f3d0;color:var(--text)';
+      html += `<div style="display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:3px;font-size:11px;${chipStyle}">
+        <span>${label}</span>
+        <button onclick="removeMonthFormulaToken(${lineIdx},${monthIdx},${ti})" style="border:none;background:transparent;color:inherit;cursor:pointer;padding:0;font-size:14px;line-height:1">×</button>
+      </div>`;
+    });
+    html += `</div>`;
+  } else {
+    html += `<div style="font-size:11px;color:var(--muted);margin-bottom:10px">Build a formula for <strong>${monthLabel}</strong> — result overwrites the manual value for this month only.</div>`;
+  }
+
+  // Builder controls
+  html += `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px">
+    <select class="sel med" id="mf-rate-${lineIdx}-${monthIdx}" style="flex:1;min-width:180px">
+      <option value="">+ Rate / Production</option>
+      <optgroup label="── Production Schedule ──">`;
+  Object.keys(PROD_LABELS).forEach(series => {
+    const val = latest ? (latest.prod[series]?.[monthIdx] || 0) : 0;
+    html += `<option value="prod:${series}">📊 ${PROD_LABELS[series]} (${monthLabel}: ${val.toLocaleString()})</option>`;
+  });
+  html += `</optgroup>`;
+  Object.keys(model.rateCards).forEach(section => {
+    html += `<optgroup label="${sectionTitles[section]||section}">`;
+    model.rateCards[section].forEach((rate, ri) => {
+      html += `<option value="${section}:${ri}">${rate.name} (${fmtN(rate.value)})</option>`;
+    });
+    html += `</optgroup>`;
+  });
+  html += `</select>`;
+  ['×','+','−','÷'].forEach(op => {
+    html += `<button class="act-btn" onclick="addMonthFormulaToken(${lineIdx},${monthIdx},{type:'op',value:'${op}'})" style="padding:4px 10px">${op}</button>`;
+  });
+  html += `<input type="number" placeholder="# value" class="inp small" id="mf-num-${lineIdx}-${monthIdx}" style="width:76px">
+    <button class="act-btn" onclick="const inp=document.getElementById('mf-num-${lineIdx}-${monthIdx}');if(inp&&inp.value){addMonthFormulaToken(${lineIdx},${monthIdx},{type:'num',value:+inp.value});inp.value='';}">Add #</button>
+  </div>`;
+
+  // Actions
+  html += `<div style="display:flex;gap:6px">
+    ${mf.tokens.length>0?`<button class="act-btn" style="color:var(--red)" onclick="clearMonthFormula(${lineIdx},${monthIdx})">Clear</button>`:''}
+  </div></div>`;
+
+  // Attach rate dropdown handler
+  setTimeout(() => {
+    const sel = document.getElementById(`mf-rate-${lineIdx}-${monthIdx}`);
+    if(sel && !sel.dataset.h){
+      sel.dataset.h = '1';
+      sel.onchange = function(){
+        if(this.value){
+          const [section, ri] = this.value.split(':');
+          if(section === 'prod'){
+            addMonthFormulaToken(lineIdx, monthIdx, {type:'prod', series: ri});
+          } else {
+            addMonthFormulaToken(lineIdx, monthIdx, {type:'rate', section, idx:+ri});
+          }
+          this.value = '';
+        }
+      };
+    }
+  }, 0);
+
+  return html;
+}
+
+function renderFormulaBuilder(idx, line){
+  const formula = line.formula || {enabled:false, tokens:[], applyTo:'all'};
+  const sectionTitles = {survey:'Survey',drilling:'Drilling',preloading:'Preloading',recording:'Recording',baseCamp:'Base Camp'};
+
+  let html = `<div style="background:#f8fdf9;border:1px solid var(--border);border-radius:3px;padding:14px;margin-bottom:14px">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;color:var(--muted);margin-bottom:10px">Formula Calculator ${formula.enabled?'<span class="badge g" style="margin-left:8px;font-size:9px">Active</span>':''}</div>`;
+
+  // Formula display
+  if(formula.tokens.length > 0){
+    html += `<div style="padding:10px;background:#fff;border:1px solid var(--border);border-radius:3px;margin-bottom:12px;font-size:12px;line-height:1.8;font-family:var(--sans)">
+      ${getFormulaDisplay(formula)}
+    </div>`;
+  }
+
+  // Token list (removable chips)
+  if(formula.tokens.length > 0){
+    html += `<div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">`;
+    formula.tokens.forEach((token, tokenIdx) => {
+      let label = '';
+      if(token.type === 'rate'){
+        const rate = model.rateCards[token.section]?.[token.idx];
+        label = rate ? rate.name : '[Missing]';
+      } else if(token.type === 'prod'){
+        label = PROD_LABELS[token.series] || token.series;
+      } else if(token.type === 'op'){
+        label = token.value;
+      } else if(token.type === 'num'){
+        label = token.value;
+      }
+      const chipStyle = token.type === 'op' ? 'background:var(--accent);color:#fff' : 'background:#fff;border:1px solid var(--border)';
+      html += `<div style="display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:3px;font-size:11px;${chipStyle}">
+        <span>${label}</span>
+        <button onclick="removeFormulaToken(${idx},${tokenIdx})" style="border:none;background:transparent;color:inherit;cursor:pointer;padding:0;font-size:14px;line-height:1">×</button>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  // Builder controls
+  html += `<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">`;
+
+  // Add Rate dropdown
+  html += `<select class="sel med" id="formula-rate-${idx}" style="flex:1;min-width:200px">
+    <option value="">+ Add Rate / Production</option>
+    <optgroup label="── Production Schedule ──">`;
+  Object.keys(PROD_LABELS).forEach(series => {
+    html += `<option value="prod:${series}">📊 ${PROD_LABELS[series]}</option>`;
+  });
+  html += `</optgroup>`;
+  Object.keys(model.rateCards).forEach(section => {
+    const title = sectionTitles[section] || section;
+    html += `<optgroup label="${title}">`;
+    model.rateCards[section].forEach((rate, rateIdx) => {
+      html += `<option value="${section}:${rateIdx}">${rate.name} (${rate.unit})</option>`;
+    });
+    html += `</optgroup>`;
+  });
+  html += `</select>`;
+
+  // Add Operator buttons
+  html += `<button class="act-btn" onclick="addFormulaToken(${idx},{type:'op',value:'×'})" style="padding:4px 12px">×</button>`;
+  html += `<button class="act-btn" onclick="addFormulaToken(${idx},{type:'op',value:'+'})" style="padding:4px 12px">+</button>`;
+  html += `<button class="act-btn" onclick="addFormulaToken(${idx},{type:'op',value:'−'})" style="padding:4px 12px">−</button>`;
+  html += `<button class="act-btn" onclick="addFormulaToken(${idx},{type:'op',value:'÷'})" style="padding:4px 12px">÷</button>`;
+
+  // Add Custom Number input
+  html += `<input type="number" placeholder="Custom #" class="inp small" id="formula-num-${idx}" style="width:80px">`;
+  html += `<button class="act-btn" onclick="const inp=$('formula-num-${idx}'); if(inp.value){addFormulaToken(${idx},{type:'num',value:+inp.value}); inp.value='';}">Add #</button>`;
+
+  html += `</div>`;
+
+  // Month selector
+  html += `<div style="margin-bottom:12px">
+    <div style="font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:600;color:var(--muted);margin-bottom:6px">Apply To:</div>
+    <label style="display:inline-flex;align-items:center;gap:6px;margin-right:16px;font-size:12px;cursor:pointer">
+      <input type="radio" name="applyto-${idx}" value="all" ${formula.applyTo==='all'?'checked':''} onchange="setFormulaApplyTo(${idx},'all')">
+      <span>All months</span>
+    </label>
+    <label style="display:inline-flex;align-items:center;gap:6px;font-size:12px;cursor:pointer">
+      <input type="radio" name="applyto-${idx}" value="select" ${Array.isArray(formula.applyTo)?'checked':''} onchange="setFormulaApplyTo(${idx},[])">
+      <span>Select months</span>
+    </label>
+  </div>`;
+
+  // Month checkboxes (if select mode)
+  if(Array.isArray(formula.applyTo)){
+    html += `<div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">`;
+    labels().forEach((m, mIdx) => {
+      const checked = formula.applyTo.includes(mIdx);
+      html += `<label style="display:inline-flex;align-items:center;gap:4px;font-size:11px;cursor:pointer">
+        <input type="checkbox" ${checked?'checked':''} onchange="const arr=model.costLines[${idx}].formula.applyTo; if(this.checked) arr.push(${mIdx}); else arr.splice(arr.indexOf(${mIdx}),1); render()">
+        <span>${m}</span>
+      </label>`;
+    });
+    html += `</div>`;
+  }
+
+  // Action buttons
+  html += `<div style="display:flex;gap:6px">
+    <button class="act-btn" style="background:var(--accent);color:#fff" onclick="applyFormulaResult(${idx})">Apply Formula</button>
+    <button class="act-btn" onclick="clearFormula(${idx})">Clear Formula</button>
+  </div>`;
+
+  html += `</div>`;
+
+  // Attach rate dropdown handler after render
+  setTimeout(() => {
+    const sel = document.getElementById(`formula-rate-${idx}`);
+    if(sel && !sel.dataset.handlerAttached){
+      sel.dataset.handlerAttached = 'true';
+      sel.onchange = function(){
+        if(this.value){
+          const [section, rateIdx] = this.value.split(':');
+          if(section === 'prod'){
+            addFormulaToken(idx, {type:'prod', series: rateIdx});
+          } else {
+            addFormulaToken(idx, {type:'rate', section, idx:+rateIdx});
+          }
+          this.value = '';
+        }
+      };
+    }
+  }, 0);
+
+  return html;
+}
+
+function renderMonthlyEdit(idx,line){
+  const vals = normalizedSeries(line.monthly);
+  const total = sum(vals);
+  const avg = total / vals.length;
+  const max = Math.max(...vals);
+  const min = Math.min(...vals.filter(v=>v>0));
+  const maxIdx = vals.indexOf(max);
+  const variance = avg > 0 ? ((max - min) / avg * 100) : 0;
+
+  let html = renderFormulaBuilder(idx, line);
+
+  html += `<div class="month-summary">
+    <div class="stat"><span class="stat-label">Total</span><span class="stat-value">${fmtN(total)}</span></div>
+    <div class="stat"><span class="stat-label">Average</span><span class="stat-value">${fmtM(avg)}</span></div>
+    <div class="stat"><span class="stat-label">Min</span><span class="stat-value">${fmtM(min>1e10?0:min)}<small>${vals.indexOf(min)>=0?labels()[vals.indexOf(min)]:''}</small></span></div>
+    <div class="stat"><span class="stat-label">Max</span><span class="stat-value">${fmtM(max)}<small>${maxIdx>=0?labels()[maxIdx]:''}</small></span></div>
+    <div class="stat"><span class="stat-label">Variance</span><span class="stat-value ${variance>30?'a':variance>15?'':''}">${variance.toFixed(1)}%</span></div>
+  </div>`;
+
+  html += '<div class="month-edit">';
+  labels().forEach((m,i)=>{
+    const v = vals[i] || 0;
+    const pct = max > 0 ? v / max : 0;
+    let heatClass = '';
+    if(v > 0){
+      if(pct < 0.33) heatClass = 'heat-low';
+      else if(pct < 0.67) heatClass = 'heat-med';
+      else heatClass = 'heat-high';
+    }
+    const prevVal = i > 0 ? vals[i-1] : v;
+    const spike = prevVal > 0 && Math.abs(v - prevVal) / prevVal > 0.5;
+    const mf = line.monthFormulas && line.monthFormulas[i];
+    const hasMF = mf && mf.tokens && mf.tokens.length > 0;
+    const isOpenMF = openMonthFormula && openMonthFormula.lineIdx === idx && openMonthFormula.monthIdx === i;
+    html += `<div class="month-cell" style="position:relative">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2px">
+        <span class="month-label">${m}</span>
+        <button title="${hasMF?'Formula active — click to edit':'Add per-month formula'}" onclick="toggleMonthFormula(${idx},${i})" style="border:none;background:${isOpenMF?'var(--accent)':hasMF?'#d1fae5':'#e8ece5'};color:${isOpenMF?'#fff':hasMF?'var(--green)':'var(--light)'};border-radius:2px;font-size:9px;padding:1px 5px;cursor:pointer;font-family:var(--mono);font-weight:600;line-height:1.4;transition:all .15s">fx</button>
+      </div>
+      <input type="number" class="month-input ${heatClass} ${spike&&!hasMF?'warn':''}" value="${v||0}" ${hasMF?'readonly style="opacity:.55;cursor:not-allowed"':''} onchange="setLineMonth(${idx},${i},this.value)" data-idx="${idx}" data-month="${i}">
+      <span class="month-display">${fmtM(v)}${hasMF?'<span style="color:var(--green);font-size:8px;margin-left:2px">fx</span>':''}</span>
+      <div class="month-bar"><div class="month-bar-fill" style="width:${pct*100}%;background:${hasMF?'var(--green)':''}"></div></div>
+    </div>`;
+  });
+  html += '</div>';
+
+  // Per-month formula panel
+  if(openMonthFormula && openMonthFormula.lineIdx === idx){
+    html += renderMonthFormulaPanel(idx, openMonthFormula.monthIdx, line);
+  }
+
+  html += `<div class="month-actions">
+    <button class="act-btn" onclick="bulkCopyFirst(${idx})">Copy First</button>
+    <button class="act-btn" onclick="bulkCopyLast(${idx})">Copy Last</button>
+    <button class="act-btn" onclick="bulkLinearFill(${idx})">Linear Fill</button>
+    <button class="act-btn" onclick="bulkFillForward(${idx})">Fill Forward</button>
+    <button class="act-btn" onclick="bulkClearAll(${idx})">Clear All</button>
+    <button class="act-btn" onclick="toggleLine('${line.id}')">Close</button>
+  </div>`;
+
+  return html;
+}
+
+function bulkCopyFirst(idx){
+  const len = labels().length;
+  if(!Array.isArray(model.costLines[idx].monthly)) model.costLines[idx].monthly = Array(len).fill(0);
+  const first = model.costLines[idx].monthly[0] || 0;
+  for(let i=0; i<len; i++) model.costLines[idx].monthly[i] = first;
+  render();
+}
+
+function bulkCopyLast(idx){
+  const len = labels().length;
+  if(!Array.isArray(model.costLines[idx].monthly)) model.costLines[idx].monthly = Array(len).fill(0);
+  const last = model.costLines[idx].monthly[len-1] || 0;
+  for(let i=0; i<len; i++) model.costLines[idx].monthly[i] = last;
+  render();
+}
+
+function bulkLinearFill(idx){
+  const len = labels().length;
+  if(!Array.isArray(model.costLines[idx].monthly)) model.costLines[idx].monthly = Array(len).fill(0);
+  const first = model.costLines[idx].monthly[0] || 0;
+  const last = model.costLines[idx].monthly[len-1] || 0;
+  const step = (last - first) / (len - 1);
+  for(let i=0; i<len; i++) model.costLines[idx].monthly[i] = Math.round(first + step * i);
+  render();
+}
+
+function bulkFillForward(idx){
+  const len = labels().length;
+  if(!Array.isArray(model.costLines[idx].monthly)) model.costLines[idx].monthly = Array(len).fill(0);
+  let lastVal = 0;
+  for(let i=0; i<len; i++){
+    if(model.costLines[idx].monthly[i] > 0) lastVal = model.costLines[idx].monthly[i];
+    else model.costLines[idx].monthly[i] = lastVal;
+  }
+  render();
+}
+
+function bulkClearAll(idx){
+  if(!confirm('Clear all monthly values for this cost line?')) return;
+  const len = labels().length;
+  model.costLines[idx].monthly = Array(len).fill(0);
+  render();
+}
+
+function bulkSetMonthly(idx,monthlyValue){
+  const len = labels().length;
+  const val = +monthlyValue || 0;
+  if(!Array.isArray(model.costLines[idx].monthly)) model.costLines[idx].monthly = Array(len).fill(0);
+  for(let i=0; i<len; i++) model.costLines[idx].monthly[i] = val;
+  render();
+}
+
+// ═══ RATE CARD CRUD FUNCTIONS ═══
+function setRateValue(section, idx, value){
+  model.rateCards[section][idx].value = +value || 0;
+  recalculateAllFormulas(); // Update all dynamic formulas
+  render();
+}
+
+function toggleAddRateForm(section){
+  activeAddRateSection = activeAddRateSection === section ? null : section;
+  render();
+}
+
+function addRateItemSubmit(section){
+  const nameInput = $('new-rate-name');
+  const unitInput = $('new-rate-unit');
+  if(!nameInput || !unitInput) return;
+  const name = nameInput.value.trim();
+  const unit = unitInput.value.trim();
+  if(!name){
+    alert('Please enter a rate name');
+    return;
+  }
+  model.rateCards[section].push({
+    name: name,
+    value: 0,
+    unit: unit || '₦'
+  });
+  activeAddRateSection = null;
+  render();
+}
+
+function removeRateItem(section, idx){
+  const rate = model.rateCards[section][idx];
+  if(!confirm(`Remove "${rate.name}"?`)) return;
+  model.rateCards[section].splice(idx, 1);
+  render();
+}
+
+function toggleAddRateSectionForm(){
+  showAddRateSectionForm = !showAddRateSectionForm;
+  render();
+}
+
+function addRateSectionSubmit(){
+  const input = $('new-section-name');
+  if(!input) return;
+  const name = input.value.trim().toLowerCase().replace(/\s+/g,'');
+  if(!name){
+    alert('Please enter a section name');
+    return;
+  }
+  if(model.rateCards[name]){
+    alert('Section already exists');
+    return;
+  }
+  model.rateCards[name] = [];
+  showAddRateSectionForm = false;
+  render();
+}
+
+function removeRateSection(section){
+  const sectionTitles = {
+    survey:'Survey Rates',
+    drilling:'Drilling Rates',
+    preloading:'Preloading Rates',
+    recording:'Recording Rates',
+    baseCamp:'Base Camp & Medical Rates'
+  };
+  const title = sectionTitles[section] || section;
+  if(!confirm(`Remove section "${title}" and all its rate items?`)) return;
+  delete model.rateCards[section];
+  render();
+}
+
+// ═══ FORMULA CALCULATOR FUNCTIONS ═══
+const PROD_LABELS = {survey:'Survey (km)',drilling:'Drilling (SDH)',recording:'Recording (km)',shots:'Shots',upholes:'Upholes'};
+
+function evaluateFormula(formula, monthIdx){
+  if(!formula || !formula.tokens || formula.tokens.length === 0) return 0;
+  let expr = '';
+  formula.tokens.forEach(token => {
+    if(token.type === 'rate'){
+      expr += model.rateCards[token.section]?.[token.idx]?.value || 0;
+    } else if(token.type === 'prod'){
+      const series = latest ? latest.prod[token.series] : null;
+      expr += (series && monthIdx != null) ? (series[monthIdx] || 0) : 0;
+    } else if(token.type === 'op'){
+      expr += token.value.replace('×','*').replace('÷','/').replace('−','-');
+    } else if(token.type === 'num'){
+      expr += token.value;
+    }
+  });
+  try {
+    const result = eval(expr);
+    return isFinite(result) ? result : 0;
+  } catch(e) { return 0; }
+}
+
+function hasProdToken(formula){
+  return formula && formula.tokens && formula.tokens.some(t => t.type === 'prod');
+}
+
+function getFormulaDisplay(formula){
+  if(!formula || !formula.tokens || formula.tokens.length === 0) return 'No formula';
+
+  const sectionTitles = {survey:'Survey',drilling:'Drilling',preloading:'Preloading',recording:'Recording',baseCamp:'Base Camp'};
+
+  let display = '';
+  formula.tokens.forEach((token, i) => {
+    if(token.type === 'rate'){
+      const rate = model.rateCards[token.section]?.[token.idx];
+      if(rate){
+        const section = sectionTitles[token.section] || token.section;
+        display += `${rate.name} (${fmtN(rate.value)})`;
+      } else {
+        display += '[Missing Rate]';
+      }
+    } else if(token.type === 'prod'){
+      display += PROD_LABELS[token.series] || token.series;
+    } else if(token.type === 'op'){
+      display += ` ${token.value} `;
+    } else if(token.type === 'num'){
+      display += token.value;
+    }
+  });
+
+  const result = evaluateFormula(formula, null);
+  const isProd = hasProdToken(formula);
+  display += isProd ? ` = <em>varies by month</em>` : ` = ${fmtN(Math.round(result))}`;
+  return display;
+}
+
+function addFormulaToken(lineIdx, token){
+  model.costLines[lineIdx].formula.tokens.push(token);
+  render();
+}
+
+function removeFormulaToken(lineIdx, tokenIdx){
+  model.costLines[lineIdx].formula.tokens.splice(tokenIdx, 1);
+  render();
+}
+
+function clearFormula(lineIdx){
+  model.costLines[lineIdx].formula.tokens = [];
+  model.costLines[lineIdx].formula.enabled = false;
+  render();
+}
+
+function toggleFormulaEnabled(lineIdx){
+  model.costLines[lineIdx].formula.enabled = !model.costLines[lineIdx].formula.enabled;
+  render();
+}
+
+function setFormulaApplyTo(lineIdx, value){
+  model.costLines[lineIdx].formula.applyTo = value;
+  render();
+}
+
+function applyFormulaResult(lineIdx){
+  const line = model.costLines[lineIdx];
+  const len = labels().length;
+  const useProd = hasProdToken(line.formula);
+
+  if(line.formula.applyTo === 'all'){
+    for(let i=0; i<len; i++){
+      line.monthly[i] = Math.round(evaluateFormula(line.formula, i));
+    }
+  } else if(Array.isArray(line.formula.applyTo)){
+    line.formula.applyTo.forEach(monthIdx => {
+      if(monthIdx < len) line.monthly[monthIdx] = Math.round(evaluateFormula(line.formula, monthIdx));
+    });
+  }
+
+  line.formula.enabled = true;
+  render();
+}
+
+function recalculateAllFormulas(){
+  model.costLines.forEach((line, idx) => {
+    const len = labels().length;
+    // Line-level formula
+    if(line.formula && line.formula.enabled && line.formula.tokens.length > 0){
+      if(line.formula.applyTo === 'all'){
+        for(let i=0; i<len; i++){
+          if(!line.monthFormulas || !line.monthFormulas[i] || !line.monthFormulas[i].tokens.length)
+            line.monthly[i] = Math.round(evaluateFormula(line.formula, i));
+        }
+      } else if(Array.isArray(line.formula.applyTo)){
+        line.formula.applyTo.forEach(monthIdx => {
+          if(monthIdx < len && (!line.monthFormulas || !line.monthFormulas[monthIdx] || !line.monthFormulas[monthIdx].tokens.length))
+            line.monthly[monthIdx] = Math.round(evaluateFormula(line.formula, monthIdx));
+        });
+      }
+    }
+    // Per-month formulas always win
+    if(line.monthFormulas){
+      Object.keys(line.monthFormulas).forEach(mi => {
+        const mf = line.monthFormulas[mi];
+        if(mf && mf.tokens && mf.tokens.length > 0){
+          if(!Array.isArray(line.monthly)) line.monthly = Array(len).fill(0);
+          line.monthly[+mi] = Math.round(evaluateFormula(mf, +mi));
+        }
+      });
+    }
+  });
+}
+
+function generateCostLineId(){
+  return 'c' + (nextCostLineId++);
+}
+
+function toggleAddCategoryForm(){
+  showAddCatForm = !showAddCatForm;
+  render();
+}
+
+function addCategorySubmit(){
+  const input = $('new-cat-name');
+  if(!input) return;
+  const name = input.value.trim().toUpperCase();
+  if(!name){
+    alert('Please enter a category name');
+    return;
+  }
+  const exists = model.costLines.some(l => l.category === name);
+  if(exists){
+    alert('Category already exists');
+    return;
+  }
+  const len = labels().length;
+  model.costLines.push({
+    id: generateCostLineId(),
+    category: name,
+    item: 'New Item',
+    badge: 'fixed',
+    monthFormulas: {},
+    owner: 'EnServ',
+    driverType: 'manualMonthly',
+    driverRef: '',
+    rate: 0,
+    monthly: Array(len).fill(0)
+  });
+  showAddCatForm = false;
+  render();
+}
+
+function removeCategory(categoryName){
+  if(!confirm(`Remove category "${categoryName}" and all its items?`)) return;
+  model.costLines = model.costLines.filter(l => l.category !== categoryName);
+  expandedCats.delete(categoryName);
+  render();
+}
+
+function toggleAddItemForm(category){
+  activeAddItemCategory = activeAddItemCategory === category ? null : category;
+  render();
+}
+
+function addItemSubmit(category){
+  const nameInput = $('new-item-name');
+  const badgeInput = $('new-item-badge');
+  if(!nameInput || !badgeInput) return;
+  const name = nameInput.value.trim();
+  if(!name){
+    alert('Please enter an item name');
+    return;
+  }
+  const len = labels().length;
+  model.costLines.push({
+    id: generateCostLineId(),
+    category: category,
+    item: name,
+    badge: badgeInput.value || 'fixed',
+    owner: 'EnServ',
+    driverType: 'manualMonthly',
+    driverRef: '',
+    rate: 0,
+    monthly: Array(len).fill(0)
+  });
+  activeAddItemCategory = null;
+  render();
+}
+
+function removeLineItem(idx){
+  const line = model.costLines[idx];
+  if(!confirm(`Remove "${line.item}"?`)) return;
+  model.costLines.splice(idx, 1);
+  expandedLines.delete(line.id);
+  render();
+}
+
+function renderFunding(){
+  $('revenue-table').innerHTML = headers() + '<tbody>'
+    + row('Production revenue (USD)', latest.revenueProdUsd, '', '', fmtU)
+    + row('Mobilisation (USD)', latest.mobUsd, '', '', fmtU)
+    + row('Uphole revenue (USD)', latest.upholeUsd, '', '', fmtU)
+    + row('Demobilisation (USD)', latest.demobUsd, '', '', fmtU)
+    + row('100% Revenue (USD)', latest.revenue100Usd, 'sub-row', '', fmtU)
+    + row('EnServ Revenue Share (USD)', latest.revenueEnservUsd, '', 'i1', fmtU)
+    + row('EnServ Revenue (NGN)', latest.revenueNgn, 'tot-row')
+    + '</tbody>';
+  let funding = headers() + '<tbody>';
+  latest.categories.forEach(cat => funding += row(cat, latest.categorySeries[cat], '', 'i1'));
+  funding += row('Total Funding Requirement', latest.funding, 'tot-row') + '</tbody>';
+  $('funding-table').innerHTML = funding;
+}
+
+function renderCashFlow(){
+  $('cashflow-table').innerHTML = headers() + '<tbody>'
+    + row('EnServ Revenue (NGN)', latest.revenueNgn, 'sub-row')
+    + row('Funding Requirement (NGN)', latest.funding.map(v=>-v), '', 'i1')
+    + row('Monthly Cash Flow', latest.cash, 'tot-row')
+    + row('Cumulative Cash Flow', latest.cash.reduce((a,v,i)=>{a.push((a[i-1]||0)+v);return a;},[]), '', 'i1')
+    + '</tbody>';
+  renderBridgeChart();
+}
+
+function renderBarChart(id, vals){
+  const max = Math.max(...vals.map(v=>Math.abs(v)),1);
+  const hasNeg = vals.some(v=>v<0);
+  const negFrac = hasNeg ? Math.max(...vals.map(v=>v<0?Math.abs(v):0))/max : 0;
+  const H = 128;
+  let html = hasNeg ? `<div class="zero" style="bottom:${34+negFrac*H}px"></div>` : '';
+  vals.forEach((v,i)=>{
+    const h = Math.max(2,Math.round(Math.abs(v)/max*H));
+    html += `<div class="bar-col"><div class="bar ${v>=0?'pos':'neg'}" style="height:${h}px;margin-bottom:${v>=0?negFrac*H:0}px"></div><span class="bar-lbl">${labels()[i]}</span></div>`;
+  });
+  $(id).innerHTML = html;
+}
+
+function renderBridgeChart(){
+  const max = Math.max(...latest.revenueNgn, ...latest.funding, 1);
+  let html = '';
+  labels().forEach((m,i)=>{
+    const rh = Math.max(2,Math.round(latest.revenueNgn[i]/max*128));
+    const ch = Math.max(2,Math.round(latest.funding[i]/max*128));
+    html += `<div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:${rh}px"></div><div class="bar cost" style="width:45%;height:${ch}px"></div></div><span class="bar-lbl">${m}</span></div>`;
+  });
+  $('bridge-chart').innerHTML = html;
+}
+
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.tab,.pane').forEach(el=>el.classList.remove('on'));
+    tab.classList.add('on');
+    $('pane-'+tab.dataset.tab).classList.add('on');
+  });
+});
+
+// Initial render() is called by bootstrap() function
+</script>
+</body>
+</html>
