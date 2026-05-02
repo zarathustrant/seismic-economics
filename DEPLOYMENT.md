@@ -121,7 +121,7 @@ git push -u origin main
 ### Service won't start
 - Check logs in Render dashboard
 - Verify `requirements.txt` is present
-- Ensure `server.py` and `app.html` are in root directory
+- Ensure `app.py` and `app.html` are in root directory
 
 ### Can't login
 - Check `APP_PASSWORD` environment variable
@@ -150,14 +150,14 @@ pip install -r requirements.txt
 export APP_PASSWORD=your_password
 
 # Run server
-python server.py
+python app.py
 ```
 
 Then open http://localhost:5000 in your browser.
 
 ## Files Created
 
-- `server.py` - Flask backend with password protection and save endpoint
+- `app.py` - Flask backend with password protection and save endpoint
 - `requirements.txt` - Python dependencies
 - `render.yaml` - Render deployment configuration
 - `app.html` - Updated with backend save functionality
