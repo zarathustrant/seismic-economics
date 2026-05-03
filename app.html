@@ -1,22 +1,1647 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Seismic Project Economics</title>
 <link rel="icon" href="data:,">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 
 <!--
   ╔══════════════════════════════════════════════════════════╗
   ║  SELF-SAVING HTML - All your data is stored below!      ║
-  ║  Click 💾 Save button to download updated file          ║
+  ║  Changes are automatically saved to the server          ║
   ╚══════════════════════════════════════════════════════════╝
 -->
 <script type="application/json" id="embedded-projects-data">
 {
-  "projects": {},
-  "currentProjectId": null
+  "projects": {
+    "mool2dk00xh7": {
+      "id": "mool2dk00xh7",
+      "name": "Default Project",
+      "createdAt": 1777740957216,
+      "data": {
+        "projectInputs": {
+          "projectName": "NUPRC/FES ANAMBRA 2D SEISMIC ACQUISITION",
+          "omlNumber": "NUPRC/FES ANAMBRA BASIN",
+          "client": "NUPRC/FES",
+          "contractor": "EnServ/BGP",
+          "projectArea": 541.593,
+          "shotFactor": 0.0276794095,
+          "redrillFactor": 1.1,
+          "duration": 8,
+          "revenueShare": 1,
+          "costShare": 1,
+          "fx": 1360
+        },
+        "contractTerms": {
+          "turnkeyRate": 20000,
+          "mobilisation": 2000000,
+          "demobilisation": 500000,
+          "upholeRate": 3500
+        },
+        "productionPrograms": {
+          "survey": {
+            "label": "Survey",
+            "unit": "km",
+            "total": 541.593,
+            "startMonth": 2,
+            "activeMonths": 5,
+            "rampMonths": 2,
+            "profile": "S-Curve",
+            "manualMonthly": []
+          },
+          "drilling": {
+            "label": "Drilling",
+            "unit": "SDH",
+            "total": 18054,
+            "startMonth": 4,
+            "activeMonths": 4,
+            "rampMonths": 2,
+            "profile": "S-Curve",
+            "manualMonthly": []
+          },
+          "recording": {
+            "label": "Recording",
+            "unit": "km",
+            "total": 499.713,
+            "startMonth": 5,
+            "activeMonths": 4,
+            "rampMonths": 2,
+            "profile": "Uniform",
+            "manualMonthly": []
+          },
+          "upholes": {
+            "label": "Upholes",
+            "unit": "holes",
+            "total": 16,
+            "startMonth": 2,
+            "activeMonths": 3,
+            "rampMonths": 1,
+            "profile": "Manual",
+            "manualMonthly": [
+              0,
+              4,
+              4,
+              4,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "upholes": [
+          0,
+          4,
+          4,
+          4,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "rateCards": {
+          "survey": [
+            {
+              "name": "Survey rate per km",
+              "value": 0,
+              "unit": "₦/km"
+            },
+            {
+              "name": "Offset rate",
+              "value": 0,
+              "unit": "₦"
+            },
+            {
+              "name": "Number of survey crew",
+              "value": 0,
+              "unit": "crews"
+            },
+            {
+              "name": "Total personnel in survey crew",
+              "value": 0,
+              "unit": "people"
+            },
+            {
+              "name": "Survey supervisor salary",
+              "value": 0,
+              "unit": "₦/mo"
+            },
+            {
+              "name": "Numbers of survey supervisor",
+              "value": 0,
+              "unit": "#"
+            },
+            {
+              "name": "Payoff rate",
+              "value": 0,
+              "unit": "₦/SDH"
+            }
+          ],
+          "drilling": [
+            {
+              "name": "Drilling rate per SDH",
+              "value": 0,
+              "unit": "₦/SDH"
+            },
+            {
+              "name": "Uphole drilling rate",
+              "value": 0,
+              "unit": "₦/hole"
+            },
+            {
+              "name": "Standby rate",
+              "value": 0,
+              "unit": "₦/day"
+            },
+            {
+              "name": "Maximum standby rate in a month",
+              "value": 0,
+              "unit": "₦"
+            },
+            {
+              "name": "Number of drilling crews",
+              "value": 0,
+              "unit": "crews"
+            },
+            {
+              "name": "Personnel per drilling crew",
+              "value": 0,
+              "unit": "people"
+            }
+          ],
+          "preloading": [
+            {
+              "name": "Preloaders monthly salary",
+              "value": 0,
+              "unit": "₦/mo"
+            },
+            {
+              "name": "Numbers of Preloading crew",
+              "value": 0,
+              "unit": "crews"
+            },
+            {
+              "name": "Preloaders per crew",
+              "value": 0,
+              "unit": "people"
+            },
+            {
+              "name": "Depth checkers salary",
+              "value": 0,
+              "unit": "₦/mo"
+            },
+            {
+              "name": "Numbers of depth checkers",
+              "value": 0,
+              "unit": "#"
+            }
+          ],
+          "recording": [
+            {
+              "name": "Recorders salary",
+              "value": 0,
+              "unit": "₦/mo"
+            },
+            {
+              "name": "Max number of recorders personnel",
+              "value": 0,
+              "unit": "people"
+            }
+          ],
+          "baseCamp": [
+            {
+              "name": "Base camp salary",
+              "value": 0,
+              "unit": "₦/mo"
+            },
+            {
+              "name": "Max number of base camp workers",
+              "value": 0,
+              "unit": "people"
+            },
+            {
+              "name": "Field nurses wages",
+              "value": 0,
+              "unit": "₦/mo"
+            },
+            {
+              "name": "Number of field nurses",
+              "value": 0,
+              "unit": "#"
+            },
+            {
+              "name": "Numbers of Base Doctors",
+              "value": 0,
+              "unit": "#"
+            },
+            {
+              "name": "Number of base Nurses",
+              "value": 0,
+              "unit": "#"
+            }
+          ]
+        },
+        "costLines": [
+          {
+            "id": "c1",
+            "category": "SURVEYING SUB.CONT. JOB",
+            "item": "GPS Monumentation & Observation",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c2",
+            "category": "SURVEYING SUB.CONT. JOB",
+            "item": "Fresh Cut",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c3",
+            "category": "SURVEYING SUB.CONT. JOB",
+            "item": "Incentives / Standby",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c4",
+            "category": "DRILLING SUB. CONTRACTORS JOB",
+            "item": "Payoff",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c5",
+            "category": "DRILLING SUB. CONTRACTORS JOB",
+            "item": "Equipment Repairs & Software Upgrade",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c6",
+            "category": "DRILLING SUB. CONTRACTORS JOB",
+            "item": "Fresh Cut",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c7",
+            "category": "FIRING LINES/CONTRACT",
+            "item": "Depth Checkers Fixed Wages",
+            "badge": "labor",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c8",
+            "category": "FIRING LINES/CONTRACT",
+            "item": "Explosive Handling Expenses",
+            "badge": "labor",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c9",
+            "category": "FIRING LINES/CONTRACT",
+            "item": "Fresh Cut",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c10",
+            "category": "RECORDING SUB. CONTRACTORS JOB",
+            "item": "Recording Contract",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c11",
+            "category": "RECORDING SUB. CONTRACTORS JOB",
+            "item": "Depth Checkers Fixed Wages",
+            "badge": "labor",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c12",
+            "category": "RECORDING SUB. CONTRACTORS JOB",
+            "item": "Equipment Protection on Line",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c13",
+            "category": "RECORDING SUB. CONTRACTORS JOB",
+            "item": "Fresh Cut",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c14",
+            "category": "FIELD CONTRACT LABOUR",
+            "item": "Boat Drivers, Deckhands & Beach Masters",
+            "badge": "labor",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c15",
+            "category": "FIELD CONTRACT LABOUR",
+            "item": "Field Nurses Salary",
+            "badge": "labor",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c16",
+            "category": "FIELD CONTRACT LABOUR",
+            "item": "Out of Pocket Allowance",
+            "badge": "labor",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c17",
+            "category": "FIELD CONTRACT LABOUR",
+            "item": "Professionals Salary & Allowance",
+            "badge": "labor",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c18",
+            "category": "TRAVELLING EXPENSES WITHIN NIGERIA",
+            "item": "Flights & Ground Transport",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c19",
+            "category": "TRAVELLING EXPENSES WITHIN NIGERIA",
+            "item": "Accommodation & Upkeep",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c20",
+            "category": "LEASE FEES FOR 428SN COMPLIMENTS",
+            "item": "428SN Full System Lease",
+            "badge": "lease",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c21",
+            "category": "LEASE FEES FOR 428SN COMPLIMENTS",
+            "item": "Accessories & Ancillaries",
+            "badge": "lease",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c22",
+            "category": "FUEL & LUBRICANTS",
+            "item": "Diesel (AGO)",
+            "badge": "var",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c23",
+            "category": "FUEL & LUBRICANTS",
+            "item": "Lubricants & Coolants",
+            "badge": "var",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c24",
+            "category": "MESSING EXPENSES",
+            "item": "Food Bill & Catering",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c25",
+            "category": "MESSING EXPENSES",
+            "item": "Laundry & Sundries",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c26",
+            "category": "FIELD MAINTENANCE SERVICES",
+            "item": "Equipment Maintenance & Repairs",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c27",
+            "category": "FIELD MAINTENANCE SERVICES",
+            "item": "Spare Parts & Consumables",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c28",
+            "category": "LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)",
+            "item": "Light Vehicle Maintenance",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c29",
+            "category": "LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)",
+            "item": "Vehicle Repairs",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c30",
+            "category": "FIELD MEDICAL EXPENSES",
+            "item": "Medical Consumables & Drugs",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c31",
+            "category": "FIELD MEDICAL EXPENSES",
+            "item": "Crew Contingency Medical & Referral",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c32",
+            "category": "PROTECTIVE CLOTHING & HSE COST",
+            "item": "PPE Supply",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c33",
+            "category": "PROTECTIVE CLOTHING & HSE COST",
+            "item": "HSE Training & Compliance",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c34",
+            "category": "MAGNETIC TAPES",
+            "item": "Magnetic Recording Media",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c35",
+            "category": "EXPLOSIVES & DETONATORS",
+            "item": "Explosives Supply",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c36",
+            "category": "EXPLOSIVES & DETONATORS",
+            "item": "Detonators & Accessories",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c37",
+            "category": "EXPLOSIVES & DETONATORS",
+            "item": "Explosives Logistics",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c38",
+            "category": "VEHICLE TRANSP. HIRE (including lease fees)",
+            "item": "Hilux Hire (VAT incl.)",
+            "badge": "lease",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c39",
+            "category": "VEHICLE TRANSP. HIRE (including lease fees)",
+            "item": "Hiace Bus Hire (VAT incl.)",
+            "badge": "lease",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c40",
+            "category": "VEHICLE TRANSP. HIRE (including lease fees)",
+            "item": "Personnel Carrier Hire (VAT incl.)",
+            "badge": "lease",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c41",
+            "category": "CONSULTANCY/TECHNICAL SUPPORT",
+            "item": "Technical Consultants",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c42",
+            "category": "CONSULTANCY/TECHNICAL SUPPORT",
+            "item": "Geophysical QC Support",
+            "badge": "sub",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c43",
+            "category": "TECHNICAL CAPACITY BUILDING",
+            "item": "Training & Certification",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c44",
+            "category": "TECHNICAL CAPACITY BUILDING",
+            "item": "Technology Transfer",
+            "badge": "fixed",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c45",
+            "category": "PURCHASE/LEASE OF EQUIPMENT",
+            "item": "Equipment Purchase (one-time)",
+            "badge": "owned",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          },
+          {
+            "id": "c46",
+            "category": "PURCHASE/LEASE OF EQUIPMENT",
+            "item": "Equipment Lease (monthly)",
+            "badge": "lease",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "formula": {
+              "enabled": false,
+              "tokens": [],
+              "applyTo": "all"
+            },
+            "monthFormulas": {}
+          }
+        ]
+      }
+    },
+    "mool3gxy8jh0": {
+      "id": "mool3gxy8jh0",
+      "name": "NEPL OML 65",
+      "createdAt": 1777741008262,
+      "data": {
+        "projectInputs": {
+          "projectName": "NEPL OML 65",
+          "omlNumber": "",
+          "client": "",
+          "contractor": "",
+          "projectArea": 0,
+          "shotFactor": 0,
+          "redrillFactor": 1,
+          "duration": 8,
+          "revenueShare": 1,
+          "costShare": 1,
+          "fx": 0
+        },
+        "contractTerms": {
+          "turnkeyRate": 0,
+          "mobilisation": 0,
+          "demobilisation": 0,
+          "upholeRate": 0
+        },
+        "productionPrograms": {
+          "survey": {
+            "label": "Survey",
+            "unit": "km",
+            "total": 0,
+            "startMonth": 1,
+            "activeMonths": 4,
+            "rampMonths": 1,
+            "profile": "S-Curve",
+            "manualMonthly": []
+          },
+          "drilling": {
+            "label": "Drilling",
+            "unit": "SDH",
+            "total": 0,
+            "startMonth": 1,
+            "activeMonths": 4,
+            "rampMonths": 1,
+            "profile": "S-Curve",
+            "manualMonthly": []
+          },
+          "recording": {
+            "label": "Recording",
+            "unit": "km",
+            "total": 0,
+            "startMonth": 1,
+            "activeMonths": 4,
+            "rampMonths": 1,
+            "profile": "Uniform",
+            "manualMonthly": []
+          },
+          "upholes": {
+            "label": "Upholes",
+            "unit": "holes",
+            "total": 0,
+            "startMonth": 1,
+            "activeMonths": 1,
+            "rampMonths": 1,
+            "profile": "Manual",
+            "manualMonthly": []
+          }
+        },
+        "upholes": [],
+        "rateCards": {
+          "survey": [],
+          "drilling": [],
+          "preloading": [],
+          "recording": [],
+          "baseCamp": []
+        },
+        "costLines": []
+      }
+    },
+    "mool7brwbzdo": {
+      "id": "mool7brwbzdo",
+      "name": "APL OML 124",
+      "createdAt": 1777741188188,
+      "data": {
+        "projectInputs": {
+          "projectName": "APL OML 124",
+          "omlNumber": "",
+          "client": "",
+          "contractor": "",
+          "projectArea": 0,
+          "shotFactor": 0,
+          "redrillFactor": 1,
+          "duration": 8,
+          "revenueShare": 1,
+          "costShare": 1,
+          "fx": 0
+        },
+        "contractTerms": {
+          "turnkeyRate": 0,
+          "mobilisation": 0,
+          "demobilisation": 0,
+          "upholeRate": 0
+        },
+        "productionPrograms": {
+          "survey": {
+            "label": "Survey",
+            "unit": "km",
+            "total": 0,
+            "startMonth": 1,
+            "activeMonths": 4,
+            "rampMonths": 1,
+            "profile": "S-Curve"
+          },
+          "drilling": {
+            "label": "Drilling",
+            "unit": "SDH",
+            "total": 0,
+            "startMonth": 1,
+            "activeMonths": 4,
+            "rampMonths": 1,
+            "profile": "S-Curve"
+          },
+          "recording": {
+            "label": "Recording",
+            "unit": "km",
+            "total": 0,
+            "startMonth": 1,
+            "activeMonths": 4,
+            "rampMonths": 1,
+            "profile": "Uniform"
+          },
+          "upholes": {
+            "label": "Upholes",
+            "unit": "holes",
+            "total": 0,
+            "startMonth": 1,
+            "activeMonths": 1,
+            "rampMonths": 1,
+            "profile": "Manual",
+            "manualMonthly": []
+          }
+        },
+        "upholes": [],
+        "rateCards": {
+          "survey": [],
+          "drilling": [],
+          "preloading": [],
+          "recording": [],
+          "baseCamp": []
+        },
+        "costLines": []
+      }
+    }
+  },
+  "currentProjectId": "mool7brwbzdo"
 }
 </script>
 
@@ -131,34 +1756,61 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 @media(max-width:980px){.hdr{align-items:flex-start;height:auto;gap:10px;padding:12px 16px;flex-direction:column}.hdr-kpis{width:100%;overflow:auto}.tabs{top:91px;overflow:auto;padding:0 12px}.pane{padding:20px 14px 48px}.cards{grid-template-columns:repeat(2,1fr)}.grid-2,.grid-3{grid-template-columns:1fr}.driver-grid{grid-template-columns:1fr}}
 </style>
 </head>
-<body>
+<body data-new-gr-c-s-check-loaded="9.96.0" data-gr-ext-installed="">
 <header class="hdr">
   <div class="hdr-left">
-    <button id="save-btn" onclick="saveToFile()" style="border:1px solid #30363d;background:#0f766e;color:#fff;font-size:11px;border-radius:3px;padding:5px 10px;cursor:pointer;font-family:var(--sans);display:flex;align-items:center;gap:5px;white-space:nowrap" title="Save your work - downloads updated HTML file">
-      <span style="font-size:14px">💾</span>
-      <span>Save</span>
-    </button>
+    <div id="save-status" style="border:1px solid #30363d;background:#0d1a0d;color:#8f9892;font-size:11px;border-radius:3px;padding:5px 10px;font-family:var(--sans);display:flex;align-items:center;gap:5px;white-space:nowrap" title="Auto-save status">
+      <span id="save-icon" style="font-size:14px">✓</span>
+      <span id="save-text">Saved</span>
+    </div>
     <button class="proj-btn" id="proj-btn" onclick="toggleProjPanel()">
       <span style="font-size:14px;opacity:.6">⬡</span>
-      <span class="proj-name" id="proj-btn-name">Loading…</span>
+      <span class="proj-name" id="proj-btn-name">NEPL OML 65</span>
       <span class="proj-chevron">▾</span>
     </button>
-    <span class="hdr-sub" id="h-sub">Project Economics Model</span>
+    <span class="hdr-sub" id="h-sub"> · 8 active months · </span>
   </div>
   <div class="hdr-kpis">
-    <div class="hdr-kpi"><div class="l">Revenue</div><div class="v" id="h-rev">-</div></div>
-    <div class="hdr-kpi"><div class="l">Funding</div><div class="v" id="h-cost">-</div></div>
-    <div class="hdr-kpi"><div class="l">Net CF</div><div class="v" id="h-net">-</div></div>
-    <div class="hdr-kpi"><div class="l">CRR</div><div class="v" id="h-crr">-</div></div>
-    <div class="hdr-kpi"><div class="l">ROIC</div><div class="v" id="h-roic">-</div></div>
+    <div class="hdr-kpi"><div class="l">Revenue</div><div class="v" id="h-rev">₦0.00B</div></div>
+    <div class="hdr-kpi"><div class="l">Funding</div><div class="v" id="h-cost">₦0.00B</div></div>
+    <div class="hdr-kpi"><div class="l">Net CF</div><div class="v g" id="h-net">₦0.00B</div></div>
+    <div class="hdr-kpi"><div class="l">CRR</div><div class="v" id="h-crr">0.0%</div></div>
+    <div class="hdr-kpi"><div class="l">ROIC</div><div class="v" id="h-roic">0.0%</div></div>
     <div class="hdr-kpi" style="min-width:auto">
       <button onclick="if(confirm('Reset this project to defaults?')){Projects.resetCurrent();}" style="border:1px solid #30363d;background:transparent;color:#8f9892;font-size:10px;border-radius:2px;padding:4px 9px;cursor:pointer;font-family:var(--sans)">Reset</button>
     </div>
   </div>
 </header>
 
-<div class="proj-panel" id="proj-panel">
-  <div class="proj-list" id="proj-list"></div>
+<div class="proj-panel open" id="proj-panel">
+  <div class="proj-list" id="proj-list">
+    <div class="proj-item " onclick="Projects.switchTo('mool2dk00xh7')">
+      <span class="pi-name">Default Project</span>
+      <span class="pi-date">02 May 26</span>
+      <span class="pi-actions" onclick="event.stopPropagation()">
+        <button class="pi-act" onclick="Projects.rename('mool2dk00xh7')">Rename</button>
+        <button class="pi-act" onclick="Projects.duplicate('mool2dk00xh7')">Dup</button>
+        <button class="pi-act del" onclick="Projects.remove('mool2dk00xh7')">Del</button>
+      </span>
+    </div>
+    <div class="proj-item " onclick="Projects.switchTo('mool3gxy8jh0')">
+      <span class="pi-name">NEPL OML 65</span>
+      <span class="pi-date">02 May 26</span>
+      <span class="pi-actions" onclick="event.stopPropagation()">
+        <button class="pi-act" onclick="Projects.rename('mool3gxy8jh0')">Rename</button>
+        <button class="pi-act" onclick="Projects.duplicate('mool3gxy8jh0')">Dup</button>
+        <button class="pi-act del" onclick="Projects.remove('mool3gxy8jh0')">Del</button>
+      </span>
+    </div>
+    <div class="proj-item active" onclick="Projects.switchTo('mool7brwbzdo')">
+      <span class="pi-name">APL OML 124</span>
+      <span class="pi-date">02 May 26</span>
+      <span class="pi-actions" onclick="event.stopPropagation()">
+        <button class="pi-act" onclick="Projects.rename('mool7brwbzdo')">Rename</button>
+        <button class="pi-act" onclick="Projects.duplicate('mool7brwbzdo')">Dup</button>
+        <button class="pi-act del" onclick="Projects.remove('mool7brwbzdo')">Del</button>
+      </span>
+    </div></div>
   <div class="proj-footer">
     <input class="proj-new-inp" id="proj-new-inp" placeholder="New project name…" onkeydown="if(event.key==='Enter')Projects.create()">
     <button class="proj-create-btn" onclick="Projects.create()">+ Create</button>
@@ -166,22 +1818,22 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 </div>
 
 <nav class="tabs">
-  <div class="tab on" data-tab="summary">Executive Summary</div>
-  <div class="tab" data-tab="inputs">Inputs</div>
-  <div class="tab" data-tab="rates">Crew & Rates</div>
+  <div class="tab" data-tab="summary">Executive Summary</div>
+  <div class="tab on" data-tab="inputs">Inputs</div>
+  <div class="tab" data-tab="rates">Crew &amp; Rates</div>
   <div class="tab" data-tab="production">Production Schedule</div>
   <div class="tab" data-tab="costs">Cost Model</div>
-  <div class="tab" data-tab="funding">Revenue & Funding</div>
+  <div class="tab" data-tab="funding">Revenue &amp; Funding</div>
   <div class="tab" data-tab="cashflow">Cash Flow</div>
 </nav>
 
 <main>
-  <section class="pane on" id="pane-summary">
-    <div class="cards" id="summary-cards"></div>
+  <section class="pane" id="pane-summary">
+    <div class="cards" id="summary-cards"><div class="card"><div class="l">Total Revenue</div><div class="v ">₦0.00B</div><div class="s">NGN converted from USD revenue</div></div><div class="card"><div class="l">Funding Requirement</div><div class="v ">₦0.00B</div><div class="s">excluding CA/security reimbursables</div></div><div class="card"><div class="l">Net Cash Flow</div><div class="v g">₦0.00B</div><div class="s">revenue less funding</div></div><div class="card"><div class="l">CRR</div><div class="v ">0.0%</div><div class="s">funding requirement / revenue</div></div><div class="card"><div class="l">ROIC</div><div class="v ">0.0%</div><div class="s">70% net CF / funding plus capital</div></div></div>
     <div class="grid-2">
       <div class="sec">
         <div class="sec-ttl">Monthly Cash Flow — NGN</div>
-        <div class="chart" id="cash-chart"></div>
+        <div class="chart" id="cash-chart"><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M01</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M02</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M03</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M04</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M05</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M06</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M07</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M08</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">Demob</span></div></div>
       </div>
       <div class="sec">
         <div class="sec-ttl">Top Funding Drivers</div>
@@ -190,51 +1842,165 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </div>
   </section>
 
-  <section class="pane" id="pane-inputs">
-    <div class="grid-3" id="input-grid"></div>
+  <section class="pane on" id="pane-inputs">
+    <div class="grid-3" id="input-grid">
+    <div class="panel"><div class="panel-ttl">Project Identity</div>
+      <div class="row"><label>Project Name</label><input class="inp wide" type="text" value="NEPL OML 65" onchange="setPath('projectInputs.projectName',this.value,'text')"></div>
+      <div class="row"><label>OML / Basin</label><input class="inp wide" type="text" value="" onchange="setPath('projectInputs.omlNumber',this.value,'text')"></div>
+      <div class="row"><label>Client / Operator</label><input class="inp wide" type="text" value="" onchange="setPath('projectInputs.client',this.value,'text')"></div>
+      <div class="row"><label>Contractor</label><input class="inp wide" type="text" value="" onchange="setPath('projectInputs.contractor',this.value,'text')"></div>
+      <div class="row"><label>Project Area</label><input class="inp med" type="number" value="0" onchange="setPath('projectInputs.projectArea',this.value,'number')"><span class="unit">km</span></div>
+      <div class="row"><label>Duration</label><input class="inp small" type="number" value="8" onchange="setPath('projectInputs.duration',this.value,'number')"><span class="unit">mo</span></div>
+    </div>
+    <div class="panel"><div class="panel-ttl">Commercial Terms</div>
+      <div class="row"><label>Turnkey Rate</label><input class="inp med" type="number" value="0" onchange="setPath('contractTerms.turnkeyRate',this.value,'number')"><span class="unit">$/km</span></div>
+      <div class="row"><label>Mobilisation</label><input class="inp med" type="number" value="0" onchange="setPath('contractTerms.mobilisation',this.value,'number')"><span class="unit">$</span></div>
+      <div class="row"><label>Demobilisation</label><input class="inp med" type="number" value="0" onchange="setPath('contractTerms.demobilisation',this.value,'number')"><span class="unit">$</span></div>
+      <div class="row"><label>Uphole Rate</label><input class="inp med" type="number" value="0" onchange="setPath('contractTerms.upholeRate',this.value,'number')"><span class="unit">$/uphole</span></div>
+      <div class="row"><label>Revenue Share</label><input class="inp small" type="number" value="1" onchange="setPath('projectInputs.revenueShare',this.value,'number')"><span class="unit">x</span></div>
+      <div class="row"><label>Cost Share</label><input class="inp small" type="number" value="1" onchange="setPath('projectInputs.costShare',this.value,'number')"><span class="unit">x</span></div>
+      <div class="row"><label>NNPC FX Rate</label><input class="inp med" type="number" value="0" onchange="setPath('projectInputs.fx',this.value,'number')"><span class="unit">₦/$</span></div>
+    </div>
+    <div class="panel"><div class="panel-ttl">Production Drivers</div>
+      <div class="row"><label>Shot Factor</label><input class="inp med" type="number" value="0" onchange="setPath('projectInputs.shotFactor',this.value,'number')"><span class="unit">km/shot</span></div>
+      <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:8px">
+    <div class="panel-ttl" style="margin-bottom:6px">Survey</div>
+    <div class="row"><label>Total km</label><input class="inp med" type="number" value="0" onchange="setPath('productionPrograms.survey.total',this.value,'number')"><span class="unit">km</span></div>
+    <div class="row"><label>Start Month</label><input class="inp small" type="number" value="1" onchange="setPath('productionPrograms.survey.startMonth',this.value,'number')"></div>
+    <div class="row"><label>Active Months</label><input class="inp small" type="number" value="4" onchange="setPath('productionPrograms.survey.activeMonths',this.value,'number')"></div>
+    <div class="row"><label>Ramp Months</label><input class="inp small" type="number" value="1" onchange="setPath('productionPrograms.survey.rampMonths',this.value,'number')"></div>
+    <div class="row"><label>Forecast Type</label><select class="sel med" onchange="setForecastType('survey',this.value)">
+      <option selected="">S-Curve</option><option>Uniform</option><option>Front-Loaded</option><option>Back-Loaded</option><option>Bell Curve</option><option>Manual</option>
+    </select></div>
+  </div>
+      <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:8px">
+    <div class="panel-ttl" style="margin-bottom:6px">Drilling</div>
+    <div class="row"><label>Total SDH</label><input class="inp med" type="number" value="0" onchange="setPath('productionPrograms.drilling.total',this.value,'number')"><span class="unit">SDH</span></div>
+    <div class="row"><label>Start Month</label><input class="inp small" type="number" value="1" onchange="setPath('productionPrograms.drilling.startMonth',this.value,'number')"></div>
+    <div class="row"><label>Active Months</label><input class="inp small" type="number" value="4" onchange="setPath('productionPrograms.drilling.activeMonths',this.value,'number')"></div>
+    <div class="row"><label>Ramp Months</label><input class="inp small" type="number" value="1" onchange="setPath('productionPrograms.drilling.rampMonths',this.value,'number')"></div>
+    <div class="row"><label>Forecast Type</label><select class="sel med" onchange="setForecastType('drilling',this.value)">
+      <option selected="">S-Curve</option><option>Uniform</option><option>Front-Loaded</option><option>Back-Loaded</option><option>Bell Curve</option><option>Manual</option>
+    </select></div>
+  </div>
+      <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:8px">
+    <div class="panel-ttl" style="margin-bottom:6px">Recording</div>
+    <div class="row"><label>Total km</label><input class="inp med" type="number" value="0" onchange="setPath('productionPrograms.recording.total',this.value,'number')"><span class="unit">km</span></div>
+    <div class="row"><label>Start Month</label><input class="inp small" type="number" value="1" onchange="setPath('productionPrograms.recording.startMonth',this.value,'number')"></div>
+    <div class="row"><label>Active Months</label><input class="inp small" type="number" value="4" onchange="setPath('productionPrograms.recording.activeMonths',this.value,'number')"></div>
+    <div class="row"><label>Ramp Months</label><input class="inp small" type="number" value="1" onchange="setPath('productionPrograms.recording.rampMonths',this.value,'number')"></div>
+    <div class="row"><label>Forecast Type</label><select class="sel med" onchange="setForecastType('recording',this.value)">
+      <option>S-Curve</option><option selected="">Uniform</option><option>Front-Loaded</option><option>Back-Loaded</option><option>Bell Curve</option><option>Manual</option>
+    </select></div>
+  </div>
+      <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:8px">
+    <div class="panel-ttl" style="margin-bottom:6px">Upholes</div>
+    <div class="row"><label>Total holes</label><input class="inp med" type="number" value="0" onchange="setPath('productionPrograms.upholes.total',this.value,'number')"><span class="unit">holes</span></div>
+    
+    
+    
+    <div class="row"><label>Forecast Type</label><select class="sel med" onchange="setForecastType('upholes',this.value)">
+      <option>S-Curve</option><option>Uniform</option><option>Front-Loaded</option><option>Back-Loaded</option><option>Bell Curve</option><option selected="">Manual</option>
+    </select></div>
+  </div>
+    </div></div>
   </section>
 
   <section class="pane" id="pane-rates">
     <div class="sec">
-      <div class="sec-ttl">Crew & Rates Dictionary — reference values for manual cost calculations</div>
-      <div class="tbl-wrap"><table id="rates-table"></table></div>
+      <div class="sec-ttl">Crew &amp; Rates Dictionary — reference values for manual cost calculations</div>
+      <div class="tbl-wrap"><table id="rates-table"><thead><tr><th>Rate Item</th><th>Unit</th><th style="min-width:130px">Value (₦)</th><th>Notes</th><th>Actions</th></tr></thead><tbody><tr class="sec-row">
+      <td class="lbl" colspan="4">Survey Rates</td>
+      <td>
+        <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeRateSection('survey')">−</button>
+        <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddRateForm('survey')">+</button>
+      </td>
+    </tr><tr class="sec-row">
+      <td class="lbl" colspan="4">Drilling Rates</td>
+      <td>
+        <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeRateSection('drilling')">−</button>
+        <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddRateForm('drilling')">+</button>
+      </td>
+    </tr><tr class="sec-row">
+      <td class="lbl" colspan="4">Preloading Rates</td>
+      <td>
+        <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeRateSection('preloading')">−</button>
+        <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddRateForm('preloading')">+</button>
+      </td>
+    </tr><tr class="sec-row">
+      <td class="lbl" colspan="4">Recording Rates</td>
+      <td>
+        <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeRateSection('recording')">−</button>
+        <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddRateForm('recording')">+</button>
+      </td>
+    </tr><tr class="sec-row">
+      <td class="lbl" colspan="4">Base Camp &amp; Medical Rates</td>
+      <td>
+        <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeRateSection('baseCamp')">−</button>
+        <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddRateForm('baseCamp')">+</button>
+      </td>
+    </tr><tr><td colspan="5" style="padding:12px;background:var(--surface)">
+    <button class="add-cat-btn" onclick="toggleAddRateSectionForm()">+ Add Section</button>
+    
+  </td></tr></tbody></table></div>
     </div>
   </section>
 
   <section class="pane" id="pane-production">
-    <div class="warn" id="prod-warn"></div>
+    <div class="warn" id="prod-warn" style="display: none;"></div>
     <div class="sec">
       <div class="sec-ttl">Production Phasing</div>
-      <div class="tbl-wrap"><table id="production-table"></table></div>
+      <div class="tbl-wrap"><table id="production-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl ">Survey production (km)</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="tc">0.000</td></tr><tr class=""><td class="lbl ">Drilling production (SDH)</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="tc">0</td></tr><tr><td class="lbl" style="display:flex;align-items:center;gap:6px">Upholes <span style="font-size:9px;background:var(--accent);color:#fff;padding:1px 5px;border-radius:2px;font-family:var(--sans)">MANUAL</span></td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',0,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',1,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',2,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',3,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',4,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',5,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',6,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',7,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td style="padding:3px 4px">
+        <input type="number" value="0" step="1" style="font-family:var(--mono);font-size:11px;width:72px;text-align:right;border:1px solid var(--border);border-radius:2px;padding:3px 5px;background:var(--input);outline:none" onchange="setManualProduction('upholes',8,this.value)" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+      </td><td class="tc" style="color:var(--green);font-weight:600">0 <span style="font-size:9px;color:var(--muted);font-weight:400">/ 0</span></td></tr><tr class=""><td class="lbl ">Recording production (km)</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="tc">0.000</td></tr><tr class="sub-row"><td class="lbl ">Recording shots</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="tc">0</td></tr></tbody></table></div>
     </div>
   </section>
 
   <section class="pane" id="pane-costs">
     <div class="sec">
       <div class="sec-ttl">Cost Structure — line items by category</div>
-      <div class="tbl-wrap"><table id="cost-lines-table"></table></div>
+      <div class="tbl-wrap"><table id="cost-lines-table"><thead><tr><th>Cost Item</th><th>Badge</th><th>Total &amp; Trend</th><th>Actions</th></tr></thead><tbody><tr class="tot-row"><td class="lbl">Total Funding Requirement</td><td></td><td>₦0</td><td></td></tr><tr><td colspan="4" style="padding:12px;background:var(--surface)">
+    <button class="add-cat-btn" onclick="toggleAddCategoryForm()">+ Add Category</button>
+    
+  </td></tr></tbody></table></div>
     </div>
   </section>
 
   <section class="pane" id="pane-funding">
     <div class="sec">
       <div class="sec-ttl">Revenue Bridge — USD to NGN</div>
-      <div class="tbl-wrap"><table id="revenue-table"></table></div>
+      <div class="tbl-wrap"><table id="revenue-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl ">Production revenue (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$0</td></tr><tr class=""><td class="lbl ">Mobilisation (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$0</td></tr><tr class=""><td class="lbl ">Uphole revenue (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$0</td></tr><tr class=""><td class="lbl ">Demobilisation (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$0</td></tr><tr class="sub-row"><td class="lbl ">100% Revenue (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$0</td></tr><tr class=""><td class="lbl i1">EnServ Revenue Share (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$0</td></tr><tr class="tot-row"><td class="lbl ">EnServ Revenue (NGN)</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr></tbody></table></div>
     </div>
     <div class="sec">
       <div class="sec-ttl">Monthly Funding Requirement — NGN</div>
-      <div class="tbl-wrap"><table id="funding-table"></table></div>
+      <div class="tbl-wrap"><table id="funding-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class="tot-row"><td class="lbl ">Total Funding Requirement</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr></tbody></table></div>
     </div>
   </section>
 
   <section class="pane" id="pane-cashflow">
     <div class="sec">
       <div class="sec-ttl">Cash Flow Statement — NGN</div>
-      <div class="tbl-wrap"><table id="cashflow-table"></table></div>
+      <div class="tbl-wrap"><table id="cashflow-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class="sub-row"><td class="lbl ">EnServ Revenue (NGN)</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">Funding Requirement (NGN)</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class="tot-row"><td class="lbl ">Monthly Cash Flow</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">Cumulative Cash Flow</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr></tbody></table></div>
     </div>
     <div class="sec">
       <div class="sec-ttl">Revenue, Funding, and Net Cash Flow</div>
-      <div class="chart" id="bridge-chart"></div>
+      <div class="chart" id="bridge-chart"><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">M01</span></div><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">M02</span></div><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">M03</span></div><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">M04</span></div><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">M05</span></div><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">M06</span></div><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">M07</span></div><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">M08</span></div><div class="bar-col"><div style="display:flex;align-items:flex-end;gap:2px;width:100%;height:100%;justify-content:center"><div class="bar rev" style="width:45%;height:2px"></div><div class="bar cost" style="width:45%;height:2px"></div></div><span class="bar-lbl">Demob</span></div></div>
     </div>
   </section>
 </main>
@@ -513,8 +2279,16 @@ const Projects = (() => {
 
   function save(){
     if(projectsData.currentProjectId){
-      projectsData.projects[projectsData.currentProjectId].data = JSON.parse(JSON.stringify(window.model));
-      hasUnsavedChanges = true;
+      try {
+        // Use a replacer to handle undefined values
+        const modelCopy = JSON.parse(JSON.stringify(window.model, (key, value) => {
+          return value === undefined ? null : value;
+        }));
+        projectsData.projects[projectsData.currentProjectId].data = modelCopy;
+        hasUnsavedChanges = true;
+      } catch (e) {
+        console.error('Error saving project:', e);
+      }
     }
   }
 
@@ -544,24 +2318,53 @@ const Projects = (() => {
 })();
 
 // Save to file function
-async function saveToFile(){
-  // Save current model to projects data
-  Projects.save();
+// Auto-save functionality
+let autoSaveTimeout = null;
+let isSaving = false;
 
-  // Get current HTML
-  const htmlDoc = document.documentElement.outerHTML;
+function updateSaveStatus(status, text) {
+  const icon = document.getElementById('save-icon');
+  const textEl = document.getElementById('save-text');
+  if (!icon || !textEl) return;
 
-  // Get projects data
-  const dataJson = JSON.stringify(Projects.getData(), null, 2);
+  if (status === 'saving') {
+    icon.textContent = '⏳';
+    textEl.textContent = text || 'Saving...';
+  } else if (status === 'saved') {
+    icon.textContent = '✓';
+    textEl.textContent = text || 'Saved';
+  } else if (status === 'error') {
+    icon.textContent = '⚠';
+    textEl.textContent = text || 'Error';
+  } else if (status === 'pending') {
+    icon.textContent = '●';
+    textEl.textContent = text || 'Unsaved';
+  }
+}
 
-  // Replace the embedded data script
-  const updatedHtml = htmlDoc.replace(
-    /<script type="application\/json" id="embedded-projects-data">[\s\S]*?<\/script>/,
-    '<script type="application/json" id="embedded-projects-data">\n' + dataJson + '\n<\/script>'
-  );
+async function saveToFile() {
+  if (isSaving) return;
 
-  // Send to server
+  isSaving = true;
+  updateSaveStatus('saving', 'Saving...');
+
   try {
+    // Save current model to projects data
+    Projects.save();
+
+    // Get current HTML
+    const htmlDoc = document.documentElement.outerHTML;
+
+    // Get projects data
+    const dataJson = JSON.stringify(Projects.getData(), null, 2);
+
+    // Replace the embedded data script
+    const updatedHtml = htmlDoc.replace(
+      /<script type="application\/json" id="embedded-projects-data">[\s\S]*?<\/script>/,
+      '<script type="application/json" id="embedded-projects-data">\n' + dataJson + '\n<\/script>'
+    );
+
+    // Send to server
     const response = await fetch('/api/save', {
       method: 'POST',
       headers: {
@@ -570,17 +2373,38 @@ async function saveToFile(){
       body: JSON.stringify({ html: updatedHtml })
     });
 
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
+
     const result = await response.json();
 
     if (result.success) {
       Projects.clearChanges();
-      alert('✅ Saved successfully!\n\n💡 All your projects are saved on the server!');
+      updateSaveStatus('saved', 'Saved');
     } else {
-      alert('❌ Save failed: ' + result.error);
+      updateSaveStatus('error', 'Save failed');
     }
   } catch (error) {
-    alert('❌ Save failed: ' + error.message);
+    console.error('Save error:', error);
+    updateSaveStatus('error', 'Save failed');
+  } finally {
+    isSaving = false;
   }
+}
+
+function triggerAutoSave() {
+  updateSaveStatus('pending', 'Unsaved');
+
+  // Clear existing timeout
+  if (autoSaveTimeout) {
+    clearTimeout(autoSaveTimeout);
+  }
+
+  // Set new timeout for 2 seconds after last change
+  autoSaveTimeout = setTimeout(() => {
+    saveToFile();
+  }, 2000);
 }
 
 function renderProjPanel(){
@@ -594,9 +2418,9 @@ function renderProjPanel(){
       <span class="pi-name">${p.name}</span>
       <span class="pi-date">${fmt(p.createdAt)}</span>
       <span class="pi-actions" onclick="event.stopPropagation()">
-        <button class="pi-act" onclick="Projects.rename('${p.id}')">Rename</button>
-        <button class="pi-act" onclick="Projects.duplicate('${p.id}')">Dup</button>
-        <button class="pi-act del" onclick="Projects.remove('${p.id}')">Del</button>
+        <button class="pi-act" onclick="event.stopPropagation(); Projects.rename('${p.id}')">Rename</button>
+        <button class="pi-act" onclick="event.stopPropagation(); Projects.duplicate('${p.id}')">Dup</button>
+        <button class="pi-act del" onclick="event.stopPropagation(); Projects.remove('${p.id}')">Del</button>
       </span>
     </div>`).join('');
   const btn = document.getElementById('proj-btn-name');
@@ -836,6 +2660,7 @@ function render(){
   renderCosts();
   renderFunding();
   renderCashFlow();
+  triggerAutoSave();
 }
 
 function renderHeader(){
@@ -1915,5 +3740,6 @@ document.querySelectorAll('.tab').forEach(tab=>{
 
 // Initial render() is called by bootstrap() function
 </script>
-</body>
-</html>
+
+
+<grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></body></html>
