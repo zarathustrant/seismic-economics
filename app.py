@@ -8,8 +8,9 @@ app.secret_key = os.environ.get('SECRET_KEY', 'change-this-secret-key-in-product
 # Password (set via environment variable or default)
 PASSWORD = os.environ.get('APP_PASSWORD', 'seismic2024')
 
-# Path to the HTML file
-HTML_FILE = 'app.html'
+# Path to the HTML file (anchored to this script's directory)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+HTML_FILE = os.path.join(BASE_DIR, 'app.html')
 
 # Simple password protection decorator
 def require_auth(f):
@@ -117,7 +118,10 @@ def index():
 def save():
     """Save the updated HTML file"""
     try:
-        data = request.get_json()
+        data = request.get_json(silent=True) or {}
+        if not isinstance(data, dict):
+            return jsonify({'success': False, 'error': 'Invalid JSON payload'}), 400
+
         html_content = data.get('html')
 
         if not html_content:
