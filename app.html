@@ -1570,75 +1570,7 @@
       "id": "mool7brwbzdo",
       "name": "APL OML 124",
       "createdAt": 1777741188188,
-      "data": {
-        "projectInputs": {
-          "projectName": "APL OML 124",
-          "omlNumber": "",
-          "client": "",
-          "contractor": "",
-          "projectArea": 0,
-          "shotFactor": 0,
-          "redrillFactor": 1,
-          "duration": 8,
-          "revenueShare": 1,
-          "costShare": 1,
-          "fx": 0
-        },
-        "contractTerms": {
-          "turnkeyRate": 0,
-          "mobilisation": 0,
-          "demobilisation": 0,
-          "upholeRate": 0
-        },
-        "productionPrograms": {
-          "survey": {
-            "label": "Survey",
-            "unit": "km",
-            "total": 0,
-            "startMonth": 1,
-            "activeMonths": 4,
-            "rampMonths": 1,
-            "profile": "S-Curve"
-          },
-          "drilling": {
-            "label": "Drilling",
-            "unit": "SDH",
-            "total": 0,
-            "startMonth": 1,
-            "activeMonths": 4,
-            "rampMonths": 1,
-            "profile": "S-Curve"
-          },
-          "recording": {
-            "label": "Recording",
-            "unit": "km",
-            "total": 0,
-            "startMonth": 1,
-            "activeMonths": 4,
-            "rampMonths": 1,
-            "profile": "Uniform"
-          },
-          "upholes": {
-            "label": "Upholes",
-            "unit": "holes",
-            "total": 0,
-            "startMonth": 1,
-            "activeMonths": 1,
-            "rampMonths": 1,
-            "profile": "Manual",
-            "manualMonthly": []
-          }
-        },
-        "upholes": [],
-        "rateCards": {
-          "survey": [],
-          "drilling": [],
-          "preloading": [],
-          "recording": [],
-          "baseCamp": []
-        },
-        "costLines": []
-      }
+      "data": null
     }
   },
   "currentProjectId": "mool7brwbzdo"
@@ -1760,12 +1692,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 <header class="hdr">
   <div class="hdr-left">
     <div id="save-status" style="border:1px solid #30363d;background:#0d1a0d;color:#8f9892;font-size:11px;border-radius:3px;padding:5px 10px;font-family:var(--sans);display:flex;align-items:center;gap:5px;white-space:nowrap" title="Auto-save status">
-      <span id="save-icon" style="font-size:14px">✓</span>
-      <span id="save-text">Saved</span>
+      <span id="save-icon" style="font-size:14px">⏳</span>
+      <span id="save-text">Saving...</span>
     </div>
     <button class="proj-btn" id="proj-btn" onclick="toggleProjPanel()">
       <span style="font-size:14px;opacity:.6">⬡</span>
-      <span class="proj-name" id="proj-btn-name">NEPL OML 65</span>
+      <span class="proj-name" id="proj-btn-name">APL OML 124</span>
       <span class="proj-chevron">▾</span>
     </button>
     <span class="hdr-sub" id="h-sub"> · 8 active months · </span>
@@ -1782,7 +1714,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
   </div>
 </header>
 
-<div class="proj-panel open" id="proj-panel">
+<div class="proj-panel" id="proj-panel">
   <div class="proj-list" id="proj-list">
     <div class="proj-item " onclick="Projects.switchTo('mool2dk00xh7')">
       <span class="pi-name">Default Project</span>
@@ -1819,10 +1751,10 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 
 <nav class="tabs">
   <div class="tab" data-tab="summary">Executive Summary</div>
-  <div class="tab on" data-tab="inputs">Inputs</div>
+  <div class="tab" data-tab="inputs">Inputs</div>
   <div class="tab" data-tab="rates">Crew &amp; Rates</div>
   <div class="tab" data-tab="production">Production Schedule</div>
-  <div class="tab" data-tab="costs">Cost Model</div>
+  <div class="tab on" data-tab="costs">Cost Model</div>
   <div class="tab" data-tab="funding">Revenue &amp; Funding</div>
   <div class="tab" data-tab="cashflow">Cash Flow</div>
 </nav>
@@ -1837,15 +1769,18 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </div>
       <div class="sec">
         <div class="sec-ttl">Top Funding Drivers</div>
-        <div class="driver-grid" id="driver-grid"></div>
+        <div class="driver-grid" id="driver-grid"><div class="driver">
+    <div class="driver-top"><div class="driver-name">DRILLING</div><div class="driver-val">₦0M</div></div>
+    <div class="driver-track"><div class="driver-fill" style="width:2%"></div></div>
+  </div></div>
       </div>
     </div>
   </section>
 
-  <section class="pane on" id="pane-inputs">
+  <section class="pane" id="pane-inputs">
     <div class="grid-3" id="input-grid">
     <div class="panel"><div class="panel-ttl">Project Identity</div>
-      <div class="row"><label>Project Name</label><input class="inp wide" type="text" value="NEPL OML 65" onchange="setPath('projectInputs.projectName',this.value,'text')"></div>
+      <div class="row"><label>Project Name</label><input class="inp wide" type="text" value="APL OML 124" onchange="setPath('projectInputs.projectName',this.value,'text')"></div>
       <div class="row"><label>OML / Basin</label><input class="inp wide" type="text" value="" onchange="setPath('projectInputs.omlNumber',this.value,'text')"></div>
       <div class="row"><label>Client / Operator</label><input class="inp wide" type="text" value="" onchange="setPath('projectInputs.client',this.value,'text')"></div>
       <div class="row"><label>Contractor</label><input class="inp wide" type="text" value="" onchange="setPath('projectInputs.contractor',this.value,'text')"></div>
@@ -1972,10 +1907,25 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </div>
   </section>
 
-  <section class="pane" id="pane-costs">
+  <section class="pane on" id="pane-costs">
     <div class="sec">
       <div class="sec-ttl">Cost Structure — line items by category</div>
-      <div class="tbl-wrap"><table id="cost-lines-table"><thead><tr><th>Cost Item</th><th>Badge</th><th>Total &amp; Trend</th><th>Actions</th></tr></thead><tbody><tr class="tot-row"><td class="lbl">Total Funding Requirement</td><td></td><td>₦0</td><td></td></tr><tr><td colspan="4" style="padding:12px;background:var(--surface)">
+      <div class="tbl-wrap"><table id="cost-lines-table"><thead><tr><th>Cost Item</th><th>Badge</th><th>Total &amp; Trend</th><th>Actions</th></tr></thead><tbody><tr class="sec-row">
+      <td class="lbl" colspan="2">DRILLING</td>
+      <td>₦0</td>
+      <td>
+        <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('DRILLING')">−</button>
+        <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddItemForm('DRILLING')">+</button>
+      </td>
+    </tr><tr>
+        <td class="lbl i1">New Item</td>
+        <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 8.5,18 17,18 25.5,18 34,18 42.5,18 51,18 59.5,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
+        <td>
+          <button class="btn" onclick="toggleLine('c47')">Monthly</button>
+          <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(0)">Remove</button>
+        </td>
+      </tr><tr class="sub-row"><td class="lbl">DRILLING Total</td><td></td><td>₦0</td><td></td></tr><tr class="tot-row"><td class="lbl">Total Funding Requirement</td><td></td><td>₦0</td><td></td></tr><tr><td colspan="4" style="padding:12px;background:var(--surface)">
     <button class="add-cat-btn" onclick="toggleAddCategoryForm()">+ Add Category</button>
     
   </td></tr></tbody></table></div>
@@ -1989,7 +1939,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </div>
     <div class="sec">
       <div class="sec-ttl">Monthly Funding Requirement — NGN</div>
-      <div class="tbl-wrap"><table id="funding-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class="tot-row"><td class="lbl ">Total Funding Requirement</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr></tbody></table></div>
+      <div class="tbl-wrap"><table id="funding-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl i1">DRILLING</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class="tot-row"><td class="lbl ">Total Funding Requirement</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr></tbody></table></div>
     </div>
   </section>
 
@@ -2293,7 +2243,22 @@ const Projects = (() => {
   }
 
   function loadModel(id){
-    return projectsData.projects[id] ? projectsData.projects[id].data : null;
+    if (!projectsData.projects[id]) return null;
+
+    // Merge loaded data with defaults to ensure all fields exist
+    const loadedData = projectsData.projects[id].data;
+    const merged = JSON.parse(JSON.stringify(PROJECT_DATA)); // Start with defaults
+
+    // Deep merge loaded data into defaults
+    Object.keys(loadedData).forEach(key => {
+      if (typeof loadedData[key] === 'object' && !Array.isArray(loadedData[key])) {
+        merged[key] = {...merged[key], ...loadedData[key]};
+      } else {
+        merged[key] = loadedData[key];
+      }
+    });
+
+    return merged;
   }
 
   function currentName(){
