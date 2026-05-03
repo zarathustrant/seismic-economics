@@ -1496,6 +1496,7 @@
       "data": {
         "projectInputs": {
           "projectName": "RAEC OML 65 3D SEISMIC ACQUISITION",
+          "projectType": "2D",
           "omlNumber": "OML 65",
           "client": "RAEC",
           "contractor": "EnServ/BGP",
@@ -1503,8 +1504,8 @@
           "shotFactor": 0.0276794095,
           "redrillFactor": 1.1,
           "duration": 10,
-          "revenueShare": 1,
-          "costShare": 1,
+          "revenueShare": 0.55,
+          "costShare": 0.5,
           "fx": 1360
         },
         "contractTerms": {
@@ -1590,12 +1591,12 @@
             },
             {
               "name": "Number of survey crew",
-              "value": 0,
+              "value": 10,
               "unit": "crews"
             },
             {
               "name": "Total personnel in survey crew",
-              "value": 0,
+              "value": 9,
               "unit": "people"
             },
             {
@@ -1610,7 +1611,7 @@
             },
             {
               "name": "Payoff rate",
-              "value": 0,
+              "value": 65000,
               "unit": "₦/SDH"
             }
           ],
@@ -1729,7 +1730,7 @@
             "driverRef": "",
             "rate": 0,
             "monthly": [
-              0,
+              6790000,
               0,
               0,
               0,
@@ -1740,11 +1741,19 @@
               0
             ],
             "formula": {
-              "enabled": false,
-              "tokens": [],
-              "applyTo": "all"
+              "enabled": true,
+              "tokens": [
+                {
+                  "type": "num",
+                  "value": 6790000
+                }
+              ],
+              "applyTo": [
+                0
+              ]
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c2",
@@ -1757,9 +1766,11 @@
             "rate": 0,
             "monthly": [
               0,
-              0,
-              0,
-              0,
+              6324000,
+              12555000,
+              12555000,
+              12555000,
+              6379149,
               0,
               0,
               0,
@@ -1767,11 +1778,26 @@
               0
             ],
             "formula": {
-              "enabled": false,
-              "tokens": [],
+              "enabled": true,
+              "tokens": [
+                {
+                  "type": "prod",
+                  "series": "survey"
+                },
+                {
+                  "type": "op",
+                  "value": "×"
+                },
+                {
+                  "type": "rate",
+                  "section": "survey",
+                  "idx": 0
+                }
+              ],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c3",
@@ -1798,7 +1824,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c4",
@@ -1818,14 +1845,23 @@
               0,
               0,
               0,
-              0
+              0,
+              10000000
             ],
             "formula": {
-              "enabled": false,
-              "tokens": [],
-              "applyTo": "all"
+              "enabled": true,
+              "tokens": [
+                {
+                  "type": "num",
+                  "value": 10000000
+                }
+              ],
+              "applyTo": [
+                9
+              ]
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c5",
@@ -1852,7 +1888,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c6",
@@ -1879,7 +1916,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c7",
@@ -1906,7 +1944,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c8",
@@ -1933,7 +1972,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c9",
@@ -1960,7 +2000,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c10",
@@ -1987,7 +2028,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c11",
@@ -2014,7 +2056,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c12",
@@ -2026,22 +2069,30 @@
             "driverRef": "",
             "rate": 0,
             "monthly": [
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0,
-              0
+              10000000,
+              10000000,
+              10000000,
+              10000000,
+              10000000,
+              10000000,
+              10000000,
+              10000000,
+              10000000,
+              10000000,
+              10000000
             ],
             "formula": {
-              "enabled": false,
-              "tokens": [],
+              "enabled": true,
+              "tokens": [
+                {
+                  "type": "num",
+                  "value": 10000000
+                }
+              ],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c13",
@@ -2068,7 +2119,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c14",
@@ -2095,7 +2147,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c15",
@@ -2122,7 +2175,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c16",
@@ -2149,7 +2203,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c17",
@@ -2176,7 +2231,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c18",
@@ -2203,7 +2259,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c19",
@@ -2230,7 +2287,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c20",
@@ -2257,7 +2315,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c21",
@@ -2284,7 +2343,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c22",
@@ -2311,7 +2371,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c23",
@@ -2338,7 +2399,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c24",
@@ -2365,7 +2427,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c25",
@@ -2392,7 +2455,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c26",
@@ -2419,7 +2483,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c27",
@@ -2446,7 +2511,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c28",
@@ -2473,7 +2539,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c29",
@@ -2500,7 +2567,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c30",
@@ -2527,7 +2595,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c31",
@@ -2554,7 +2623,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c32",
@@ -2581,7 +2651,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c33",
@@ -2608,7 +2679,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c34",
@@ -2635,7 +2707,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c35",
@@ -2662,7 +2735,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c36",
@@ -2689,7 +2763,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c37",
@@ -2716,7 +2791,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c38",
@@ -2743,7 +2819,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c39",
@@ -2770,7 +2847,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c40",
@@ -2797,7 +2875,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c41",
@@ -2824,7 +2903,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c42",
@@ -2851,7 +2931,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c43",
@@ -2878,7 +2959,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c44",
@@ -2905,7 +2987,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c45",
@@ -2932,7 +3015,8 @@
               "tokens": [],
               "applyTo": "all"
             },
-            "monthFormulas": {}
+            "monthFormulas": {},
+            "shareMode": "full"
           },
           {
             "id": "c46",
@@ -2958,6 +3042,63 @@
               "enabled": false,
               "tokens": [],
               "applyTo": "all"
+            },
+            "monthFormulas": {},
+            "shareMode": "full"
+          },
+          {
+            "id": "c47",
+            "category": "SURVEYING SUB.CONT. JOB",
+            "item": "Payoff",
+            "badge": "labor",
+            "shareMode": "full",
+            "owner": "EnServ",
+            "driverType": "manualMonthly",
+            "driverRef": "",
+            "rate": 0,
+            "monthly": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              5850000,
+              0
+            ],
+            "formula": {
+              "enabled": true,
+              "tokens": [
+                {
+                  "type": "rate",
+                  "section": "survey",
+                  "idx": 6
+                },
+                {
+                  "type": "op",
+                  "value": "×"
+                },
+                {
+                  "type": "rate",
+                  "section": "survey",
+                  "idx": 2
+                },
+                {
+                  "type": "op",
+                  "value": "×"
+                },
+                {
+                  "type": "rate",
+                  "section": "survey",
+                  "idx": 3
+                }
+              ],
+              "applyTo": [
+                9
+              ]
             },
             "monthFormulas": {}
           }
@@ -3038,6 +3179,21 @@ tr.tot-row td{background:var(--hdr);color:#f6f7f4;font-weight:500;border-top:2px
 tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos{color:var(--green)}
 .badge{font-family:var(--mono);font-size:10px;padding:1px 7px;border-radius:2px;background:#eef1eb;color:var(--muted);display:inline-block}
 .badge.var{background:#e7f5ef;color:var(--green)}.badge.sub{background:#fff1e6;color:var(--amber)}.badge.lease{background:#e8f3f6;color:var(--accent)}.badge.labor{background:#f1edf8;color:#6d4caf}.badge.owned{background:#edf7ee;color:var(--green)}
+.share-sel{
+  -webkit-appearance:none;appearance:none;-moz-appearance:none;
+  border:1px solid transparent;border-radius:999px;
+  padding:2px 9px;
+  font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;
+  cursor:pointer;line-height:1.35;min-width:86px;
+}
+.share-sel::-ms-expand{display:none}
+.share-sel.full{
+  background-color:#e8f3f6;color:var(--accent);border-color:#c4dbe6;
+}
+.share-sel.shared{
+  background-color:#fbe9e8;color:var(--red);border-color:#efc8c4;
+}
+.share-sel:focus{outline:none;box-shadow:0 0 0 2px rgba(21,94,117,.16)}
 .btn{border:1px solid var(--border-s);background:transparent;color:var(--muted);font-size:10px;border-radius:2px;padding:3px 7px;cursor:pointer}
 .btn:hover{border-color:var(--accent);background:var(--accent);color:#fff}
 .chart{height:190px;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:18px 16px 34px;position:relative;display:flex;align-items:flex-end;gap:3px;overflow:hidden}
@@ -3047,6 +3203,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 .driver-grid{display:grid;grid-template-columns:repeat(2,minmax(260px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:4px;overflow:hidden}
 .driver{background:var(--surface);padding:10px 12px}.driver-top{display:flex;justify-content:space-between;gap:10px;margin-bottom:6px}.driver-name{font-size:11px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.driver-val{font-family:var(--mono);font-size:11px;color:var(--muted)}
 .driver-track{height:4px;background:#e8ece5;border-radius:2px;overflow:hidden}.driver-fill{height:100%;background:var(--accent)}
+.badge-dist{display:grid;grid-template-columns:280px 1fr;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:14px}
+.badge-pie-wrap{display:flex;align-items:center;justify-content:center;min-height:220px}
+.badge-pie{width:200px;height:200px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.badge-pie-hole{width:104px;height:104px;border-radius:50%;background:var(--surface);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.badge-pie-hole .l{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:600}
+.badge-pie-hole .v{font-family:var(--mono);font-size:13px;color:var(--text);margin-top:2px}
+.badge-legend{display:grid;grid-template-columns:1fr;gap:8px;align-content:start}
+.badge-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;padding:8px 10px;background:#f8faf7;border:1px solid var(--border);border-radius:3px}
+.badge-dot{width:10px;height:10px;border-radius:50%}
+.badge-name{font-size:12px;color:var(--text)}
+.badge-val{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.badge-pct{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--accent)}
+.badge-empty{font-size:12px;color:var(--muted);padding:16px;text-align:center}
 /* ── Project Switcher ── */
 .proj-btn{display:flex;align-items:center;gap:7px;border:1px solid #30363d;background:transparent;color:#e2e8e2;font-size:11px;border-radius:3px;padding:5px 10px;cursor:pointer;font-family:var(--sans);white-space:nowrap;max-width:220px}
 .proj-btn:hover{border-color:#6b7c6b;background:#1e2a1e}
@@ -3096,7 +3265,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 .new-item-row{background:#f8f9f6}
 .new-item-row td{padding:12px}
 .add-item-form{display:flex;gap:10px;align-items:center}
-@media(max-width:980px){.hdr{align-items:flex-start;height:auto;gap:10px;padding:12px 16px;flex-direction:column}.hdr-kpis{width:100%;overflow:auto}.tabs{top:91px;overflow:auto;padding:0 12px}.pane{padding:20px 14px 48px}.cards{grid-template-columns:repeat(2,1fr)}.grid-2,.grid-3{grid-template-columns:1fr}.driver-grid{grid-template-columns:1fr}.help-popover{top:126px;right:10px;width:min(360px,calc(100vw - 20px));max-height:calc(100vh - 138px)}}
+@media(max-width:980px){.hdr{align-items:flex-start;height:auto;gap:10px;padding:12px 16px;flex-direction:column}.hdr-kpis{width:100%;overflow:auto}.tabs{top:91px;overflow:auto;padding:0 12px}.pane{padding:20px 14px 48px}.cards{grid-template-columns:repeat(2,1fr)}.grid-2,.grid-3,.badge-dist{grid-template-columns:1fr}.driver-grid{grid-template-columns:1fr}.help-popover{top:126px;right:10px;width:min(360px,calc(100vw - 20px));max-height:calc(100vh - 138px)}}
 </style>
 </head>
 <body data-new-gr-c-s-check-loaded="9.96.0" data-gr-ext-installed="">
@@ -3114,11 +3283,11 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     <span class="hdr-sub" id="h-sub">OML 65 · 10 active months · EnServ/BGP</span>
   </div>
   <div class="hdr-kpis">
-    <div class="hdr-kpi"><div class="l">Revenue</div><div class="v" id="h-rev">₦17.07B</div></div>
-    <div class="hdr-kpi"><div class="l">Funding</div><div class="v" id="h-cost">₦0.00B</div></div>
-    <div class="hdr-kpi"><div class="l">Net CF</div><div class="v g" id="h-net">₦17.07B</div></div>
-    <div class="hdr-kpi"><div class="l">CRR</div><div class="v" id="h-crr">0.0%</div></div>
-    <div class="hdr-kpi"><div class="l">ROIC</div><div class="v" id="h-roic">0.0%</div></div>
+    <div class="hdr-kpi"><div class="l">Revenue</div><div class="v" id="h-rev">₦9.39B</div></div>
+    <div class="hdr-kpi"><div class="l">Funding</div><div class="v" id="h-cost">₦0.18B</div></div>
+    <div class="hdr-kpi"><div class="l">Net CF</div><div class="v g" id="h-net">₦9.20B</div></div>
+    <div class="hdr-kpi"><div class="l">CRR</div><div class="v" id="h-crr">1.9%</div></div>
+    <div class="hdr-kpi"><div class="l">ROIC</div><div class="v" id="h-roic">943.4%</div></div>
     <div class="hdr-kpi" style="min-width:auto">
       <button onclick="if(confirm('Reset this project to defaults?')){Projects.resetCurrent();}" style="border:1px solid #30363d;background:transparent;color:#8f9892;font-size:10px;border-radius:2px;padding:4px 9px;cursor:pointer;font-family:var(--sans)">Reset</button>
     </div>
@@ -3153,8 +3322,8 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 
 <nav class="tabs">
   <div class="tab" data-tab="summary"><span class="tab-label">Executive Summary</span><button class="tab-help" onclick="event.stopPropagation();openHelp('summary')" title="How Executive Summary works">?</button></div>
-  <div class="tab on" data-tab="inputs"><span class="tab-label">Inputs</span><button class="tab-help" onclick="event.stopPropagation();openHelp('inputs')" title="How Inputs works">?</button></div>
-  <div class="tab" data-tab="rates"><span class="tab-label">Crew &amp; Rates</span><button class="tab-help" onclick="event.stopPropagation();openHelp('rates')" title="How Crew &amp; Rates works">?</button></div>
+  <div class="tab" data-tab="inputs"><span class="tab-label">Inputs</span><button class="tab-help" onclick="event.stopPropagation();openHelp('inputs')" title="How Inputs works">?</button></div>
+  <div class="tab on" data-tab="rates"><span class="tab-label">Crew &amp; Rates</span><button class="tab-help" onclick="event.stopPropagation();openHelp('rates')" title="How Crew &amp; Rates works">?</button></div>
   <div class="tab" data-tab="production"><span class="tab-label">Production Schedule</span><button class="tab-help" onclick="event.stopPropagation();openHelp('production')" title="How Production Schedule works">?</button></div>
   <div class="tab" data-tab="costs"><span class="tab-label">Cost Model</span><button class="tab-help" onclick="event.stopPropagation();openHelp('costs')" title="How Cost Model works">?</button></div>
   <div class="tab" data-tab="funding"><span class="tab-label">Revenue &amp; Funding</span><button class="tab-help" onclick="event.stopPropagation();openHelp('funding')" title="How Revenue &amp; Funding works">?</button></div>
@@ -3173,25 +3342,25 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 
 <main>
   <section class="pane" id="pane-summary">
-    <div class="cards" id="summary-cards"><div class="card"><div class="l">Total Revenue</div><div class="v ">₦17.07B</div><div class="s">NGN converted from USD revenue</div></div><div class="card"><div class="l">Funding Requirement</div><div class="v ">₦0.00B</div><div class="s">excluding CA/security reimbursables</div></div><div class="card"><div class="l">Net Cash Flow</div><div class="v g">₦17.07B</div><div class="s">revenue less funding</div></div><div class="card"><div class="l">CRR</div><div class="v ">0.0%</div><div class="s">funding requirement / revenue</div></div><div class="card"><div class="l">ROIC</div><div class="v ">0.0%</div><div class="s">70% net CF / funding plus capital</div></div></div>
+    <div class="cards" id="summary-cards"><div class="card"><div class="l">Total Revenue</div><div class="v ">₦9.39B</div><div class="s">NGN converted from USD revenue</div></div><div class="card"><div class="l">Funding Requirement</div><div class="v ">₦0.18B</div><div class="s">excluding CA/security reimbursables</div></div><div class="card"><div class="l">Net Cash Flow</div><div class="v g">₦9.20B</div><div class="s">revenue less funding</div></div><div class="card"><div class="l">CRR</div><div class="v ">1.9%</div><div class="s">funding requirement / revenue</div></div><div class="card"><div class="l">ROIC</div><div class="v ">943.4%</div><div class="s">70% net CF / funding plus capital</div></div></div>
     <div class="grid-2">
       <div class="sec">
         <div class="sec-ttl">Monthly Cash Flow — NGN</div>
-        <div class="chart" id="cash-chart"><div class="bar-col"><div class="bar pos" style="height:102px;margin-bottom:0px"></div><span class="bar-lbl">M01</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M02</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M03</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M04</span></div><div class="bar-col"><div class="bar pos" style="height:128px;margin-bottom:0px"></div><span class="bar-lbl">M05</span></div><div class="bar-col"><div class="bar pos" style="height:128px;margin-bottom:0px"></div><span class="bar-lbl">M06</span></div><div class="bar-col"><div class="bar pos" style="height:128px;margin-bottom:0px"></div><span class="bar-lbl">M07</span></div><div class="bar-col"><div class="bar pos" style="height:128px;margin-bottom:0px"></div><span class="bar-lbl">M08</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M09</span></div><div class="bar-col"><div class="bar pos" style="height:26px;margin-bottom:0px"></div><span class="bar-lbl">M10</span></div><div class="bar-col"><div class="bar pos" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">Demob</span></div></div>
+        <div class="chart" id="cash-chart"><div class="zero" style="bottom:34.68817204301075px"></div><div class="bar-col"><div class="bar pos" style="height:102px;margin-bottom:0.6881720430107527px"></div><span class="bar-lbl">M01</span></div><div class="bar-col"><div class="bar neg" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M02</span></div><div class="bar-col"><div class="bar neg" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M03</span></div><div class="bar-col"><div class="bar neg" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M04</span></div><div class="bar-col"><div class="bar pos" style="height:127px;margin-bottom:0.6881720430107527px"></div><span class="bar-lbl">M05</span></div><div class="bar-col"><div class="bar pos" style="height:128px;margin-bottom:0.6881720430107527px"></div><span class="bar-lbl">M06</span></div><div class="bar-col"><div class="bar pos" style="height:128px;margin-bottom:0.6881720430107527px"></div><span class="bar-lbl">M07</span></div><div class="bar-col"><div class="bar pos" style="height:128px;margin-bottom:0.6881720430107527px"></div><span class="bar-lbl">M08</span></div><div class="bar-col"><div class="bar neg" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">M09</span></div><div class="bar-col"><div class="bar pos" style="height:24px;margin-bottom:0.6881720430107527px"></div><span class="bar-lbl">M10</span></div><div class="bar-col"><div class="bar neg" style="height:2px;margin-bottom:0px"></div><span class="bar-lbl">Demob</span></div></div>
       </div>
       <div class="sec">
         <div class="sec-ttl">Top Funding Drivers</div>
         <div class="driver-grid" id="driver-grid"><div class="driver">
-    <div class="driver-top"><div class="driver-name">SURVEYING SUB.CONT. JOB</div><div class="driver-val">₦0M</div></div>
-    <div class="driver-track"><div class="driver-fill" style="width:2%"></div></div>
+    <div class="driver-top"><div class="driver-name">RECORDING SUB. CONTRACTORS JOB</div><div class="driver-val">₦110M</div></div>
+    <div class="driver-track"><div class="driver-fill" style="width:100%"></div></div>
   </div><div class="driver">
-    <div class="driver-top"><div class="driver-name">DRILLING SUB. CONTRACTORS JOB</div><div class="driver-val">₦0M</div></div>
-    <div class="driver-track"><div class="driver-fill" style="width:2%"></div></div>
+    <div class="driver-top"><div class="driver-name">SURVEYING SUB.CONT. JOB</div><div class="driver-val">₦63M</div></div>
+    <div class="driver-track"><div class="driver-fill" style="width:57.28013545454546%"></div></div>
+  </div><div class="driver">
+    <div class="driver-top"><div class="driver-name">DRILLING SUB. CONTRACTORS JOB</div><div class="driver-val">₦10M</div></div>
+    <div class="driver-track"><div class="driver-fill" style="width:9.090909090909092%"></div></div>
   </div><div class="driver">
     <div class="driver-top"><div class="driver-name">FIRING LINES/CONTRACT</div><div class="driver-val">₦0M</div></div>
-    <div class="driver-track"><div class="driver-fill" style="width:2%"></div></div>
-  </div><div class="driver">
-    <div class="driver-top"><div class="driver-name">RECORDING SUB. CONTRACTORS JOB</div><div class="driver-val">₦0M</div></div>
     <div class="driver-track"><div class="driver-fill" style="width:2%"></div></div>
   </div><div class="driver">
     <div class="driver-top"><div class="driver-name">FIELD CONTRACT LABOUR</div><div class="driver-val">₦0M</div></div>
@@ -3208,25 +3377,54 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
   </div></div>
       </div>
     </div>
+    <div class="sec">
+      <div class="sec-ttl">Cost Badge Distribution — share of total funding by badge</div>
+      <div class="badge-dist">
+        <div class="badge-pie-wrap" id="badge-pie">
+    <div class="badge-pie" style="background:conic-gradient(#7a5b2d 0.000deg 216.384deg, #b45309 216.384deg 348.492deg, #6d4caf 348.492deg 360.000deg)">
+      <div class="badge-pie-hole">
+        <div class="l">Total</div>
+        <div class="v">₦183M</div>
+      </div>
+    </div></div>
+        <div class="badge-legend" id="badge-legend"><div class="badge-row">
+      <span class="badge-dot" style="background:#7a5b2d"></span>
+      <span class="badge-name">Fixed Cost</span>
+      <span class="badge-val">₦110,000,000</span>
+      <span class="badge-pct">60.1%</span>
+    </div><div class="badge-row">
+      <span class="badge-dot" style="background:#b45309"></span>
+      <span class="badge-name">Subcontract</span>
+      <span class="badge-val">₦67,158,149</span>
+      <span class="badge-pct">36.7%</span>
+    </div><div class="badge-row">
+      <span class="badge-dot" style="background:#6d4caf"></span>
+      <span class="badge-name">Labour</span>
+      <span class="badge-val">₦5,850,000</span>
+      <span class="badge-pct">3.2%</span>
+    </div></div>
+      </div>
+    </div>
   </section>
 
-  <section class="pane on" id="pane-inputs">
+  <section class="pane" id="pane-inputs">
     <div class="grid-3" id="input-grid">
     <div class="panel"><div class="panel-ttl">Project Identity</div>
       <div class="row"><label>Project Name</label><input class="inp wide" type="text" value="RAEC OML 65 3D SEISMIC ACQUISITION" onchange="setPath('projectInputs.projectName',this.value,'text')"></div>
+      <div class="row"><label>Project Type</label><select class="sel small" onchange="setPath('projectInputs.projectType',this.value,'text')"><option selected="">2D</option><option>3D</option></select></div>
       <div class="row"><label>OML / Basin</label><input class="inp wide" type="text" value="OML 65" onchange="setPath('projectInputs.omlNumber',this.value,'text')"></div>
       <div class="row"><label>Client / Operator</label><input class="inp wide" type="text" value="RAEC" onchange="setPath('projectInputs.client',this.value,'text')"></div>
       <div class="row"><label>Contractor</label><input class="inp wide" type="text" value="EnServ/BGP" onchange="setPath('projectInputs.contractor',this.value,'text')"></div>
-      <div class="row"><label>Project Area</label><input class="inp med" type="number" value="206" onchange="setPath('projectInputs.projectArea',this.value,'number')"><span class="unit">km</span></div>
+      <div class="row"><label>Project Area</label><input class="inp med" type="number" value="206" onchange="setPath('projectInputs.projectArea',this.value,'number')"><span class="unit">Km</span></div>
       <div class="row"><label>Duration</label><input class="inp small" type="number" value="10" onchange="setPath('projectInputs.duration',this.value,'number')"><span class="unit">mo</span></div>
     </div>
     <div class="panel"><div class="panel-ttl">Commercial Terms</div>
-      <div class="row"><label>Turnkey Rate</label><input class="inp med" type="number" value="20000" onchange="setPath('contractTerms.turnkeyRate',this.value,'number')"><span class="unit">$/km</span></div>
+      <div class="row"><label>Turnkey Rate</label><input class="inp med" type="number" value="20000" onchange="setPath('contractTerms.turnkeyRate',this.value,'number')"><span class="unit">$/Km</span></div>
       <div class="row"><label>Mobilisation</label><input class="inp med" type="number" value="2000000" onchange="setPath('contractTerms.mobilisation',this.value,'number')"><span class="unit">$</span></div>
       <div class="row"><label>Demobilisation</label><input class="inp med" type="number" value="500000" onchange="setPath('contractTerms.demobilisation',this.value,'number')"><span class="unit">$</span></div>
       <div class="row"><label>Uphole Rate</label><input class="inp med" type="number" value="3500" onchange="setPath('contractTerms.upholeRate',this.value,'number')"><span class="unit">$/uphole</span></div>
-      <div class="row"><label>Revenue Share</label><input class="inp small" type="number" value="1" onchange="setPath('projectInputs.revenueShare',this.value,'number')"><span class="unit">x</span></div>
-      <div class="row"><label>Cost Share</label><input class="inp small" type="number" value="1" onchange="setPath('projectInputs.costShare',this.value,'number')"><span class="unit">x</span></div>
+      <div class="row"><label>Revenue Share</label><input class="inp small" type="number" value="0.55" onchange="setPath('projectInputs.revenueShare',this.value,'number')"><span class="unit">x</span></div>
+      <div class="row"><label>Cost Share</label><input class="inp small" type="number" value="0.5" onchange="setPath('projectInputs.costShare',this.value,'number')"><span class="unit">x</span></div>
       <div class="row"><label>NNPC FX Rate</label><input class="inp med" type="number" value="1360" onchange="setPath('projectInputs.fx',this.value,'number')"><span class="unit">₦/$</span></div>
     </div>
     <div class="panel"><div class="panel-ttl">Production Drivers</div>
@@ -3253,7 +3451,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
   </div>
       <div style="margin-top:12px;border-top:1px solid var(--border);padding-top:8px">
     <div class="panel-ttl" style="margin-bottom:6px">Recording</div>
-    <div class="row"><label>Total km</label><input class="inp med" type="number" value="499.713" onchange="setPath('productionPrograms.recording.total',this.value,'number')"><span class="unit">km</span></div>
+    <div class="row"><label>Total Km</label><input class="inp med" type="number" value="499.713" onchange="setPath('productionPrograms.recording.total',this.value,'number')"><span class="unit">Km</span></div>
     <div class="row"><label>Start Month</label><input class="inp small" type="number" value="5" onchange="setPath('productionPrograms.recording.startMonth',this.value,'number')"></div>
     <div class="row"><label>Active Months</label><input class="inp small" type="number" value="4" onchange="setPath('productionPrograms.recording.activeMonths',this.value,'number')"></div>
     <div class="row"><label>Ramp Months</label><input class="inp small" type="number" value="2" onchange="setPath('productionPrograms.recording.rampMonths',this.value,'number')"></div>
@@ -3274,7 +3472,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </div></div>
   </section>
 
-  <section class="pane" id="pane-rates">
+  <section class="pane on" id="pane-rates">
     <div class="sec">
       <div class="sec-ttl">Crew &amp; Rates Dictionary — reference values for manual cost calculations</div>
       <div class="tbl-wrap"><table id="rates-table"><thead><tr><th>Rate Item</th><th>Unit</th><th style="min-width:130px">Value (₦)</th><th>Notes</th><th>Actions</th></tr></thead><tbody><tr class="sec-row">
@@ -3302,7 +3500,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Number of survey crew</td>
         <td style="text-align:left;font-family:var(--sans);font-size:11px;color:var(--light)">crews</td>
-        <td class="inp"><input type="number" value="0" onchange="setRateValue('survey',2,this.value)" style="font-family:var(--mono);font-size:12px;background:transparent;border:none;outline:none;text-align:right;width:100%;padding:0;color:var(--text)"></td>
+        <td class="inp"><input type="number" value="10" onchange="setRateValue('survey',2,this.value)" style="font-family:var(--mono);font-size:12px;background:transparent;border:none;outline:none;text-align:right;width:100%;padding:0;color:var(--text)"></td>
         <td style="text-align:left;font-size:11px;color:var(--light)">—</td>
         <td>
           <button class="btn" style="color:var(--red)" onclick="removeRateItem('survey',2)">Remove</button>
@@ -3310,7 +3508,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Total personnel in survey crew</td>
         <td style="text-align:left;font-family:var(--sans);font-size:11px;color:var(--light)">people</td>
-        <td class="inp"><input type="number" value="0" onchange="setRateValue('survey',3,this.value)" style="font-family:var(--mono);font-size:12px;background:transparent;border:none;outline:none;text-align:right;width:100%;padding:0;color:var(--text)"></td>
+        <td class="inp"><input type="number" value="9" onchange="setRateValue('survey',3,this.value)" style="font-family:var(--mono);font-size:12px;background:transparent;border:none;outline:none;text-align:right;width:100%;padding:0;color:var(--text)"></td>
         <td style="text-align:left;font-size:11px;color:var(--light)">—</td>
         <td>
           <button class="btn" style="color:var(--red)" onclick="removeRateItem('survey',3)">Remove</button>
@@ -3334,7 +3532,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Payoff rate</td>
         <td style="text-align:left;font-family:var(--sans);font-size:11px;color:var(--light)">₦/SDH</td>
-        <td class="inp"><input type="number" value="0" onchange="setRateValue('survey',6,this.value)" style="font-family:var(--mono);font-size:12px;background:transparent;border:none;outline:none;text-align:right;width:100%;padding:0;color:var(--text)"></td>
+        <td class="inp"><input type="number" value="65000" onchange="setRateValue('survey',6,this.value)" style="font-family:var(--mono);font-size:12px;background:transparent;border:none;outline:none;text-align:right;width:100%;padding:0;color:var(--text)"></td>
         <td style="text-align:left;font-size:11px;color:var(--light)">—</td>
         <td>
           <button class="btn" style="color:var(--red)" onclick="removeRateItem('survey',6)">Remove</button>
@@ -3526,16 +3724,16 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     <div class="warn" id="prod-warn" style="display: none;"></div>
     <div class="sec">
       <div class="sec-ttl">Production Phasing</div>
-      <div class="tbl-wrap"><table id="production-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>M09</th><th>M10</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl ">Survey production (km)</td><td class="">0.000</td><td class="pos">68.000</td><td class="pos">135.000</td><td class="pos">135.000</td><td class="pos">135.000</td><td class="pos">68.593</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="tc">541.593</td></tr><tr class=""><td class="lbl ">Drilling production (SDH)</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="pos">3,009</td><td class="pos">6,018</td><td class="pos">6,018</td><td class="pos">3,009</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="tc">18,054</td></tr><tr class=""><td class="lbl ">Upholes</td><td class="">0</td><td class="pos">5</td><td class="pos">5</td><td class="pos">6</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="tc">16</td></tr><tr class=""><td class="lbl ">Recording production (km)</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="pos">125.000</td><td class="pos">125.000</td><td class="pos">125.000</td><td class="pos">124.713</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="tc">499.713</td></tr><tr class="sub-row"><td class="lbl ">Recording shots</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="pos">4,516</td><td class="pos">4,516</td><td class="pos">4,516</td><td class="pos">4,506</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="tc">18,054</td></tr></tbody></table></div>
+      <div class="tbl-wrap"><table id="production-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>M09</th><th>M10</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl ">Survey production (km)</td><td class="">0.000</td><td class="pos">68.000</td><td class="pos">135.000</td><td class="pos">135.000</td><td class="pos">135.000</td><td class="pos">68.593</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="tc">541.593</td></tr><tr class=""><td class="lbl ">Drilling production (SDH)</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="pos">3,009</td><td class="pos">6,018</td><td class="pos">6,018</td><td class="pos">3,009</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="tc">18,054</td></tr><tr class=""><td class="lbl ">Upholes</td><td class="">0</td><td class="pos">5</td><td class="pos">5</td><td class="pos">6</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="tc">16</td></tr><tr class=""><td class="lbl ">Recording production (Km)</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="pos">125.000</td><td class="pos">125.000</td><td class="pos">125.000</td><td class="pos">124.713</td><td class="">0.000</td><td class="">0.000</td><td class="">0.000</td><td class="tc">499.713</td></tr><tr class="sub-row"><td class="lbl ">Recording shots</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="pos">4,516</td><td class="pos">4,516</td><td class="pos">4,516</td><td class="pos">4,506</td><td class="">0</td><td class="">0</td><td class="">0</td><td class="tc">18,054</td></tr></tbody></table></div>
     </div>
   </section>
 
   <section class="pane" id="pane-costs">
     <div class="sec">
       <div class="sec-ttl">Cost Structure — line items by category</div>
-      <div class="tbl-wrap"><table id="cost-lines-table"><thead><tr><th>Cost Item</th><th>Badge</th><th>Total &amp; Trend</th><th>Actions</th></tr></thead><tbody><tr class="sec-row">
-      <td class="lbl" colspan="2">SURVEYING SUB.CONT. JOB</td>
-      <td>₦0</td>
+      <div class="tbl-wrap"><table id="cost-lines-table"><thead><tr><th>Cost Item</th><th>Badge</th><th>Share</th><th>Total &amp; Trend</th><th>Actions</th></tr></thead><tbody><tr class="sec-row">
+      <td class="lbl" colspan="3">SURVEYING SUB.CONT. JOB</td>
+      <td>₦63,008,149</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('SURVEYING SUB.CONT. JOB')">−</button>
         <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddItemForm('SURVEYING SUB.CONT. JOB')">+</button>
@@ -3543,7 +3741,13 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">GPS Monumentation &amp; Observation</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
-        <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(0,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
+        <td>₦6,790,000<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,0 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c1')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(0)">Remove</button>
@@ -3551,7 +3755,13 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Fresh Cut</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
-        <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(1,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
+        <td>₦50,368,149<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,8.933333333333334 13.6,0 20.4,0 27.2,0 34,8.854266666666668 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c2')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(1)">Remove</button>
@@ -3559,14 +3769,34 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Incentives / Standby</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(2,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c3')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(2)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">SURVEYING SUB.CONT. JOB Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">DRILLING SUB. CONTRACTORS JOB</td>
-      <td>₦0</td>
+      </tr><tr>
+        <td class="lbl i1">Payoff</td>
+        <td style="text-align:left"><span class="badge labor">labor</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(46,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
+        <td>₦5,850,000<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,0 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
+        <td>
+          <button class="btn" onclick="toggleLine('c47')">Monthly</button>
+          <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(46)">Remove</button>
+        </td>
+      </tr><tr class="sub-row"><td class="lbl">SURVEYING SUB.CONT. JOB Total</td><td></td><td></td><td>₦63,008,149</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">DRILLING SUB. CONTRACTORS JOB</td>
+      <td>₦10,000,000</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('DRILLING SUB. CONTRACTORS JOB')">−</button>
         <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddItemForm('DRILLING SUB. CONTRACTORS JOB')">+</button>
@@ -3574,7 +3804,13 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Payoff</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
-        <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(3,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
+        <td>₦10,000,000<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,0 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c4')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(3)">Remove</button>
@@ -3582,6 +3818,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Equipment Repairs &amp; Software Upgrade</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(4,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c5')">Monthly</button>
@@ -3590,13 +3832,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Fresh Cut</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(5,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c6')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(5)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">DRILLING SUB. CONTRACTORS JOB Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">FIRING LINES/CONTRACT</td>
+      </tr><tr class="sub-row"><td class="lbl">DRILLING SUB. CONTRACTORS JOB Total</td><td></td><td></td><td>₦10,000,000</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">FIRING LINES/CONTRACT</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('FIRING LINES/CONTRACT')">−</button>
@@ -3605,6 +3853,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Depth Checkers Fixed Wages</td>
         <td style="text-align:left"><span class="badge labor">labor</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(6,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c7')">Monthly</button>
@@ -3613,6 +3867,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Explosive Handling Expenses</td>
         <td style="text-align:left"><span class="badge labor">labor</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(7,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c8')">Monthly</button>
@@ -3621,14 +3881,20 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Fresh Cut</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(8,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c9')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(8)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">FIRING LINES/CONTRACT Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">RECORDING SUB. CONTRACTORS JOB</td>
-      <td>₦0</td>
+      </tr><tr class="sub-row"><td class="lbl">FIRING LINES/CONTRACT Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">RECORDING SUB. CONTRACTORS JOB</td>
+      <td>₦110,000,000</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('RECORDING SUB. CONTRACTORS JOB')">−</button>
         <button class="btn" style="font-size:16px;padding:2px 8px" onclick="toggleAddItemForm('RECORDING SUB. CONTRACTORS JOB')">+</button>
@@ -3636,6 +3902,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Recording Contract</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(9,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c10')">Monthly</button>
@@ -3644,6 +3916,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Depth Checkers Fixed Wages</td>
         <td style="text-align:left"><span class="badge labor">labor</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(10,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c11')">Monthly</button>
@@ -3652,7 +3930,13 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Equipment Protection on Line</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
-        <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(11,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
+        <td>₦110,000,000<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,0 6.8,0 13.6,0 20.4,0 27.2,0 34,0 40.8,0 47.6,0 54.4,0 61.199999999999996,0 68,0" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c12')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(11)">Remove</button>
@@ -3660,13 +3944,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Fresh Cut</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(12,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c13')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(12)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">RECORDING SUB. CONTRACTORS JOB Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">FIELD CONTRACT LABOUR</td>
+      </tr><tr class="sub-row"><td class="lbl">RECORDING SUB. CONTRACTORS JOB Total</td><td></td><td></td><td>₦110,000,000</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">FIELD CONTRACT LABOUR</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('FIELD CONTRACT LABOUR')">−</button>
@@ -3675,6 +3965,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Boat Drivers, Deckhands &amp; Beach Masters</td>
         <td style="text-align:left"><span class="badge labor">labor</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(13,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c14')">Monthly</button>
@@ -3683,6 +3979,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Field Nurses Salary</td>
         <td style="text-align:left"><span class="badge labor">labor</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(14,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c15')">Monthly</button>
@@ -3691,6 +3993,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Out of Pocket Allowance</td>
         <td style="text-align:left"><span class="badge labor">labor</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(15,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c16')">Monthly</button>
@@ -3699,13 +4007,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Professionals Salary &amp; Allowance</td>
         <td style="text-align:left"><span class="badge labor">labor</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(16,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c17')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(16)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">FIELD CONTRACT LABOUR Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">TRAVELLING EXPENSES WITHIN NIGERIA</td>
+      </tr><tr class="sub-row"><td class="lbl">FIELD CONTRACT LABOUR Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">TRAVELLING EXPENSES WITHIN NIGERIA</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('TRAVELLING EXPENSES WITHIN NIGERIA')">−</button>
@@ -3714,6 +4028,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Flights &amp; Ground Transport</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(17,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c18')">Monthly</button>
@@ -3722,13 +4042,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Accommodation &amp; Upkeep</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(18,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c19')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(18)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">TRAVELLING EXPENSES WITHIN NIGERIA Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">LEASE FEES FOR 428SN COMPLIMENTS</td>
+      </tr><tr class="sub-row"><td class="lbl">TRAVELLING EXPENSES WITHIN NIGERIA Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">LEASE FEES FOR 428SN COMPLIMENTS</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('LEASE FEES FOR 428SN COMPLIMENTS')">−</button>
@@ -3737,6 +4063,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">428SN Full System Lease</td>
         <td style="text-align:left"><span class="badge lease">lease</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(19,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c20')">Monthly</button>
@@ -3745,13 +4077,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Accessories &amp; Ancillaries</td>
         <td style="text-align:left"><span class="badge lease">lease</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(20,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c21')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(20)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">LEASE FEES FOR 428SN COMPLIMENTS Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">FUEL &amp; LUBRICANTS</td>
+      </tr><tr class="sub-row"><td class="lbl">LEASE FEES FOR 428SN COMPLIMENTS Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">FUEL &amp; LUBRICANTS</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('FUEL &amp; LUBRICANTS')">−</button>
@@ -3760,6 +4098,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Diesel (AGO)</td>
         <td style="text-align:left"><span class="badge var">var</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(21,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c22')">Monthly</button>
@@ -3768,13 +4112,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Lubricants &amp; Coolants</td>
         <td style="text-align:left"><span class="badge var">var</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(22,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c23')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(22)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">FUEL &amp; LUBRICANTS Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">MESSING EXPENSES</td>
+      </tr><tr class="sub-row"><td class="lbl">FUEL &amp; LUBRICANTS Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">MESSING EXPENSES</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('MESSING EXPENSES')">−</button>
@@ -3783,6 +4133,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Food Bill &amp; Catering</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(23,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c24')">Monthly</button>
@@ -3791,13 +4147,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Laundry &amp; Sundries</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(24,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c25')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(24)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">MESSING EXPENSES Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">FIELD MAINTENANCE SERVICES</td>
+      </tr><tr class="sub-row"><td class="lbl">MESSING EXPENSES Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">FIELD MAINTENANCE SERVICES</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('FIELD MAINTENANCE SERVICES')">−</button>
@@ -3806,6 +4168,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Equipment Maintenance &amp; Repairs</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(25,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c26')">Monthly</button>
@@ -3814,13 +4182,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Spare Parts &amp; Consumables</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(26,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c27')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(26)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">FIELD MAINTENANCE SERVICES Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)</td>
+      </tr><tr class="sub-row"><td class="lbl">FIELD MAINTENANCE SERVICES Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)')">−</button>
@@ -3829,6 +4203,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Light Vehicle Maintenance</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(27,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c28')">Monthly</button>
@@ -3837,13 +4217,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Vehicle Repairs</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(28,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c29')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(28)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">LIGHT VEH. MAINTENANCE (IN-HOUSE OPS) Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">FIELD MEDICAL EXPENSES</td>
+      </tr><tr class="sub-row"><td class="lbl">LIGHT VEH. MAINTENANCE (IN-HOUSE OPS) Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">FIELD MEDICAL EXPENSES</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('FIELD MEDICAL EXPENSES')">−</button>
@@ -3852,6 +4238,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Medical Consumables &amp; Drugs</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(29,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c30')">Monthly</button>
@@ -3860,13 +4252,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Crew Contingency Medical &amp; Referral</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(30,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c31')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(30)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">FIELD MEDICAL EXPENSES Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">PROTECTIVE CLOTHING &amp; HSE COST</td>
+      </tr><tr class="sub-row"><td class="lbl">FIELD MEDICAL EXPENSES Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">PROTECTIVE CLOTHING &amp; HSE COST</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('PROTECTIVE CLOTHING &amp; HSE COST')">−</button>
@@ -3875,6 +4273,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">PPE Supply</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(31,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c32')">Monthly</button>
@@ -3883,13 +4287,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">HSE Training &amp; Compliance</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(32,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c33')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(32)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">PROTECTIVE CLOTHING &amp; HSE COST Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">MAGNETIC TAPES</td>
+      </tr><tr class="sub-row"><td class="lbl">PROTECTIVE CLOTHING &amp; HSE COST Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">MAGNETIC TAPES</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('MAGNETIC TAPES')">−</button>
@@ -3898,13 +4308,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Magnetic Recording Media</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(33,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c34')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(33)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">MAGNETIC TAPES Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">EXPLOSIVES &amp; DETONATORS</td>
+      </tr><tr class="sub-row"><td class="lbl">MAGNETIC TAPES Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">EXPLOSIVES &amp; DETONATORS</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('EXPLOSIVES &amp; DETONATORS')">−</button>
@@ -3913,6 +4329,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Explosives Supply</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(34,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c35')">Monthly</button>
@@ -3921,6 +4343,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Detonators &amp; Accessories</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(35,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c36')">Monthly</button>
@@ -3929,13 +4357,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Explosives Logistics</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(36,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c37')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(36)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">EXPLOSIVES &amp; DETONATORS Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">VEHICLE TRANSP. HIRE (including lease fees)</td>
+      </tr><tr class="sub-row"><td class="lbl">EXPLOSIVES &amp; DETONATORS Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">VEHICLE TRANSP. HIRE (including lease fees)</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('VEHICLE TRANSP. HIRE (including lease fees)')">−</button>
@@ -3944,6 +4378,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Hilux Hire (VAT incl.)</td>
         <td style="text-align:left"><span class="badge lease">lease</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(37,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c38')">Monthly</button>
@@ -3952,6 +4392,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Hiace Bus Hire (VAT incl.)</td>
         <td style="text-align:left"><span class="badge lease">lease</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(38,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c39')">Monthly</button>
@@ -3960,13 +4406,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Personnel Carrier Hire (VAT incl.)</td>
         <td style="text-align:left"><span class="badge lease">lease</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(39,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c40')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(39)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">VEHICLE TRANSP. HIRE (including lease fees) Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">CONSULTANCY/TECHNICAL SUPPORT</td>
+      </tr><tr class="sub-row"><td class="lbl">VEHICLE TRANSP. HIRE (including lease fees) Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">CONSULTANCY/TECHNICAL SUPPORT</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('CONSULTANCY/TECHNICAL SUPPORT')">−</button>
@@ -3975,6 +4427,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Technical Consultants</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(40,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c41')">Monthly</button>
@@ -3983,13 +4441,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Geophysical QC Support</td>
         <td style="text-align:left"><span class="badge sub">sub</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(41,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c42')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(41)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">CONSULTANCY/TECHNICAL SUPPORT Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">TECHNICAL CAPACITY BUILDING</td>
+      </tr><tr class="sub-row"><td class="lbl">CONSULTANCY/TECHNICAL SUPPORT Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">TECHNICAL CAPACITY BUILDING</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('TECHNICAL CAPACITY BUILDING')">−</button>
@@ -3998,6 +4462,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Training &amp; Certification</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(42,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c43')">Monthly</button>
@@ -4006,13 +4476,19 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Technology Transfer</td>
         <td style="text-align:left"><span class="badge">fixed</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(43,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c44')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(43)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">TECHNICAL CAPACITY BUILDING Total</td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
-      <td class="lbl" colspan="2">PURCHASE/LEASE OF EQUIPMENT</td>
+      </tr><tr class="sub-row"><td class="lbl">TECHNICAL CAPACITY BUILDING Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="sec-row">
+      <td class="lbl" colspan="3">PURCHASE/LEASE OF EQUIPMENT</td>
       <td>₦0</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('PURCHASE/LEASE OF EQUIPMENT')">−</button>
@@ -4021,6 +4497,12 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     </tr><tr>
         <td class="lbl i1">Equipment Purchase (one-time)</td>
         <td style="text-align:left"><span class="badge owned">owned</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(44,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c45')">Monthly</button>
@@ -4029,12 +4511,18 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
       </tr><tr>
         <td class="lbl i1">Equipment Lease (monthly)</td>
         <td style="text-align:left"><span class="badge lease">lease</span></td>
+        <td style="text-align:left">
+          <select class="share-sel full" onchange="setLineShareMode(45,this.value)">
+            <option value="full" selected="">Full</option>
+            <option value="shared">Shared</option>
+          </select>
+        </td>
         <td>₦0<svg class="sparkline" viewBox="0 0 68 18" preserveAspectRatio="none"><polyline points="0,18 6.8,18 13.6,18 20.4,18 27.2,18 34,18 40.8,18 47.6,18 54.4,18 61.199999999999996,18 68,18" fill="none" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"></polyline></svg></td>
         <td>
           <button class="btn" onclick="toggleLine('c46')">Monthly</button>
           <button class="btn" style="color:var(--red);margin-left:4px" onclick="removeLineItem(45)">Remove</button>
         </td>
-      </tr><tr class="sub-row"><td class="lbl">PURCHASE/LEASE OF EQUIPMENT Total</td><td></td><td>₦0</td><td></td></tr><tr class="tot-row"><td class="lbl">Total Funding Requirement</td><td></td><td>₦0</td><td></td></tr><tr><td colspan="4" style="padding:12px;background:var(--surface)">
+      </tr><tr class="sub-row"><td class="lbl">PURCHASE/LEASE OF EQUIPMENT Total</td><td></td><td></td><td>₦0</td><td></td></tr><tr class="tot-row"><td class="lbl">Total Funding Requirement</td><td></td><td></td><td>₦183,008,149</td><td></td></tr><tr><td colspan="5" style="padding:12px;background:var(--surface)">
     <button class="add-cat-btn" onclick="toggleAddCategoryForm()">+ Add Category</button>
     
   </td></tr></tbody></table></div>
@@ -4044,18 +4532,18 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
   <section class="pane" id="pane-funding">
     <div class="sec">
       <div class="sec-ttl">Revenue Bridge — USD to NGN</div>
-      <div class="tbl-wrap"><table id="revenue-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>M09</th><th>M10</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl ">Production revenue (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,494,260</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$9,994,260</td></tr><tr class=""><td class="lbl ">Mobilisation (USD)</td><td class="pos">$2,000,000</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$2,000,000</td></tr><tr class=""><td class="lbl ">Uphole revenue (USD)</td><td class="">$0</td><td class="pos">$17,500</td><td class="pos">$17,500</td><td class="pos">$21,000</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$56,000</td></tr><tr class=""><td class="lbl ">Demobilisation (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="pos">$500,000</td><td class="">$0</td><td class="tc">$500,000</td></tr><tr class="sub-row"><td class="lbl ">100% Revenue (USD)</td><td class="pos">$2,000,000</td><td class="pos">$17,500</td><td class="pos">$17,500</td><td class="pos">$21,000</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,494,260</td><td class="">$0</td><td class="pos">$500,000</td><td class="">$0</td><td class="tc">$12,550,260</td></tr><tr class=""><td class="lbl i1">EnServ Revenue Share (USD)</td><td class="pos">$2,000,000</td><td class="pos">$17,500</td><td class="pos">$17,500</td><td class="pos">$21,000</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,494,260</td><td class="">$0</td><td class="pos">$500,000</td><td class="">$0</td><td class="tc">$12,550,260</td></tr><tr class="tot-row"><td class="lbl ">EnServ Revenue (NGN)</td><td class="pos">₦2,720,000,000</td><td class="pos">₦23,800,000</td><td class="pos">₦23,800,000</td><td class="pos">₦28,560,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,392,193,600</td><td class="">₦0</td><td class="pos">₦680,000,000</td><td class="">₦0</td><td class="tc">₦17,068,353,600</td></tr></tbody></table></div>
+      <div class="tbl-wrap"><table id="revenue-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>M09</th><th>M10</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl ">Production revenue (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,494,260</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$9,994,260</td></tr><tr class=""><td class="lbl ">Mobilisation (USD)</td><td class="pos">$2,000,000</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$2,000,000</td></tr><tr class=""><td class="lbl ">Uphole revenue (USD)</td><td class="">$0</td><td class="pos">$17,500</td><td class="pos">$17,500</td><td class="pos">$21,000</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="tc">$56,000</td></tr><tr class=""><td class="lbl ">Demobilisation (USD)</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="">$0</td><td class="pos">$500,000</td><td class="">$0</td><td class="tc">$500,000</td></tr><tr class="sub-row"><td class="lbl ">100% Revenue (USD)</td><td class="pos">$2,000,000</td><td class="pos">$17,500</td><td class="pos">$17,500</td><td class="pos">$21,000</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,500,000</td><td class="pos">$2,494,260</td><td class="">$0</td><td class="pos">$500,000</td><td class="">$0</td><td class="tc">$12,550,260</td></tr><tr class=""><td class="lbl i1">EnServ Revenue Share (USD)</td><td class="pos">$1,100,000</td><td class="pos">$9,625</td><td class="pos">$9,625</td><td class="pos">$11,550</td><td class="pos">$1,375,000</td><td class="pos">$1,375,000</td><td class="pos">$1,375,000</td><td class="pos">$1,371,843</td><td class="">$0</td><td class="pos">$275,000</td><td class="">$0</td><td class="tc">$6,902,643</td></tr><tr class="tot-row"><td class="lbl ">EnServ Revenue (NGN)</td><td class="pos">₦1,496,000,000</td><td class="pos">₦13,090,000</td><td class="pos">₦13,090,000</td><td class="pos">₦15,708,000</td><td class="pos">₦1,870,000,000</td><td class="pos">₦1,870,000,000</td><td class="pos">₦1,870,000,000</td><td class="pos">₦1,865,706,480</td><td class="">₦0</td><td class="pos">₦374,000,000</td><td class="">₦0</td><td class="tc">₦9,387,594,480</td></tr></tbody></table></div>
     </div>
     <div class="sec">
       <div class="sec-ttl">Monthly Funding Requirement — NGN</div>
-      <div class="tbl-wrap"><table id="funding-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>M09</th><th>M10</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl i1">SURVEYING SUB.CONT. JOB</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">DRILLING SUB. CONTRACTORS JOB</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">FIRING LINES/CONTRACT</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">RECORDING SUB. CONTRACTORS JOB</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">FIELD CONTRACT LABOUR</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">TRAVELLING EXPENSES WITHIN NIGERIA</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">LEASE FEES FOR 428SN COMPLIMENTS</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">FUEL &amp; LUBRICANTS</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">MESSING EXPENSES</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">FIELD MAINTENANCE SERVICES</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">FIELD MEDICAL EXPENSES</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">PROTECTIVE CLOTHING &amp; HSE COST</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">MAGNETIC TAPES</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">EXPLOSIVES &amp; DETONATORS</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">VEHICLE TRANSP. HIRE (including lease fees)</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">CONSULTANCY/TECHNICAL SUPPORT</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">TECHNICAL CAPACITY BUILDING</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">PURCHASE/LEASE OF EQUIPMENT</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class="tot-row"><td class="lbl ">Total Funding Requirement</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr></tbody></table></div>
+      <div class="tbl-wrap"><table id="funding-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>M09</th><th>M10</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class=""><td class="lbl i1">SURVEYING SUB.CONT. JOB</td><td class="pos">₦6,790,000</td><td class="pos">₦6,324,000</td><td class="pos">₦12,555,000</td><td class="pos">₦12,555,000</td><td class="pos">₦12,555,000</td><td class="pos">₦6,379,149</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="pos">₦5,850,000</td><td class="">₦0</td><td class="tc">₦63,008,149</td></tr><tr class=""><td class="lbl i1">DRILLING SUB. CONTRACTORS JOB</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="pos">₦10,000,000</td><td class="">₦0</td><td class="tc">₦10,000,000</td></tr><tr class=""><td class="lbl i1">FIRING LINES/CONTRACT</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">RECORDING SUB. CONTRACTORS JOB</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="tc">₦110,000,000</td></tr><tr class=""><td class="lbl i1">FIELD CONTRACT LABOUR</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">TRAVELLING EXPENSES WITHIN NIGERIA</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">LEASE FEES FOR 428SN COMPLIMENTS</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">FUEL &amp; LUBRICANTS</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">MESSING EXPENSES</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">FIELD MAINTENANCE SERVICES</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">LIGHT VEH. MAINTENANCE (IN-HOUSE OPS)</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">FIELD MEDICAL EXPENSES</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">PROTECTIVE CLOTHING &amp; HSE COST</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">MAGNETIC TAPES</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">EXPLOSIVES &amp; DETONATORS</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">VEHICLE TRANSP. HIRE (including lease fees)</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">CONSULTANCY/TECHNICAL SUPPORT</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">TECHNICAL CAPACITY BUILDING</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class=""><td class="lbl i1">PURCHASE/LEASE OF EQUIPMENT</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class="tot-row"><td class="lbl ">Total Funding Requirement</td><td class="pos">₦16,790,000</td><td class="pos">₦16,324,000</td><td class="pos">₦22,555,000</td><td class="pos">₦22,555,000</td><td class="pos">₦22,555,000</td><td class="pos">₦16,379,149</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦10,000,000</td><td class="pos">₦25,850,000</td><td class="pos">₦10,000,000</td><td class="tc">₦183,008,149</td></tr></tbody></table></div>
     </div>
   </section>
 
   <section class="pane" id="pane-cashflow">
     <div class="sec">
       <div class="sec-ttl">Cash Flow Statement — NGN</div>
-      <div class="tbl-wrap"><table id="cashflow-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>M09</th><th>M10</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class="sub-row"><td class="lbl ">EnServ Revenue (NGN)</td><td class="pos">₦2,720,000,000</td><td class="pos">₦23,800,000</td><td class="pos">₦23,800,000</td><td class="pos">₦28,560,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,392,193,600</td><td class="">₦0</td><td class="pos">₦680,000,000</td><td class="">₦0</td><td class="tc">₦17,068,353,600</td></tr><tr class=""><td class="lbl i1">Funding Requirement (NGN)</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="">₦0</td><td class="tc">₦0</td></tr><tr class="tot-row"><td class="lbl ">Monthly Cash Flow</td><td class="pos">₦2,720,000,000</td><td class="pos">₦23,800,000</td><td class="pos">₦23,800,000</td><td class="pos">₦28,560,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,400,000,000</td><td class="pos">₦3,392,193,600</td><td class="">₦0</td><td class="pos">₦680,000,000</td><td class="">₦0</td><td class="tc">₦17,068,353,600</td></tr><tr class=""><td class="lbl i1">Cumulative Cash Flow</td><td class="pos">₦2,720,000,000</td><td class="pos">₦2,743,800,000</td><td class="pos">₦2,767,600,000</td><td class="pos">₦2,796,160,000</td><td class="pos">₦6,196,160,000</td><td class="pos">₦9,596,160,000</td><td class="pos">₦12,996,160,000</td><td class="pos">₦16,388,353,600</td><td class="pos">₦16,388,353,600</td><td class="pos">₦17,068,353,600</td><td class="pos">₦17,068,353,600</td><td class="tc">₦106,729,454,400</td></tr></tbody></table></div>
+      <div class="tbl-wrap"><table id="cashflow-table"><thead><tr><th>Line Item</th><th>M01</th><th>M02</th><th>M03</th><th>M04</th><th>M05</th><th>M06</th><th>M07</th><th>M08</th><th>M09</th><th>M10</th><th>Demob</th><th class="tc">Total</th></tr></thead><tbody><tr class="sub-row"><td class="lbl ">EnServ Revenue (NGN)</td><td class="pos">₦1,496,000,000</td><td class="pos">₦13,090,000</td><td class="pos">₦13,090,000</td><td class="pos">₦15,708,000</td><td class="pos">₦1,870,000,000</td><td class="pos">₦1,870,000,000</td><td class="pos">₦1,870,000,000</td><td class="pos">₦1,865,706,480</td><td class="">₦0</td><td class="pos">₦374,000,000</td><td class="">₦0</td><td class="tc">₦9,387,594,480</td></tr><tr class=""><td class="lbl i1">Funding Requirement (NGN)</td><td class="neg">₦(16,790,000)</td><td class="neg">₦(16,324,000)</td><td class="neg">₦(22,555,000)</td><td class="neg">₦(22,555,000)</td><td class="neg">₦(22,555,000)</td><td class="neg">₦(16,379,149)</td><td class="neg">₦(10,000,000)</td><td class="neg">₦(10,000,000)</td><td class="neg">₦(10,000,000)</td><td class="neg">₦(25,850,000)</td><td class="neg">₦(10,000,000)</td><td class="tc">₦(183,008,149)</td></tr><tr class="tot-row"><td class="lbl ">Monthly Cash Flow</td><td class="pos">₦1,479,210,000</td><td class="neg">₦(3,234,000)</td><td class="neg">₦(9,465,000)</td><td class="neg">₦(6,847,000)</td><td class="pos">₦1,847,445,000</td><td class="pos">₦1,853,620,851</td><td class="pos">₦1,860,000,000</td><td class="pos">₦1,855,706,480</td><td class="neg">₦(10,000,000)</td><td class="pos">₦348,150,000</td><td class="neg">₦(10,000,000)</td><td class="tc">₦9,204,586,331</td></tr><tr class=""><td class="lbl i1">Cumulative Cash Flow</td><td class="pos">₦1,479,210,000</td><td class="pos">₦1,475,976,000</td><td class="pos">₦1,466,511,000</td><td class="pos">₦1,459,664,000</td><td class="pos">₦3,307,109,000</td><td class="pos">₦5,160,729,851</td><td class="pos">₦7,020,729,851</td><td class="pos">₦8,876,436,331</td><td class="pos">₦8,866,436,331</td><td class="pos">₦9,214,586,331</td><td class="pos">₦9,204,586,331</td><td class="tc">₦57,531,975,026</td></tr></tbody></table></div>
     </div>
     <div class="sec">
       <div class="sec-ttl">Revenue, Funding, and Net Cash Flow</div>
@@ -4068,6 +4556,7 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
 const PROJECT_DATA = {
   projectInputs:{
     projectName:'NUPRC/FES ANAMBRA 2D SEISMIC ACQUISITION',
+    projectType:'2D',
     omlNumber:'NUPRC/FES ANAMBRA BASIN',
     client:'NUPRC/FES',
     contractor:'EnServ',
@@ -4179,6 +4668,10 @@ const PROJECT_DATA = {
     {id:'c46',category:'PURCHASE/LEASE OF EQUIPMENT',item:'Equipment Lease (monthly)',badge:'lease',owner:'EnServ',driverType:'manualMonthly',driverRef:'',rate:0,monthly:[0,0,0,0,0,0,0,0,0]}
   ]
 };
+PROJECT_DATA.costLines = PROJECT_DATA.costLines.map(line => ({
+  ...line,
+  shareMode: line && String(line.shareMode || '').toLowerCase() === 'shared' ? 'shared' : 'full'
+}));
 
 function deepClone(value){
   return JSON.parse(JSON.stringify(value));
@@ -4613,12 +5106,17 @@ let openMonthFormula = null; // {lineIdx, monthIdx}
 
 function initModel(){
   if(!isPlainObject(model) || !Array.isArray(model.costLines)) model = deepClone(PROJECT_DATA);
+  if(!isPlainObject(model.projectInputs)) model.projectInputs = deepClone(PROJECT_DATA.projectInputs);
   if(!isPlainObject(model.rateCards)) model.rateCards = deepClone(PROJECT_DATA.rateCards);
   if(!isPlainObject(model.productionPrograms)) model.productionPrograms = deepClone(PROJECT_DATA.productionPrograms);
+  const inferredType = /\b3D\b/i.test(String(model.projectInputs.projectName || '')) ? '3D' : '2D';
+  const rawType = String(model.projectInputs.projectType || '').toUpperCase();
+  model.projectInputs.projectType = rawType === '3D' || rawType === '2D' ? rawType : inferredType;
   // Ensure all cost lines have formula and monthFormulas
   model.costLines.forEach(line => {
     if(!line.formula) line.formula = {enabled:false, tokens:[], applyTo:'all'};
     if(!line.monthFormulas) line.monthFormulas = {};
+    line.shareMode = normalizeShareMode(line.shareMode);
   });
   // Ensure all productionPrograms have manualMonthly
   Object.values(model.productionPrograms).forEach(pg => {
@@ -4647,6 +5145,20 @@ const fmtU = n => '$'+fmt(n);
 const fmtB = n => (n<0?'-':'')+'₦'+(Math.abs(n)/1e9).toFixed(2)+'B';
 const fmtM = n => (n<0?'-':'')+'₦'+(Math.abs(n)/1e6).toFixed(0)+'M';
 const fmtPct = n => isFinite(n)?(n*100).toFixed(1)+'%':'-';
+function normalizeShareMode(value){
+  return String(value || '').toLowerCase() === 'shared' ? 'shared' : 'full';
+}
+function lineShareFactor(line){
+  return normalizeShareMode(line && line.shareMode) === 'shared' ? (+model.projectInputs.costShare || 0) : 1;
+}
+
+function currentProjectType(){
+  const t = String(model?.projectInputs?.projectType || '').toUpperCase();
+  return t === '3D' ? '3D' : '2D';
+}
+function areaUnit(){ return currentProjectType() === '3D' ? 'Km²' : 'Km'; }
+function recordingUnit(){ return currentProjectType() === '3D' ? 'Km²' : 'Km'; }
+function turnkeyRateUnit(){ return currentProjectType() === '3D' ? '$/Km²' : '$/Km'; }
 
 function labels(){
   const d = clampInt(model.projectInputs.duration,1,14);
@@ -4715,12 +5227,6 @@ function normalizedSeries(values){
   return out;
 }
 
-function ownerFactor(owner){
-  if(owner === 'JV') return +model.projectInputs.costShare || 0;
-  if(owner === 'Reimbursable') return 0;
-  return 1;
-}
-
 function driverSeries(line, prod){
   if(line.driverRef === 'surveyKm') return prod.survey;
   if(line.driverRef === 'drillSdh') return prod.drilling;
@@ -4745,7 +5251,7 @@ function lineSeries(line, prod){
   } else {
     base = normalizedSeries(line.monthly);
   }
-  const f = ownerFactor(line.owner);
+  const f = lineShareFactor(line);
   return base.map(v => v * f);
 }
 
@@ -4826,6 +5332,7 @@ function renderSummary(){
   ].map(c=>`<div class="card"><div class="l">${c[0]}</div><div class="v ${c[3]}">${c[1]}</div><div class="s">${c[2]}</div></div>`).join('');
   renderBarChart('cash-chart', latest.cash, 'cash');
   renderDriverGrid();
+  renderBadgeDistribution();
 }
 
 function renderDriverGrid(){
@@ -4837,19 +5344,97 @@ function renderDriverGrid(){
   </div>`).join('');
 }
 
+function getBadgeColor(badge){
+  const map = {
+    fixed:'#7a5b2d',
+    var:'#0f7a4f',
+    sub:'#b45309',
+    lease:'#155e75',
+    owned:'#1a7f3b',
+    labor:'#6d4caf'
+  };
+  return map[badge] || '#6b7280';
+}
+
+function getBadgeLabel(badge){
+  const map = {
+    fixed:'Fixed Cost',
+    var:'Variable Cost',
+    sub:'Subcontract',
+    lease:'Lease',
+    owned:'Owned Asset',
+    labor:'Labour'
+  };
+  return map[badge] || String(badge || 'Unassigned').toUpperCase();
+}
+
+function renderBadgeDistribution(){
+  const pieEl = $('badge-pie');
+  const legendEl = $('badge-legend');
+  if(!pieEl || !legendEl) return;
+
+  const totalsByBadge = {};
+  (model.costLines || []).forEach(line => {
+    const badge = String(line.badge || 'unassigned').toLowerCase();
+    const vals = latest.lineSeriesMap[line.id] || [];
+    const total = sum(vals);
+    if(total <= 0) return;
+    totalsByBadge[badge] = (totalsByBadge[badge] || 0) + total;
+  });
+
+  const rows = Object.entries(totalsByBadge)
+    .map(([badge, value]) => ({badge, value}))
+    .sort((a,b)=>b.value-a.value);
+  const grandTotal = rows.reduce((acc,row)=>acc + row.value, 0);
+
+  if(grandTotal <= 0 || rows.length === 0){
+    pieEl.innerHTML = `<div class="badge-empty">No funded line items yet.</div>`;
+    legendEl.innerHTML = `<div class="badge-empty">Add or edit cost lines to see badge percentages.</div>`;
+    return;
+  }
+
+  let cursor = 0;
+  const slices = rows.map(row => {
+    const pct = row.value / grandTotal;
+    const start = cursor * 360;
+    cursor += pct;
+    const end = cursor * 360;
+    return `${getBadgeColor(row.badge)} ${start.toFixed(3)}deg ${end.toFixed(3)}deg`;
+  }).join(', ');
+
+  pieEl.innerHTML = `
+    <div class="badge-pie" style="background:conic-gradient(${slices})">
+      <div class="badge-pie-hole">
+        <div class="l">Total</div>
+        <div class="v">${fmtM(grandTotal)}</div>
+      </div>
+    </div>`;
+
+  legendEl.innerHTML = rows.map(row => {
+    const pct = row.value / grandTotal;
+    return `<div class="badge-row">
+      <span class="badge-dot" style="background:${getBadgeColor(row.badge)}"></span>
+      <span class="badge-name">${escapeHtml(getBadgeLabel(row.badge))}</span>
+      <span class="badge-val">${fmtN(row.value)}</span>
+      <span class="badge-pct">${(pct*100).toFixed(1)}%</span>
+    </div>`;
+  }).join('');
+}
+
 function renderInputs(){
   const p = model.projectInputs, t = model.contractTerms;
   $('input-grid').innerHTML = `
     <div class="panel"><div class="panel-ttl">Project Identity</div>
       ${inputRow('Project Name','projectInputs.projectName',p.projectName,'text','wide')}
+      ${selectRow('Project Type','projectInputs.projectType',currentProjectType(),['2D','3D'],'small')}
       ${inputRow('OML / Basin','projectInputs.omlNumber',p.omlNumber,'text','wide')}
       ${inputRow('Client / Operator','projectInputs.client',p.client,'text','wide')}
       ${inputRow('Contractor','projectInputs.contractor',p.contractor,'text','wide')}
-      ${inputRow('Project Area','projectInputs.projectArea',p.projectArea,'number','med','km')}
+      ${inputRow('Project Area','projectInputs.projectArea',p.projectArea,'number','med',areaUnit())}
       ${inputRow('Duration','projectInputs.duration',p.duration,'number','small','mo')}
     </div>
     <div class="panel"><div class="panel-ttl">Commercial Terms</div>
-      ${inputRow('Turnkey Rate','contractTerms.turnkeyRate',t.turnkeyRate,'number','med','$/km')}
+      ${inputRow('Turnkey Rate','contractTerms.turnkeyRate',t.turnkeyRate,'number','med',turnkeyRateUnit())}
       ${inputRow('Mobilisation','contractTerms.mobilisation',t.mobilisation,'number','med','$')}
       ${inputRow('Demobilisation','contractTerms.demobilisation',t.demobilisation,'number','med','$')}
       ${inputRow('Uphole Rate','contractTerms.upholeRate',t.upholeRate,'number','med','$/uphole')}
@@ -4871,12 +5456,18 @@ function inputRow(label,path,value,type='number',cls='med',unit=''){
   return `<div class="row"><label>${escapeHtml(label)}</label><input class="inp ${cls}" type="${type}" value="${safeValue}" onchange="setPath('${path}',this.value,'${type}')">${unit?`<span class="unit">${escapeHtml(unit)}</span>`:''}</div>`;
 }
 
+function selectRow(label,path,value,options,cls='med'){
+  const selected = String(value ?? '');
+  return `<div class="row"><label>${escapeHtml(label)}</label><select class="sel ${cls}" onchange="setPath('${path}',this.value,'text')">${options.map(opt => `<option ${selected===opt?'selected':''}>${escapeHtml(opt)}</option>`).join('')}</select></div>`;
+}
+
 function programControls(key){
   const pg = model.productionPrograms[key];
   const isManual = pg.profile === 'Manual';
+  const unit = key === 'recording' ? recordingUnit() : (pg.unit || '');
   return `<div style="margin-top:12px;border-top:1px solid var(--border);padding-top:8px">
     <div class="panel-ttl" style="margin-bottom:6px">${escapeHtml(pg.label)}</div>
-    ${inputRow('Total '+pg.unit,`productionPrograms.${key}.total`,pg.total,'number','med',escapeHtml(pg.unit))}
+    ${inputRow('Total '+unit,`productionPrograms.${key}.total`,pg.total,'number','med',unit)}
     ${!isManual ? inputRow('Start Month',`productionPrograms.${key}.startMonth`,pg.startMonth,'number','small','') : ''}
     ${!isManual ? inputRow('Active Months',`productionPrograms.${key}.activeMonths`,pg.activeMonths,'number','small','') : ''}
     ${!isManual ? inputRow('Ramp Months',`productionPrograms.${key}.rampMonths`,pg.rampMonths,'number','small','') : ''}
@@ -4937,6 +5528,10 @@ function setPath(path,value,type){
   let obj = model;
   while(parts.length > 1) obj = obj[parts.shift()];
   obj[parts[0]] = type === 'text' ? sanitizeTextInput(value) : (+value || 0);
+  if(path === 'projectInputs.projectType'){
+    const t = String(obj[parts[0]] || '').toUpperCase();
+    obj[parts[0]] = t === '3D' ? '3D' : '2D';
+  }
   if(path === 'projectInputs.duration') model.projectInputs.duration = clampInt(value,1,14);
   render();
 }
@@ -4980,7 +5575,7 @@ function renderProduction(){
     + prodRow('Survey production (km)', 'survey', 'survey', 3)
     + prodRow('Drilling production (SDH)', 'drilling', 'drilling', 0)
     + prodRow('Upholes', 'upholes', 'upholes', 0)
-    + prodRow('Recording production (km)', 'recording', 'recording', 3)
+    + prodRow(`Recording production (${recordingUnit()})`, 'recording', 'recording', 3)
     + row('Recording shots', latest.prod.shots, 'sub-row', '', v=>fmt(v,0))
     + '</tbody>';
 }
@@ -5050,7 +5645,7 @@ function renderRates(){
 }
 
 function renderCosts(){
-  let html = '<thead><tr><th>Cost Item</th><th>Badge</th><th>Total & Trend</th><th>Actions</th></tr></thead><tbody>';
+  let html = '<thead><tr><th>Cost Item</th><th>Badge</th><th>Share</th><th>Total & Trend</th><th>Actions</th></tr></thead><tbody>';
 
   const linesByCategory = {};
   model.costLines.forEach(l => {
@@ -5063,7 +5658,7 @@ function renderCosts(){
     const catVals = latest.categorySeries[cat];
     const catTotal = sum(catVals);
     html += `<tr class="sec-row">
-      <td class="lbl" colspan="2">${escapeHtml(cat)}</td>
+      <td class="lbl" colspan="3">${escapeHtml(cat)}</td>
       <td>${fmtN(catTotal)}</td>
       <td>
         <button class="btn" style="font-size:14px;padding:2px 7px;color:var(--red)" onclick="removeCategory('${escapeJsString(cat)}')">−</button>
@@ -5073,7 +5668,7 @@ function renderCosts(){
 
     // Add item form row
     if(activeAddItemCategory === cat){
-      html += `<tr class="new-item-row"><td colspan="4">
+      html += `<tr class="new-item-row"><td colspan="5">
         <div class="add-item-form">
           <input type="text" placeholder="Item name" class="inp wide" id="new-item-name">
           <select class="sel small" id="new-item-badge">
@@ -5098,10 +5693,17 @@ function renderCosts(){
       const sparkline = renderSparkline(vals);
       const badgeMap = {fixed:'',var:'var',sub:'sub',lease:'lease',owned:'owned',labor:'labor'};
       const badgeClass = badgeMap[l.badge] || '';
+      const shareMode = normalizeShareMode(l.shareMode);
 
       html += `<tr>
         <td class="lbl i1">${escapeHtml(l.item)}</td>
         <td style="text-align:left"><span class="badge${badgeClass?' '+badgeClass:''}">${escapeHtml(l.badge)}</span></td>
+        <td style="text-align:left">
+          <select class="share-sel ${shareMode==='shared'?'shared':'full'}" onchange="setLineShareMode(${idx},this.value)">
+            <option value="full" ${shareMode==='full'?'selected':''}>Full</option>
+            <option value="shared" ${shareMode==='shared'?'selected':''}>Shared</option>
+          </select>
+        </td>
         <td>${fmtN(total)}${sparkline}</td>
         <td>
           <button class="btn" onclick="toggleLine('${escapeJsString(l.id)}')">${expandedLines.has(l.id)?'Collapse':'Monthly'}</button>
@@ -5110,20 +5712,20 @@ function renderCosts(){
       </tr>`;
 
       if(expandedLines.has(l.id)){
-        html += `<tr class="cost-detail"><td colspan="4">${renderMonthlyEdit(idx,l)}</td></tr>`;
+        html += `<tr class="cost-detail"><td colspan="5">${renderMonthlyEdit(idx,l)}</td></tr>`;
       }
     });
 
     // Category subtotal
-    html += `<tr class="sub-row"><td class="lbl">${escapeHtml(cat)} Total</td><td></td><td>${fmtN(catTotal)}</td><td></td></tr>`;
+    html += `<tr class="sub-row"><td class="lbl">${escapeHtml(cat)} Total</td><td></td><td></td><td>${fmtN(catTotal)}</td><td></td></tr>`;
   });
 
   // Grand total
   const grandTotal = sum(latest.funding);
-  html += `<tr class="tot-row"><td class="lbl">Total Funding Requirement</td><td></td><td>${fmtN(grandTotal)}</td><td></td></tr>`;
+  html += `<tr class="tot-row"><td class="lbl">Total Funding Requirement</td><td></td><td></td><td>${fmtN(grandTotal)}</td><td></td></tr>`;
 
   // Add category button
-  html += `<tr><td colspan="4" style="padding:12px;background:var(--surface)">
+  html += `<tr><td colspan="5" style="padding:12px;background:var(--surface)">
     <button class="add-cat-btn" onclick="toggleAddCategoryForm()">+ Add Category</button>
     ${showAddCatForm ? `<div style="margin-top:12px">
       <input type="text" id="new-cat-name" placeholder="CATEGORY NAME" class="cat-name-input">
@@ -5138,6 +5740,11 @@ function renderCosts(){
 
 function setLine(idx,key,value,type){
   model.costLines[idx][key] = type === 'number' ? (+value || 0) : sanitizeTextInput(value);
+  render();
+}
+
+function setLineShareMode(idx, mode){
+  model.costLines[idx].shareMode = normalizeShareMode(mode);
   render();
 }
 
@@ -5425,6 +6032,13 @@ function renderMonthlyEdit(idx,line){
   const variance = avg > 0 ? ((max - min) / avg * 100) : 0;
 
   let html = renderFormulaBuilder(idx, line);
+  const isShared = normalizeShareMode(line.shareMode) === 'shared';
+  if(isShared){
+    const factor = +model.projectInputs.costShare || 0;
+    html += `<div style="margin:-2px 0 10px 0;padding:8px 10px;background:#f0f7fb;border:1px solid #c7deea;border-radius:3px;font-size:11px;color:var(--muted)">
+      This line is <strong style="color:var(--accent)">Shared</strong>. Rollups use <strong style="color:var(--accent)">Monthly Value × ${factor.toFixed(3).replace(/\.?0+$/,'')}</strong>.
+    </div>`;
+  }
 
   html += `<div class="month-summary">
     <div class="stat"><span class="stat-label">Total</span><span class="stat-value">${fmtN(total)}</span></div>
@@ -5764,6 +6378,7 @@ function addCategorySubmit(){
     category: name,
     item: 'New Item',
     badge: 'fixed',
+    shareMode: 'full',
     monthFormulas: {},
     owner: 'EnServ',
     driverType: 'manualMonthly',
@@ -5802,6 +6417,7 @@ function addItemSubmit(category){
     category: category,
     item: name,
     badge: badgeInput.value || 'fixed',
+    shareMode: 'full',
     owner: 'EnServ',
     driverType: 'manualMonthly',
     driverRef: '',
@@ -5978,9 +6594,14 @@ document.addEventListener('click', e => {
   closeHelp();
 });
 
-// Initial render() is called by bootstrap() function
+// Initial render so dynamic controls (like Project Type) are always visible.
+render();
 </script>
 
 
 <grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration>
-<div id="codex-browser-sidebar-comments-root" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483000;"></div></body></html>
+<div id="codex-browser-sidebar-comments-root" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483000;"></div>
+
+
+
+</body></html>
