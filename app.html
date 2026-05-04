@@ -3342,7 +3342,8 @@ body.booting #boot-overlay{display:flex}
     <button class="proj-create-btn" onclick="Projects.create()">+ Create</button>
   </div>
   <div class="proj-footer" style="padding-top:8px;border-top:1px dashed #2d3a2d">
-    <button class="proj-create-btn" style="background:#123e4b" onclick="Projects.exportAll()">Export</button>
+    <button class="proj-create-btn" style="background:#123e4b" onclick="Projects.exportAll()">Export JSON</button>
+    <button class="proj-create-btn" style="background:#0f4d3f" onclick="Projects.exportExcel()">Export Excel</button>
     <button class="proj-create-btn" style="background:#7a2e24" onclick="Projects.beginImport()">Import</button>
     <input type="file" id="proj-import-file" accept="application/json,.json" style="display:none" onchange="Projects.importFromInput(this)">
   </div>
@@ -5259,6 +5260,51 @@ const Projects = (() => {
     URL.revokeObjectURL(url);
   }
 
+  async function exportExcel(){
+    if(isFileMode()){
+      alert('Excel export requires server mode. Open the app via http://127.0.0.1 or Render URL.');
+      return;
+    }
+    if(!apiMode){
+      alert('Server persistence is unavailable. Excel export needs API mode.');
+      return;
+    }
+    if(!projectsData.currentProjectId){
+      alert('No active project selected.');
+      return;
+    }
+
+    if(hasUnsavedChanges){
+      await flushCurrent();
+    }
+
+    const projectId = encodeURIComponent(projectsData.currentProjectId);
+    const res = await fetch(`/api/projects/${projectId}/excel`, {
+      method: 'GET',
+      credentials: 'same-origin'
+    });
+    if(!res.ok){
+      let msg = `Excel export failed (${res.status})`;
+      try{
+        const payload = await res.json();
+        if(payload && payload.error) msg = payload.error;
+      }catch(_){}
+      throw new Error(msg);
+    }
+
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const stamp = new Date().toISOString().slice(0,19).replace(/[T:]/g,'-');
+    const name = sanitizeTextInput(currentName() || 'project').replace(/\s+/g,'-') || 'project';
+    a.href = url;
+    a.download = `${name}-model-${stamp}.xlsx`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
   async function beginImport(){
     const input = document.getElementById('proj-import-file');
     if(!input) return;
@@ -5375,6 +5421,7 @@ const Projects = (() => {
     clearChanges,
     isApiMode,
     exportAll: safeAsync(exportAll),
+    exportExcel: safeAsync(exportExcel),
     beginImport: safeAsync(beginImport),
     importFromInput: safeAsync(importFromInput)
   };
