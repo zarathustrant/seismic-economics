@@ -4768,7 +4768,10 @@ const Projects = (() => {
     }
     if(!res.ok || data.success === false){
       const msg = data.error || `Request failed (${res.status})`;
-      throw new Error(msg);
+      const err = new Error(msg);
+      err.status = res.status;
+      err.payload = data;
+      throw err;
     }
     return data;
   }
@@ -4933,9 +4936,12 @@ const Projects = (() => {
   function save(){
     if(!projectsData.currentProjectId || !projectsData.projects[projectsData.currentProjectId]) return;
     try{
+      const current = projectsData.projects[projectsData.currentProjectId];
       const modelCopy = JSON.parse(JSON.stringify(model, (key, value) => value === undefined ? null : value));
-      projectsData.projects[projectsData.currentProjectId].data = modelCopy;
-      projectsData.projects[projectsData.currentProjectId].updatedAt = Date.now();
+      const prevStr = JSON.stringify(current.data ?? null);
+      const nextStr = JSON.stringify(modelCopy);
+      if(prevStr === nextStr) return;
+      current.data = modelCopy;
       hasUnsavedChanges = true;
       persistLocalBackup();
     }catch(e){
@@ -4946,13 +4952,31 @@ const Projects = (() => {
   async function flushCurrent(options = {}){
     if(!apiMode || !projectsData.currentProjectId) return false;
     save();
+    if(!hasUnsavedChanges) return false;
     const p = projectsData.projects[projectsData.currentProjectId];
     if(!p) return false;
-    const updated = await apiRequest('/api/projects/' + encodeURIComponent(p.id), {
-      method: 'PUT',
-      body: {name: p.name, data: p.data},
-      keepalive: !!options.keepalive
-    });
+    let updated;
+    try{
+      updated = await apiRequest('/api/projects/' + encodeURIComponent(p.id), {
+        method: 'PUT',
+        body: {name: p.name, data: p.data, baseUpdatedAt: p.updatedAt},
+        keepalive: !!options.keepalive
+      });
+    }catch(err){
+      if(err && err.status === 409 && err.payload && err.payload.project){
+        mergeProject(err.payload.project);
+        if(projectsData.currentProjectId === p.id){
+          model = deepClone(loadModel(p.id));
+          window.model = model;
+          initModel();
+          renderProjPanel();
+          render();
+        }
+        hasUnsavedChanges = false;
+        persistLocalBackup();
+      }
+      throw err;
+    }
     mergeProject(updated.project);
     hasUnsavedChanges = false;
     persistLocalBackup();
@@ -5042,7 +5066,7 @@ const Projects = (() => {
     if(apiMode){
       const updated = await apiRequest('/api/projects/' + encodeURIComponent(id), {
         method: 'PUT',
-        body: {name: cleanedName, data: p.data || deepClone(PROJECT_DATA)}
+        body: {name: cleanedName, data: p.data || deepClone(PROJECT_DATA), baseUpdatedAt: p.updatedAt}
       });
       mergeProject(updated.project);
       hasUnsavedChanges = false;
@@ -5139,7 +5163,7 @@ const Projects = (() => {
     if(apiMode){
       const updated = await apiRequest('/api/projects/' + encodeURIComponent(currentId), {
         method: 'PUT',
-        body: {name: project.name, data: project.data}
+        body: {name: project.name, data: project.data, baseUpdatedAt: project.updatedAt}
       });
       mergeProject(updated.project);
       hasUnsavedChanges = false;

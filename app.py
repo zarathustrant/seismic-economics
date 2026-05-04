@@ -20,8 +20,8 @@ MONGODB_URI = os.environ.get('MONGODB_URI', '').strip()
 MONGO_DB_NAME = os.environ.get('MONGODB_DB', 'seismic_economics')
 MONGO_COLLECTION = os.environ.get('MONGODB_COLLECTION', 'projects')
 
-mongo_client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=5000) if MONGODB_URI else None
-projects_col = mongo_client[MONGO_DB_NAME][MONGO_COLLECTION] if mongo_client else None
+mongo_client = None
+projects_col = None
 indexes_ready = False
 migration_checked = False
 
@@ -90,24 +90,38 @@ def parse_embedded_projects():
     return items
 
 
+def ensure_mongo_handles():
+    global mongo_client, projects_col
+
+    if projects_col is not None:
+        return projects_col
+    if not MONGODB_URI:
+        return None
+
+    mongo_client = MongoClient(MONGODB_URI, serverSelectionTimeoutMS=5000)
+    projects_col = mongo_client[MONGO_DB_NAME][MONGO_COLLECTION]
+    return projects_col
+
+
 def ensure_db_ready():
     global indexes_ready, migration_checked
 
-    if projects_col is None:
+    col = ensure_mongo_handles()
+    if col is None:
         return False, 'MONGODB_URI is not configured on the server.'
 
     try:
         if not indexes_ready:
-            projects_col.create_index([('updatedAt', DESCENDING)])
-            projects_col.create_index([('createdAt', ASCENDING)])
+            col.create_index([('updatedAt', DESCENDING)])
+            col.create_index([('createdAt', ASCENDING)])
             indexes_ready = True
 
         if not migration_checked:
-            has_any = projects_col.count_documents({}, limit=1) > 0
+            has_any = col.count_documents({}, limit=1) > 0
             if not has_any:
                 seed = parse_embedded_projects()
                 if seed:
-                    projects_col.insert_many(seed, ordered=False)
+                    col.insert_many(seed, ordered=False)
             migration_checked = True
 
         return True, None
@@ -276,11 +290,27 @@ def update_project(project_id):
 
     pid = clean_project_id(project_id)
     before = projects_col.find_one({'_id': pid}, {'name': 1, 'updatedAt': 1})
+    if not before:
+        return jsonify({'success': False, 'error': 'Project not found'}), 404
+
+    base_updated_at = payload.get('baseUpdatedAt')
+    if base_updated_at is not None:
+        try:
+            expected = int(base_updated_at)
+        except (TypeError, ValueError):
+            return jsonify({'success': False, 'error': 'baseUpdatedAt must be a valid integer timestamp.'}), 400
+        current_updated_at = int(before.get('updatedAt') or 0)
+        if expected != current_updated_at:
+            latest_doc = projects_col.find_one({'_id': pid})
+            return jsonify({
+                'success': False,
+                'error': 'Conflict: this project was updated in another tab/session. Reloaded latest server copy.',
+                'project': serialize_project_full(latest_doc) if latest_doc else None
+            }), 409
+
     summary = summarize_project_data(cleaned['data']) if cleaned['data'] is not None else {'valid': False, 'note': 'no data payload'}
 
     result = projects_col.update_one({'_id': pid}, {'$set': update})
-    if result.matched_count == 0:
-        return jsonify({'success': False, 'error': 'Project not found'}), 404
 
     doc = projects_col.find_one({'_id': pid})
     app.logger.info(
