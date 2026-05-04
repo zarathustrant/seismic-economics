@@ -4857,7 +4857,7 @@ const Projects = (() => {
   }
 
   async function hydrateProjectData(id){
-    if(!apiMode || !id) return;
+    if(!id) return;
     const res = await apiRequest('/api/projects/' + encodeURIComponent(id));
     mergeProject(res.project);
   }
@@ -4880,6 +4880,10 @@ const Projects = (() => {
 
     setProjectsFromList(list);
     await hydrateProjectData(projectsData.currentProjectId);
+    const active = projectsData.projects[projectsData.currentProjectId];
+    if(!active || !isPlainObject(active.data)){
+      throw new Error('Failed to load project data from server.');
+    }
   }
 
   async function init(){
