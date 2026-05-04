@@ -1,21 +1,20 @@
-from flask import Flask, send_file, request, jsonify, session, redirect, render_template_string
-from functools import wraps
+from flask import Flask, send_file, request, jsonify
 from pymongo import MongoClient, ASCENDING, DESCENDING, UpdateOne
 from pymongo.errors import PyMongoError
+from dotenv import load_dotenv
 import os
 import re
 import json
 import time
+import logging
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'change-this-secret-key-in-production')
+app.logger.setLevel(logging.INFO)
 
 # Password (set via environment variable or default)
-PASSWORD = os.environ.get('APP_PASSWORD', 'seismic2024')
-
-# Path to the HTML file (anchored to this script's directory)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 HTML_FILE = os.path.join(BASE_DIR, 'app.html')
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 MONGODB_URI = os.environ.get('MONGODB_URI', '').strip()
 MONGO_DB_NAME = os.environ.get('MONGODB_DB', 'seismic_economics')
@@ -150,125 +149,63 @@ def serialize_project_full(doc):
     return item
 
 
-# Simple password protection decorator
-def require_auth(f):
-    @wraps(f)
-    def decorated_function(*args, **kwargs):
-        if not session.get('authenticated'):
-            return redirect('/login')
-        return f(*args, **kwargs)
-    return decorated_function
+def summarize_project_data(data):
+    if not isinstance(data, dict):
+        return {'valid': False}
+    rate_cards = data.get('rateCards') if isinstance(data.get('rateCards'), dict) else {}
+    cost_lines = data.get('costLines') if isinstance(data.get('costLines'), list) else []
 
+    nonzero_rates = 0
+    for arr in rate_cards.values():
+        if not isinstance(arr, list):
+            continue
+        for rate in arr:
+            if not isinstance(rate, dict):
+                continue
+            try:
+                if float(rate.get('value') or 0) != 0:
+                    nonzero_rates += 1
+            except Exception:
+                pass
 
-# Login page
-LOGIN_PAGE = '''
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Login - Seismic Economics</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #0f766e 0%, #155e75 100%);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .login-box {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            width: 300px;
-        }
-        h2 {
-            margin: 0 0 20px 0;
-            color: #0f766e;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        button {
-            width: 100%;
-            padding: 12px;
-            background: #0f766e;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        button:hover {
-            background: #155e75;
-        }
-        .error {
-            color: #dc2626;
-            font-size: 13px;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="login-box">
-        <h2>🌊 Seismic Economics</h2>
-        {% if error %}
-        <div class="error">{{ error }}</div>
-        {% endif %}
-        <form method="POST">
-            <input type="password" name="password" placeholder="Enter password" autofocus>
-            <button type="submit">Login</button>
-        </form>
-    </div>
-</body>
-</html>
-'''
+    nonzero_month_cells = 0
+    for line in cost_lines:
+        if not isinstance(line, dict):
+            continue
+        for v in (line.get('monthly') or []):
+            try:
+                if float(v or 0) != 0:
+                    nonzero_month_cells += 1
+            except Exception:
+                pass
 
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if request.method == 'POST':
-        if request.form.get('password') == PASSWORD:
-            session['authenticated'] = True
-            return redirect('/')
-        return render_template_string(LOGIN_PAGE, error='Invalid password')
-    return render_template_string(LOGIN_PAGE)
-
-
-@app.route('/logout')
-def logout():
-    session.pop('authenticated', None)
-    return redirect('/login')
+    return {
+        'valid': True,
+        'projectName': data.get('projectInputs', {}).get('projectName'),
+        'nonzeroRates': nonzero_rates,
+        'nonzeroMonthlyCells': nonzero_month_cells,
+        'costLines': len(cost_lines),
+    }
 
 
 @app.route('/')
-@require_auth
 def index():
     """Serve the main HTML file"""
     return send_file(HTML_FILE)
 
 
 @app.route('/api/projects', methods=['GET'])
-@require_auth
 def list_projects():
     ready, error = ensure_db_ready()
     if not ready:
         return jsonify({'success': False, 'error': error}), 503
 
     docs = list(projects_col.find({}, {'data': 0}).sort('updatedAt', DESCENDING))
+    app.logger.info("GET /api/projects -> %s projects", len(docs))
     return jsonify({'success': True, 'projects': [serialize_project_meta(d) for d in docs]})
 
 
 @app.route('/api/projects/<project_id>', methods=['GET'])
-@require_auth
 def get_project(project_id):
     ready, error = ensure_db_ready()
     if not ready:
@@ -279,11 +216,11 @@ def get_project(project_id):
     if not doc:
         return jsonify({'success': False, 'error': 'Project not found'}), 404
 
+    app.logger.info("GET /api/projects/%s -> found=%s", pid, bool(doc))
     return jsonify({'success': True, 'project': serialize_project_full(doc)})
 
 
 @app.route('/api/projects', methods=['POST'])
-@require_auth
 def create_project():
     ready, error = ensure_db_ready()
     if not ready:
@@ -313,11 +250,11 @@ def create_project():
     except PyMongoError as exc:
         return jsonify({'success': False, 'error': str(exc)}), 500
 
+    app.logger.info("POST /api/projects -> created id=%s name=%s summary=%s", pid, cleaned['name'], summarize_project_data(cleaned['data']))
     return jsonify({'success': True, 'project': serialize_project_full(doc)}), 201
 
 
 @app.route('/api/projects/<project_id>', methods=['PUT'])
-@require_auth
 def update_project(project_id):
     ready, error = ensure_db_ready()
     if not ready:
@@ -338,17 +275,28 @@ def update_project(project_id):
         return jsonify({'success': False, 'error': 'No fields to update'}), 400
 
     pid = clean_project_id(project_id)
+    before = projects_col.find_one({'_id': pid}, {'name': 1, 'updatedAt': 1})
+    summary = summarize_project_data(cleaned['data']) if cleaned['data'] is not None else {'valid': False, 'note': 'no data payload'}
 
     result = projects_col.update_one({'_id': pid}, {'$set': update})
     if result.matched_count == 0:
         return jsonify({'success': False, 'error': 'Project not found'}), 404
 
     doc = projects_col.find_one({'_id': pid})
+    app.logger.info(
+        "PUT /api/projects/%s -> matched=%s modified=%s beforeUpdatedAt=%s afterUpdatedAt=%s name=%s payloadSummary=%s",
+        pid,
+        result.matched_count,
+        result.modified_count,
+        before.get('updatedAt') if before else None,
+        doc.get('updatedAt') if doc else None,
+        update.get('name'),
+        summary
+    )
     return jsonify({'success': True, 'project': serialize_project_full(doc)})
 
 
 @app.route('/api/projects/<project_id>', methods=['DELETE'])
-@require_auth
 def delete_project(project_id):
     ready, error = ensure_db_ready()
     if not ready:
@@ -363,22 +311,22 @@ def delete_project(project_id):
     if result.deleted_count == 0:
         return jsonify({'success': False, 'error': 'Project not found'}), 404
 
+    app.logger.info("DELETE /api/projects/%s -> deleted=%s", pid, result.deleted_count)
     return jsonify({'success': True})
 
 
 @app.route('/api/projects/export', methods=['GET'])
-@require_auth
 def export_projects():
     ready, error = ensure_db_ready()
     if not ready:
         return jsonify({'success': False, 'error': error}), 503
 
     docs = list(projects_col.find({}).sort('updatedAt', DESCENDING))
+    app.logger.info("GET /api/projects/export -> %s projects", len(docs))
     return jsonify({'success': True, 'projects': [serialize_project_full(d) for d in docs]})
 
 
 @app.route('/api/projects/import', methods=['POST'])
-@require_auth
 def import_projects():
     ready, error = ensure_db_ready()
     if not ready:
@@ -434,11 +382,11 @@ def import_projects():
     except PyMongoError as exc:
         return jsonify({'success': False, 'error': str(exc)}), 500
 
+    app.logger.info("POST /api/projects/import -> imported=%s mode=%s", imported, mode)
     return jsonify({'success': True, 'imported': imported, 'mode': mode})
 
 
 @app.route('/api/save', methods=['POST'])
-@require_auth
 def save_deprecated():
     """Deprecated endpoint retained for backward compatibility."""
     return jsonify({

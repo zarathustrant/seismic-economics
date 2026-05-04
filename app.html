@@ -4743,6 +4743,7 @@ const Projects = (() => {
   let hasUnsavedChanges = false;
   let apiMode = false;
   let initialized = false;
+  const LAST_PROJECT_KEY = 'seismic.currentProjectId';
 
   function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
   function isFileMode(){ return window.location.protocol === 'file:'; }
@@ -4751,11 +4752,19 @@ const Projects = (() => {
     const init = {
       method: options.method || 'GET',
       headers: {'Content-Type': 'application/json', ...(options.headers || {})},
-      credentials: 'same-origin'
+      credentials: 'same-origin',
+      keepalive: !!options.keepalive
     };
     if(options.body !== undefined) init.body = JSON.stringify(options.body);
     const res = await fetch(path, init);
-    const data = await res.json().catch(() => ({}));
+    const contentType = (res.headers.get('content-type') || '').toLowerCase();
+    if(!contentType.includes('application/json')){
+      throw new Error('Invalid server response. Check backend status and try again.');
+    }
+    const data = await res.json().catch(() => null);
+    if(!data || typeof data !== 'object'){
+      throw new Error('Invalid JSON response from server.');
+    }
     if(!res.ok || data.success === false){
       const msg = data.error || `Request failed (${res.status})`;
       throw new Error(msg);
@@ -4781,7 +4790,9 @@ const Projects = (() => {
       if(!p || !p.id) return;
       projectsData.projects[p.id] = p;
     });
-    projectsData.currentProjectId = Object.keys(projectsData.projects)[0] || null;
+    const firstId = Object.keys(projectsData.projects)[0] || null;
+    const preferredId = localStorage.getItem(LAST_PROJECT_KEY);
+    projectsData.currentProjectId = preferredId && projectsData.projects[preferredId] ? preferredId : firstId;
   }
 
   function mergeProject(project){
@@ -4794,6 +4805,11 @@ const Projects = (() => {
       updatedAt: p.updatedAt,
       data: p.data
     };
+  }
+
+  function rememberCurrentProject(id){
+    if(!id) return;
+    try{ localStorage.setItem(LAST_PROJECT_KEY, id); }catch(_){}
   }
 
   function loadEmbeddedData(){
@@ -4830,6 +4846,7 @@ const Projects = (() => {
         body: {name: seedName, data: seed}
       });
       setProjectsFromList([created.project]);
+      rememberCurrentProject(projectsData.currentProjectId);
       return;
     }
 
@@ -4870,6 +4887,7 @@ const Projects = (() => {
 
     apiMode = false;
     initialized = true;
+    rememberCurrentProject(projectsData.currentProjectId);
     return projectsData.currentProjectId;
   }
 
@@ -4885,14 +4903,15 @@ const Projects = (() => {
     }
   }
 
-  async function flushCurrent(){
+  async function flushCurrent(options = {}){
     if(!apiMode || !projectsData.currentProjectId) return false;
     save();
     const p = projectsData.projects[projectsData.currentProjectId];
     if(!p) return false;
     const updated = await apiRequest('/api/projects/' + encodeURIComponent(p.id), {
       method: 'PUT',
-      body: {name: p.name, data: p.data}
+      body: {name: p.name, data: p.data},
+      keepalive: !!options.keepalive
     });
     mergeProject(updated.project);
     hasUnsavedChanges = false;
@@ -4914,6 +4933,7 @@ const Projects = (() => {
       });
       mergeProject(created.project);
       projectsData.currentProjectId = created.project.id;
+      rememberCurrentProject(projectsData.currentProjectId);
       model = deepClone(loadModel(created.project.id));
       window.model = model;
       initModel();
@@ -4931,6 +4951,7 @@ const Projects = (() => {
       data: deepClone(PROJECT_DATA)
     };
     projectsData.currentProjectId = id;
+    rememberCurrentProject(projectsData.currentProjectId);
     hasUnsavedChanges = true;
     model = deepClone(projectsData.projects[id].data);
     window.model = model;
@@ -4952,6 +4973,7 @@ const Projects = (() => {
     }
 
     projectsData.currentProjectId = id;
+    rememberCurrentProject(projectsData.currentProjectId);
     if(apiMode && !isPlainObject(projectsData.projects[id].data)){
       await hydrateProjectData(id);
     }
@@ -5042,6 +5064,7 @@ const Projects = (() => {
 
     if(projectsData.currentProjectId === id){
       projectsData.currentProjectId = Object.keys(projectsData.projects)[0];
+      rememberCurrentProject(projectsData.currentProjectId);
       if(apiMode && projectsData.currentProjectId && !isPlainObject(projectsData.projects[projectsData.currentProjectId].data)){
         await hydrateProjectData(projectsData.currentProjectId);
       }
@@ -5286,34 +5309,36 @@ function updateSaveStatus(status, text) {
   }
 }
 
-async function saveToFile() {
+async function saveToFile(options = {}) {
+  const keepalive = !!options.keepalive;
+  const silent = !!options.silent;
   if (IS_FILE_MODE) {
     if (!fileModeNoticeShown) {
       console.warn('Auto-save is disabled in file:// mode. Run through Flask to use server persistence.');
       fileModeNoticeShown = true;
     }
-    updateSaveStatus('error', 'Local file mode: no server persistence');
+    if(!silent) updateSaveStatus('error', 'Local file mode: no server persistence');
     return;
   }
 
   if (!Projects.isApiMode()) {
-    updateSaveStatus('error', 'Server persistence unavailable');
+    if(!silent) updateSaveStatus('error', 'Server persistence unavailable');
     return;
   }
 
   if (isSaving) return;
 
   isSaving = true;
-  updateSaveStatus('saving', 'Saving...');
+  if(!silent) updateSaveStatus('saving', 'Saving...');
 
   try {
     Projects.save();
-    await Projects.flushCurrent();
+    await Projects.flushCurrent({keepalive});
     Projects.clearChanges();
-    updateSaveStatus('saved', 'Saved');
+    if(!silent) updateSaveStatus('saved', 'Saved');
   } catch (error) {
     console.error('Save error:', error);
-    updateSaveStatus('error', 'Save failed');
+    if(!silent) updateSaveStatus('error', 'Save failed');
   } finally {
     isSaving = false;
   }
@@ -6883,6 +6908,16 @@ document.addEventListener('click', e => {
   if(!pop.classList.contains('open')) return;
   if(e.target.closest('#help-popover') || e.target.closest('.tab-help')) return;
   closeHelp();
+});
+
+// Best-effort immediate save when user refreshes/navigates away.
+window.addEventListener('beforeunload', () => {
+  if(Projects.hasChanges()) saveToFile({keepalive:true, silent:true});
+});
+document.addEventListener('visibilitychange', () => {
+  if(document.visibilityState === 'hidden' && Projects.hasChanges()){
+    saveToFile({keepalive:true, silent:true});
+  }
 });
 
 async function bootApp(){
