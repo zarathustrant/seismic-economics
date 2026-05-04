@@ -3318,6 +3318,11 @@ tr.tot-row td.lbl{background:var(--hdr);color:#f6f7f4}.neg{color:var(--red)}.pos
     <input class="proj-new-inp" id="proj-new-inp" placeholder="New project name…" onkeydown="if(event.key==='Enter')Projects.create()">
     <button class="proj-create-btn" onclick="Projects.create()">+ Create</button>
   </div>
+  <div class="proj-footer" style="padding-top:8px;border-top:1px dashed #2d3a2d">
+    <button class="proj-create-btn" style="background:#123e4b" onclick="Projects.exportAll()">Export</button>
+    <button class="proj-create-btn" style="background:#7a2e24" onclick="Projects.beginImport()">Import</button>
+    <input type="file" id="proj-import-file" accept="application/json,.json" style="display:none" onchange="Projects.importFromInput(this)">
+  </div>
 </div>
 
 <nav class="tabs">
@@ -4732,14 +4737,65 @@ function sanitizeTextInput(value){
   return String(value ?? '').replace(/[<>]/g, '').trim();
 }
 
-// ═══ EMBEDDED-DATA PROJECT MANAGER ═══
+// ═══ PROJECT MANAGER (API-FIRST WITH EMBEDDED FALLBACK) ═══
 const Projects = (() => {
   let projectsData = {projects: {}, currentProjectId: null};
   let hasUnsavedChanges = false;
+  let apiMode = false;
+  let initialized = false;
 
   function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,6); }
+  function isFileMode(){ return window.location.protocol === 'file:'; }
 
-  // Load from embedded script tag
+  async function apiRequest(path, options = {}){
+    const init = {
+      method: options.method || 'GET',
+      headers: {'Content-Type': 'application/json', ...(options.headers || {})},
+      credentials: 'same-origin'
+    };
+    if(options.body !== undefined) init.body = JSON.stringify(options.body);
+    const res = await fetch(path, init);
+    const data = await res.json().catch(() => ({}));
+    if(!res.ok || data.success === false){
+      const msg = data.error || `Request failed (${res.status})`;
+      throw new Error(msg);
+    }
+    return data;
+  }
+
+  function ensureProjectDataShape(project){
+    if(!project || !isPlainObject(project)) return null;
+    return {
+      id: String(project.id || ''),
+      name: sanitizeTextInput(project.name || 'Untitled Project') || 'Untitled Project',
+      createdAt: +project.createdAt || Date.now(),
+      updatedAt: +project.updatedAt || +project.createdAt || Date.now(),
+      data: isPlainObject(project.data) ? project.data : null
+    };
+  }
+
+  function setProjectsFromList(list){
+    projectsData = {projects: {}, currentProjectId: null};
+    (list || []).forEach(item => {
+      const p = ensureProjectDataShape(item);
+      if(!p || !p.id) return;
+      projectsData.projects[p.id] = p;
+    });
+    projectsData.currentProjectId = Object.keys(projectsData.projects)[0] || null;
+  }
+
+  function mergeProject(project){
+    const p = ensureProjectDataShape(project);
+    if(!p || !p.id) return;
+    projectsData.projects[p.id] = {
+      id: p.id,
+      name: p.name,
+      createdAt: p.createdAt,
+      updatedAt: p.updatedAt,
+      data: p.data
+    };
+  }
+
   function loadEmbeddedData(){
     try{
       const script = document.getElementById('embedded-projects-data');
@@ -4756,47 +4812,126 @@ const Projects = (() => {
     return false;
   }
 
-  // Initialize
-  function init(){
-    // Try to load from embedded data
+  async function hydrateProjectData(id){
+    if(!apiMode || !id) return;
+    const res = await apiRequest('/api/projects/' + encodeURIComponent(id));
+    mergeProject(res.project);
+  }
+
+  async function bootstrapApiProjects(){
+    const listRes = await apiRequest('/api/projects');
+    const list = Array.isArray(listRes.projects) ? listRes.projects : [];
+
+    if(list.length === 0){
+      const seed = deepClone(PROJECT_DATA);
+      const seedName = sanitizeTextInput(seed?.projectInputs?.projectName || '') || 'Default Project';
+      const created = await apiRequest('/api/projects', {
+        method: 'POST',
+        body: {name: seedName, data: seed}
+      });
+      setProjectsFromList([created.project]);
+      return;
+    }
+
+    setProjectsFromList(list);
+    await hydrateProjectData(projectsData.currentProjectId);
+  }
+
+  async function init(){
+    if(initialized) return projectsData.currentProjectId;
+
+    if(!isFileMode()){
+      try{
+        await bootstrapApiProjects();
+        apiMode = true;
+        initialized = true;
+        return projectsData.currentProjectId;
+      }catch(err){
+        console.warn('API mode unavailable, falling back to embedded mode:', err);
+      }
+    }
+
     if(!loadEmbeddedData() || Object.keys(projectsData.projects).length === 0){
-      // Create default project
       const id = uid();
       projectsData.projects[id] = {
         id,
         name: 'Default Project',
         createdAt: Date.now(),
-        data: JSON.parse(JSON.stringify(PROJECT_DATA))
+        updatedAt: Date.now(),
+        data: deepClone(PROJECT_DATA)
       };
       projectsData.currentProjectId = id;
       hasUnsavedChanges = true;
     }
 
-    // Ensure current project exists
     if(!projectsData.projects[projectsData.currentProjectId]){
       projectsData.currentProjectId = Object.keys(projectsData.projects)[0];
     }
 
+    apiMode = false;
+    initialized = true;
     return projectsData.currentProjectId;
   }
 
-  // Create new project
-  function create(){
+  function save(){
+    if(!projectsData.currentProjectId || !projectsData.projects[projectsData.currentProjectId]) return;
+    try{
+      const modelCopy = JSON.parse(JSON.stringify(model, (key, value) => value === undefined ? null : value));
+      projectsData.projects[projectsData.currentProjectId].data = modelCopy;
+      projectsData.projects[projectsData.currentProjectId].updatedAt = Date.now();
+      hasUnsavedChanges = true;
+    }catch(e){
+      console.error('Error saving project in memory:', e);
+    }
+  }
+
+  async function flushCurrent(){
+    if(!apiMode || !projectsData.currentProjectId) return false;
+    save();
+    const p = projectsData.projects[projectsData.currentProjectId];
+    if(!p) return false;
+    const updated = await apiRequest('/api/projects/' + encodeURIComponent(p.id), {
+      method: 'PUT',
+      body: {name: p.name, data: p.data}
+    });
+    mergeProject(updated.project);
+    hasUnsavedChanges = false;
+    return true;
+  }
+
+  async function create(){
     const inp = document.getElementById('proj-new-inp');
     const name = sanitizeTextInput((inp && inp.value) || '') || 'New Project';
-    const id = uid();
+    if(inp) inp.value = '';
 
+    if(apiMode){
+      if(hasUnsavedChanges) await flushCurrent();
+      const data = deepClone(PROJECT_DATA);
+      if(data.projectInputs) data.projectInputs.projectName = name;
+      const created = await apiRequest('/api/projects', {
+        method: 'POST',
+        body: {name, data}
+      });
+      mergeProject(created.project);
+      projectsData.currentProjectId = created.project.id;
+      model = deepClone(loadModel(created.project.id));
+      window.model = model;
+      initModel();
+      renderProjPanel();
+      render();
+      return;
+    }
+
+    const id = uid();
     projectsData.projects[id] = {
       id,
       name,
       createdAt: Date.now(),
+      updatedAt: Date.now(),
       data: deepClone(PROJECT_DATA)
     };
-
-    if(inp) inp.value = '';
     projectsData.currentProjectId = id;
     hasUnsavedChanges = true;
-
     model = deepClone(projectsData.projects[id].data);
     window.model = model;
     initModel();
@@ -4804,24 +4939,32 @@ const Projects = (() => {
     render();
   }
 
-  // Switch project
-  function switchTo(id){
-    // Save current project
-    if(projectsData.currentProjectId){
+  async function switchTo(id){
+    if(!id || !projectsData.projects[id] || id === projectsData.currentProjectId){
+      closeProjPanel();
+      return;
+    }
+
+    if(apiMode && hasUnsavedChanges){
+      await flushCurrent();
+    }else if(projectsData.currentProjectId && projectsData.projects[projectsData.currentProjectId]){
       projectsData.projects[projectsData.currentProjectId].data = deepClone(model);
     }
 
     projectsData.currentProjectId = id;
+    if(apiMode && !isPlainObject(projectsData.projects[id].data)){
+      await hydrateProjectData(id);
+    }
+
     model = deepClone(loadModel(id));
     window.model = model;
-    hasUnsavedChanges = true;
+    hasUnsavedChanges = false;
     initModel();
     closeProjPanel();
     render();
   }
 
-  // Rename project
-  function rename(id){
+  async function rename(id){
     const p = projectsData.projects[id];
     if(!p) return;
     const name = prompt('Rename project:', p.name);
@@ -4830,13 +4973,23 @@ const Projects = (() => {
 
     p.name = cleanedName;
     if(p.data && p.data.projectInputs) p.data.projectInputs.projectName = cleanedName;
-    hasUnsavedChanges = true;
+
+    if(apiMode){
+      const updated = await apiRequest('/api/projects/' + encodeURIComponent(id), {
+        method: 'PUT',
+        body: {name: cleanedName, data: p.data || deepClone(PROJECT_DATA)}
+      });
+      mergeProject(updated.project);
+      hasUnsavedChanges = false;
+    }else{
+      hasUnsavedChanges = true;
+    }
+
     renderProjPanel();
     if(id === projectsData.currentProjectId) render();
   }
 
-  // Duplicate project
-  function duplicate(id){
+  async function duplicate(id){
     const src = projectsData.projects[id];
     if(!src) return;
 
@@ -4844,23 +4997,33 @@ const Projects = (() => {
     const cleanedName = sanitizeTextInput(newName);
     if(!cleanedName) return;
 
+    const cloned = deepClone(src.data || PROJECT_DATA);
+    if(cloned.projectInputs) cloned.projectInputs.projectName = cleanedName;
+
+    if(apiMode){
+      if(hasUnsavedChanges) await flushCurrent();
+      const created = await apiRequest('/api/projects', {
+        method: 'POST',
+        body: {name: cleanedName, data: cloned}
+      });
+      mergeProject(created.project);
+      await switchTo(created.project.id);
+      return;
+    }
+
     const newId = uid();
     projectsData.projects[newId] = {
       id: newId,
       name: cleanedName,
       createdAt: Date.now(),
-      data: deepClone(src.data)
+      updatedAt: Date.now(),
+      data: cloned
     };
-    if(projectsData.projects[newId].data && projectsData.projects[newId].data.projectInputs){
-      projectsData.projects[newId].data.projectInputs.projectName = cleanedName;
-    }
-
     hasUnsavedChanges = true;
-    switchTo(newId);
+    await switchTo(newId);
   }
 
-  // Remove project
-  function remove(id){
+  async function remove(id){
     const projects = Object.values(projectsData.projects);
     if(projects.length <= 1){
       alert('Cannot delete the only project.');
@@ -4870,11 +5033,18 @@ const Projects = (() => {
     const p = projectsData.projects[id];
     if(!confirm(`Delete "${p?.name}"?`)) return;
 
+    if(apiMode){
+      await apiRequest('/api/projects/' + encodeURIComponent(id), {method: 'DELETE'});
+    }
+
     delete projectsData.projects[id];
     hasUnsavedChanges = true;
 
     if(projectsData.currentProjectId === id){
       projectsData.currentProjectId = Object.keys(projectsData.projects)[0];
+      if(apiMode && projectsData.currentProjectId && !isPlainObject(projectsData.projects[projectsData.currentProjectId].data)){
+        await hydrateProjectData(projectsData.currentProjectId);
+      }
       model = deepClone(loadModel(projectsData.currentProjectId));
       window.model = model;
       initModel();
@@ -4884,35 +5054,36 @@ const Projects = (() => {
     renderProjPanel();
   }
 
-  // Reset current project
-  function resetCurrent(){
+  async function resetCurrent(){
     if(!confirm('Reset this project to factory defaults?')) return;
     model = deepClone(PROJECT_DATA);
     window.model = model;
-    projectsData.projects[projectsData.currentProjectId].data = deepClone(PROJECT_DATA);
+
+    const currentId = projectsData.currentProjectId;
+    if(!currentId || !projectsData.projects[currentId]) return;
+
+    const project = projectsData.projects[currentId];
+    project.data = deepClone(PROJECT_DATA);
+    if(project.data.projectInputs) project.data.projectInputs.projectName = project.name;
     hasUnsavedChanges = true;
+
+    if(apiMode){
+      const updated = await apiRequest('/api/projects/' + encodeURIComponent(currentId), {
+        method: 'PUT',
+        body: {name: project.name, data: project.data}
+      });
+      mergeProject(updated.project);
+      hasUnsavedChanges = false;
+    }
+
     initModel();
     render();
   }
 
-  function save(){
-    if(projectsData.currentProjectId){
-      try {
-        // Use a replacer to handle undefined values
-        const modelCopy = JSON.parse(JSON.stringify(model, (key, value) => {
-          return value === undefined ? null : value;
-        }));
-        projectsData.projects[projectsData.currentProjectId].data = modelCopy;
-        hasUnsavedChanges = true;
-      } catch (e) {
-        console.error('Error saving project:', e);
-      }
-    }
-  }
-
   function loadModel(id){
-    if (!projectsData.projects[id]) return deepClone(PROJECT_DATA);
-    const loadedData = projectsData.projects[id].data;
+    const p = projectsData.projects[id];
+    if(!p) return deepClone(PROJECT_DATA);
+    const loadedData = p.data;
     if(!isPlainObject(loadedData)) return deepClone(PROJECT_DATA);
     const preparedData = deepClone(loadedData);
     if(isLegacyEmptyTemplateProject(preparedData)){
@@ -4928,19 +5099,164 @@ const Projects = (() => {
   }
 
   function list(){
-    return Object.values(projectsData.projects).map(p => ({
-      id: p.id,
-      name: p.name,
-      createdAt: p.createdAt
-    }));
+    return Object.values(projectsData.projects)
+      .sort((a,b) => (+b.updatedAt || 0) - (+a.updatedAt || 0))
+      .map(p => ({id: p.id, name: p.name, createdAt: p.createdAt, updatedAt: p.updatedAt}));
+  }
+
+  async function exportAll(){
+    let projects;
+    if(apiMode){
+      const res = await apiRequest('/api/projects/export');
+      projects = res.projects || [];
+    }else{
+      save();
+      projects = Object.values(projectsData.projects).map(p => ({
+        id: p.id,
+        name: p.name,
+        createdAt: p.createdAt,
+        updatedAt: p.updatedAt || p.createdAt,
+        data: p.data
+      }));
+    }
+
+    const payload = {
+      exportedAt: Date.now(),
+      version: 1,
+      projects
+    };
+
+    const blob = new Blob([JSON.stringify(payload, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    const stamp = new Date().toISOString().slice(0,19).replace(/[T:]/g,'-');
+    a.href = url;
+    a.download = `seismic-projects-${stamp}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+
+  async function beginImport(){
+    const input = document.getElementById('proj-import-file');
+    if(!input) return;
+    input.value = '';
+    input.click();
+  }
+
+  function normalizeImportProjects(payload){
+    if(Array.isArray(payload)) return payload;
+    if(isPlainObject(payload) && Array.isArray(payload.projects)) return payload.projects;
+    return null;
+  }
+
+  async function importFromInput(input){
+    const file = input && input.files && input.files[0];
+    if(!file) return;
+    const text = await file.text();
+    let payload;
+    try{
+      payload = JSON.parse(text);
+    }catch(e){
+      alert('Invalid JSON file.');
+      return;
+    }
+
+    const rawProjects = normalizeImportProjects(payload);
+    if(!rawProjects || rawProjects.length === 0){
+      alert('No projects found in import file.');
+      return;
+    }
+
+    const cleaned = rawProjects
+      .filter(p => isPlainObject(p) && isPlainObject(p.data))
+      .map(p => ({
+        id: String(p.id || uid()),
+        name: sanitizeTextInput(p.name || 'Imported Project') || 'Imported Project',
+        createdAt: +p.createdAt || Date.now(),
+        updatedAt: +p.updatedAt || Date.now(),
+        data: p.data
+      }));
+
+    if(cleaned.length === 0){
+      alert('No valid projects found in import file.');
+      return;
+    }
+
+    if(apiMode){
+      await apiRequest('/api/projects/import', {
+        method: 'POST',
+        body: {mode: 'merge', projects: cleaned}
+      });
+      const previous = projectsData.currentProjectId;
+      await bootstrapApiProjects();
+      if(previous && projectsData.projects[previous]){
+        projectsData.currentProjectId = previous;
+      }
+      await hydrateProjectData(projectsData.currentProjectId);
+      model = deepClone(loadModel(projectsData.currentProjectId));
+      window.model = model;
+      initModel();
+      renderProjPanel();
+      render();
+      alert(`Imported ${cleaned.length} project(s).`);
+      return;
+    }
+
+    cleaned.forEach(p => {
+      projectsData.projects[p.id] = p;
+    });
+    if(!projectsData.currentProjectId) projectsData.currentProjectId = cleaned[0].id;
+    hasUnsavedChanges = true;
+    renderProjPanel();
+    render();
+    alert(`Imported ${cleaned.length} project(s).`);
   }
 
   function currentId(){ return projectsData.currentProjectId; }
   function hasChanges(){ return hasUnsavedChanges; }
   function getData(){ return projectsData; }
   function clearChanges(){ hasUnsavedChanges = false; }
+  function isApiMode(){ return apiMode; }
+  function reportError(err){
+    console.error(err);
+    const msg = (err && err.message) ? err.message : 'Operation failed';
+    alert(msg);
+  }
+  function safeAsync(fn){
+    return async (...args) => {
+      try{
+        return await fn(...args);
+      }catch(err){
+        reportError(err);
+        return null;
+      }
+    };
+  }
 
-  return {init, save, create, switchTo, rename, duplicate, remove, resetCurrent, loadModel, currentId, currentName, list, hasChanges, getData, clearChanges};
+  return {
+    init: safeAsync(init),
+    save,
+    flushCurrent: safeAsync(flushCurrent),
+    create: safeAsync(create),
+    switchTo: safeAsync(switchTo),
+    rename: safeAsync(rename),
+    duplicate: safeAsync(duplicate),
+    remove: safeAsync(remove),
+    resetCurrent: safeAsync(resetCurrent),
+    loadModel,
+    currentId,
+    currentName,
+    list,
+    hasChanges,
+    getData,
+    clearChanges,
+    isApiMode,
+    exportAll: safeAsync(exportAll),
+    beginImport: safeAsync(beginImport),
+    importFromInput: safeAsync(importFromInput)
+  };
 })();
 
 // Save to file function
@@ -4973,10 +5289,15 @@ function updateSaveStatus(status, text) {
 async function saveToFile() {
   if (IS_FILE_MODE) {
     if (!fileModeNoticeShown) {
-      console.warn('Auto-save is disabled in file:// mode. Run through Flask to use /api/save.');
+      console.warn('Auto-save is disabled in file:// mode. Run through Flask to use server persistence.');
       fileModeNoticeShown = true;
     }
-    updateSaveStatus('error', 'Local file mode: run Flask for save');
+    updateSaveStatus('error', 'Local file mode: no server persistence');
+    return;
+  }
+
+  if (!Projects.isApiMode()) {
+    updateSaveStatus('error', 'Server persistence unavailable');
     return;
   }
 
@@ -4986,43 +5307,10 @@ async function saveToFile() {
   updateSaveStatus('saving', 'Saving...');
 
   try {
-    // Save current model to projects data
     Projects.save();
-
-    // Get current HTML
-    const htmlDoc = document.documentElement.outerHTML;
-
-    // Get projects data
-    const dataJson = JSON.stringify(Projects.getData(), null, 2);
-    const safeDataJson = dataJson.replace(/<\/script/gi, '<\\/script');
-
-    // Replace the embedded data script
-    const updatedHtml = htmlDoc.replace(
-      /<script type="application\/json" id="embedded-projects-data">[\s\S]*?<\/script>/,
-      '<script type="application/json" id="embedded-projects-data">\n' + safeDataJson + '\n<\/script>'
-    );
-
-    // Send to server
-    const response = await fetch('/api/save', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ html: updatedHtml })
-    });
-
-    if (!response.ok) {
-      throw new Error(`Server error: ${response.status}`);
-    }
-
-    const result = await response.json();
-
-    if (result.success) {
-      Projects.clearChanges();
-      updateSaveStatus('saved', 'Saved');
-    } else {
-      updateSaveStatus('error', 'Save failed');
-    }
+    await Projects.flushCurrent();
+    Projects.clearChanges();
+    updateSaveStatus('saved', 'Saved');
   } catch (error) {
     console.error('Save error:', error);
     updateSaveStatus('error', 'Save failed');
@@ -5038,6 +5326,10 @@ function triggerAutoSave() {
       updateSaveStatus('error', 'Local file mode: run Flask for save');
       fileModeNoticeShown = true;
     }
+    return;
+  }
+  if (!Projects.isApiMode()) {
+    updateSaveStatus('error', 'Server persistence unavailable');
     return;
   }
 
@@ -5090,9 +5382,8 @@ document.addEventListener('click', e => {
 
 function saveModel(){ Projects.save(); }
 
-// Synchronous initialization
-const currentId = Projects.init();
-let model = Projects.loadModel(currentId);
+// Deferred initialization (API-backed when available).
+let model = deepClone(PROJECT_DATA);
 window.model = model;
 let expandedCats = new Set(['FUEL & LUBRICANTS','FIELD MAINTENANCE SERVICES']);
 let expandedLines = new Set();
@@ -6594,8 +6885,32 @@ document.addEventListener('click', e => {
   closeHelp();
 });
 
-// Initial render so dynamic controls (like Project Type) are always visible.
-render();
+async function bootApp(){
+  try{
+    updateSaveStatus('saving', 'Loading...');
+    const currentId = await Projects.init();
+    model = Projects.loadModel(currentId);
+    window.model = model;
+    initModel();
+    renderProjPanel();
+    render();
+    if(Projects.isApiMode()){
+      updateSaveStatus('saved', 'Connected');
+    } else {
+      updateSaveStatus('error', IS_FILE_MODE ? 'Local file mode only' : 'Offline fallback mode');
+    }
+  }catch(e){
+    console.error('Boot error:', e);
+    model = deepClone(PROJECT_DATA);
+    window.model = model;
+    initModel();
+    renderProjPanel();
+    render();
+    updateSaveStatus('error', 'Startup failed');
+  }
+}
+
+bootApp();
 </script>
 
 

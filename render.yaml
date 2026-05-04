@@ -9,3 +9,5 @@ services:
         generateValue: true
       - key: APP_PASSWORD
         value: seismic2024
+      - key: MONGODB_URI
+        sync: false
